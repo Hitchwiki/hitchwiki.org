@@ -1,0 +1,28 @@
+# ignore everything by default
+*
+
+# except add these
+!.gitignore
+!.htaccess
+!Makefile
+!LocalSettings.php
+!_LocalSettings.php
+!PrivateSettings.example.php
+!*.diff
+!composer.local.json
+!composer.local.lock
+
+!local
+!local/skins
+!local/skins/**
+!local/extensions
+!local/extensions/**
+
+# Logos
+!images/
+images/*
+!images/logo.png
+
+# Favicon
+!favicon.ico
+!favicon.png

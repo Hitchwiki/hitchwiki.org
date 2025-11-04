@@ -1,0 +1,45 @@
+[submodule "extensions/CollapsibleVector"]
+	path = extensions/CollapsibleVector
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CollapsibleVector
+[submodule "extensions/MobileFrontend"]
+	path = extensions/MobileFrontend
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/MobileFrontend
+[submodule "extensions/ExternalData"]
+	path = extensions/ExternalData
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/ExternalData
+[submodule "extensions/GeoCrumbs"]
+	path = extensions/GeoCrumbs
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/GeoCrumbs
+[submodule "extensions/CodeMirror"]
+	path = extensions/CodeMirror
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CodeMirror
+[submodule "extensions/AntiSpoof"]
+	path = extensions/AntiSpoof
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/AntiSpoof
+[submodule "extensions/UserMerge"]
+	path = extensions/UserMerge
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge
+[submodule "extensions/AkismetKlik"]
+	path = extensions/AkismetKlik
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/AkismetKlik
+[submodule "extensions/TorBlock"]
+	path = extensions/TorBlock
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/TorBlock
+[submodule "extensions/DismissableSiteNotice"]
+	path = extensions/DismissableSiteNotice
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/DismissableSiteNotice
+[submodule "extensions/ConfirmAccount"]
+	path = extensions/ConfirmAccount
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/ConfirmAccount
+[submodule "extensions/OAuth"]
+	path = extensions/OAuth
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/OAuth
+[submodule "skins/MinervaNeue"]
+	path = skins/MinervaNeue
+	url = https://gerrit.wikimedia.org/r/mediawiki/skins/MinervaNeue
+[submodule "extensions/CheckUser"]
+	path = extensions/CheckUser
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser
+[submodule "extensions/AbuseFilter"]
+	path = extensions/AbuseFilter
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/AbuseFilter

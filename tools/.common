@@ -1,0 +1,37 @@
+
+#!/bin/bash
+
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+set -euo pipefail
+
+# Colors
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+BLUE="\033[0;34m"
+RED="\033[0;31m"
+NC="\033[0m"
+
+# Print a colored message
+print_message() {
+  local msg="$1"
+  local color="${2:-$GREEN}"
+  echo -e "${color}$msg${NC}"
+}
+
+# Check for .env file and create it if needed
+if [ ! -f "../.env" ] && [ -f "../example.env" ]; then
+    print_message "No .env file found. Copying example.env to .env..."
+    cp ../example.env ../.env
+    print_message ".env file created successfully. Using default configuration."
+fi
+
+# Load .env variables
+if [ -f ../.env ]; then
+  export $(grep -v '^#' ../.env | xargs)
+else
+  print_message "⚠️  .env file not found! Exiting..." $RED
+  exit 1
+fi
+
+# MySQL command prefix
+MYSQL_CMD="mysql -u$MEDIAWIKI_DB_USER -p$MEDIAWIKI_DB_PASSWORD -h$MEDIAWIKI_DB_HOST"

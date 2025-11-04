@@ -1,0 +1,13 @@
+# System files
+.DS_Store
+
+# Configuration files
+.env
+
+# Database dumps
+*.sql.gz
+backups
+tools/hitchwiki-dumps
+
+# Logs
+*.log

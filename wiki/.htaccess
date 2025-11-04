@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+
+# Serve existing files or directories (skip rewriting)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Generic rewrite: Strip language code if it's at the beginning of the path
+RewriteRule ^([a-z]{2})(/.*)?$ $2 [L]
+
+# Everything else goes to index.php
+RewriteRule ^ index.php [QSA,L]

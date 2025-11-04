@@ -1,0 +1,67 @@
+services:
+  mediawiki:
+    image: mediawiki:${MW_VERSION}
+    container_name: hitchwiki-mediawiki
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - ${MW_PORT}:80
+    volumes:
+      # Configuration files and images
+      - ./wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./wiki/images:/var/www/html/images
+      # Static files (will be bundled in production image)
+      - ./wiki/.htaccess:/var/www/html/.htaccess
+      # Extensions (Mounting them like this avoids a separate Dockerfile; but a little hacky)
+      - ./extensions/AbuseFilter:/var/www/html/extensions/AbuseFilter
+      - ./extensions/AkismetKlik:/var/www/html/extensions/AkismetKlik
+      - ./extensions/AntiSpoof:/var/www/html/extensions/AntiSpoof
+      - ./extensions/CheckUser:/var/www/html/extensions/CheckUser
+      - ./extensions/CodeMirror:/var/www/html/extensions/CodeMirror
+      - ./extensions/CollapsibleVector:/var/www/html/extensions/CollapsibleVector
+      - ./extensions/ConfirmAccount:/var/www/html/extensions/ConfirmAccount
+      - ./extensions/DismissableSiteNotice:/var/www/html/extensions/DismissableSiteNotice
+      - ./extensions/ExternalData:/var/www/html/extensions/ExternalData
+      - ./extensions/GeoCrumbs:/var/www/html/extensions/GeoCrumbs
+      - ./extensions/MobileFrontend:/var/www/html/extensions/MobileFrontend
+      - ./extensions/OAuth:/var/www/html/extensions/OAuth
+      - ./extensions/TorBlock:/var/www/html/extensions/TorBlock
+      - ./extensions/UserMerge:/var/www/html/extensions/UserMerge
+      # Skins (only MinervaNeue is missing before 1.38)
+      - ./skins/MinervaNeue:/var/www/html/skins/MinervaNeue
+      # Patches (to fix issues during upgrade)
+      - ./patches/cleanupUsersWithNoId.php:/var/www/html/maintenance/cleanupUsersWithNoId.php
+      - ./patches/migrateActors.php:/var/www/html/maintenance/migrateActors.php
+      - ./patches/includes-MigrateActors.php:/var/www/html/maintenance/includes/MigrateActors.php
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 5s
+
+  db:
+    image: mysql:8.0
+    container_name: hitchwiki-db
+    restart: always
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci"]
+    environment:
+      MYSQL_DATABASE: ${MEDIAWIKI_DB_NAME}
+      MYSQL_USER: ${MEDIAWIKI_DB_USER}
+      MYSQL_PASSWORD: ${MEDIAWIKI_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -proot --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+volumes:
+  images:
+  db:
