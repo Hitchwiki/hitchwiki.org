@@ -34,9 +34,3 @@
 [submodule "extensions/OAuth"]
 	path = extensions/OAuth
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/OAuth
-[submodule "extensions/CheckUser"]
-	path = extensions/CheckUser
-	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser
-[submodule "extensions/AbuseFilter"]
-	path = extensions/AbuseFilter
-	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/AbuseFilter

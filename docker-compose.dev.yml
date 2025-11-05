@@ -14,10 +14,8 @@ services:
       # Static files (will be bundled in production image)
       - ./wiki/.htaccess:/var/www/html/.htaccess
       # Extensions (Mounting them like this avoids a separate Dockerfile; but a little hacky)
-      - ./extensions/AbuseFilter:/var/www/html/extensions/AbuseFilter
       - ./extensions/AkismetKlik:/var/www/html/extensions/AkismetKlik
       - ./extensions/AntiSpoof:/var/www/html/extensions/AntiSpoof
-      - ./extensions/CheckUser:/var/www/html/extensions/CheckUser
       - ./extensions/CodeMirror:/var/www/html/extensions/CodeMirror
       - ./extensions/CollapsibleVector:/var/www/html/extensions/CollapsibleVector
       - ./extensions/ConfirmAccount:/var/www/html/extensions/ConfirmAccount
