@@ -26,10 +26,6 @@ services:
       - ./extensions/OAuth:/var/www/html/extensions/OAuth
       - ./extensions/TorBlock:/var/www/html/extensions/TorBlock
       - ./extensions/UserMerge:/var/www/html/extensions/UserMerge
-      # Patches (to fix issues during upgrade)
-      - ./patches/cleanupUsersWithNoId.php:/var/www/html/maintenance/cleanupUsersWithNoId.php
-      - ./patches/migrateActors.php:/var/www/html/maintenance/migrateActors.php
-      - ./patches/includes-MigrateActors.php:/var/www/html/maintenance/includes/MigrateActors.php
     env_file:
       - .env
     healthcheck:
