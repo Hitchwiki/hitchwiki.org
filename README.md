@@ -49,7 +49,7 @@ This project uses Docker Compose to run MediaWiki with MySQL.
    ```bash
    git clone --recurse-submodules https://github.com/Hitchwiki/hitchwiki.org.git
 
-   cd hitchwiki-new
+   cd hitchwiki.org
    ```
 
    If you have already cloned the repository without submodules, initialize them:
