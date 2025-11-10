@@ -170,4 +170,4 @@ for VERSION in "${HOPS[@]}"; do
     echo "[✔] Hop to $VERSION complete."
 done
 
-echo "All hops done. Visit http://localhost:8080/en/Special:Version to verify."
+echo "All hops done. Visit http://localhost:${MW_PORT}/en/Special:Version to verify."
