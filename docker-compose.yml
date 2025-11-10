@@ -13,9 +13,7 @@ services:
       - ./wiki/images:/var/www/html/images
       - ./wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       # Logging
-      - ./logs:/var/log      
-      # MySQL Socket
-      - /var/run/mysqld/mysqld.sock:/var/run/mysqld/mysqld.sock:ro
+      - ./logs:/var/log
     env_file:
       - .env
     healthcheck:
