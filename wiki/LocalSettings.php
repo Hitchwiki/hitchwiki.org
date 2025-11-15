@@ -259,7 +259,7 @@ wfLoadExtension('ConfirmEdit');
 wfLoadExtension('WikiEditor');
 $wgHiddenPrefs[] = 'usebetatoolbar';
 
-wfLoadExtension( 'CodeEditor' );
+wfLoadExtension('CodeEditor');
 $wgDefaultUserOptions['usebetatoolbar'] = 1;
 
 wfLoadExtension('CodeMirror');
@@ -309,9 +309,9 @@ $wgTitleBlacklistSources = [
 wfLoadExtension('TorBlock');
 $wgGroupPermissions['user']['torunblocked'] = true; # Authenticated users can browse via Tor
 
-// wfLoadExtension('ConfirmAccount');
-// $wgGroupPermissions['*']['createaccount'] = false; # TODO: Wasn't here before?
-// $wgGroupPermissions['bureaucrat']['createaccount'] = true; # TODO: Wasn't here before?
+wfLoadExtension('ConfirmAccount');
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['bureaucrat']['createaccount'] = true;
 $wgConfirmAccountRequestFormItems = [
 	'UserName' => ['enabled' => true],
 	'RealName' => ['enabled' => false],
