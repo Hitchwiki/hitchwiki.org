@@ -64,22 +64,22 @@ This project uses Docker Compose to run MediaWiki with MySQL.
    Edit `.env` to set your desired configuration, such as database credentials and site settings.
 
 3. **Set up the database**:
-   The project is currently undergoing a multi-hop MediaWiki upgrade process. To set up the database with existing data:
+   The project has recently underwent a multi-hop MediaWiki upgrade process. To set up the database with existing data:
 
    - Obtain the latest SQL dumps (see section below) and place them as `./hitchwiki_*.sql.gz` files in the project root. The naming is important as the databases will be named after the files.
 
-   - Run the upgrade script:
+   - Run the import script (which may or may not work): 
      ```bash
-     ./upgrade-mw.sh
+     ./import-mw.sh
      ```
-     This will automatically upgrade through multiple MediaWiki versions (1.33 to 1.44).
+     This will automatically import the dumps into a Docker instance configured under `docker-compose.dev.yml`.
 
 4. **Start the services (optional)**:
    After running the upgrade, it will keep the Docker container running with a (hopefully) fully functional wiki.
 
    For a production-like setup after upgrade, you can use:
    ```bash
-   docker-compose -f docker-compose.yml up -d
+   docker-compose up -d
    ```
 
 5. **Access the wiki**:
@@ -87,7 +87,7 @@ This project uses Docker Compose to run MediaWiki with MySQL.
 
 ## Dumps
 
-> **⚠️ As the upgrade process is designed to be used on a production database**, in order to go through it with this repository, you will have to obtain one of the full nightly dumps from someone who has server access.
+> **⚠️ As there is no public SQL dump available**, in order to get started with this repository, you will have to obtain one of the full nightly dumps from someone who has server access or figure out how to import the XML dumps.
 
 We're providing public backups of XML dumps and images, at https://hitchwiki.org/dumps.
 
