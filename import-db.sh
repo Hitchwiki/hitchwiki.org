@@ -8,7 +8,6 @@ if [ -f .env ]; then
   set +a
 fi
 
-
 for sqlfile in ./sql/hitchwiki_*.sql.gz; do
   [ -e "$sqlfile" ] || continue
   dbname="$(basename "$sqlfile" .sql.gz | sed 's/hitchwiki_//')"
