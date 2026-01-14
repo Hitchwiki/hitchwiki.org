@@ -241,20 +241,19 @@ wfLoadExtension('CheckUser');
 wfLoadExtension('Nuke');
 
 wfLoadExtension('ConfirmEdit');
-// TODO: Enable reCAPTCHA once the keys are set in environment variables
-// wfLoadExtension('ConfirmEdit/ReCaptchaNoCaptcha');
-// $wgCaptchaClass = 'ReCaptchaNoCaptcha';
-// $wgReCaptchaSiteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-// $wgReCaptchaSecretKey = $_ENV['RECAPTCHA_SECRET_KEY'];
-// $wgReCaptchaSendRemoteIP = true;
-// $wgCaptchaTriggers['edit'] = true;
-// $wgCaptchaTriggers['create'] = true;
-// $wgCaptchaTriggers['addurl'] = true;
-// $wgCaptchaTriggers['createaccount'] = true;
-// $wgCaptchaTriggers['badlogin'] = true;
-// $wgCaptchaTriggersOnNamespace[NS_TALK]['edit'] = true;
-// $wgCaptchaTriggersOnNamespace[NS_TALK]['create'] = true;
-// $wgCaptchaTriggersOnNamespace[NS_TALK]['addurl'] = true;
+wfLoadExtension('ConfirmEdit/ReCaptchaNoCaptcha');
+$wgCaptchaClass = 'ReCaptchaNoCaptcha';
+$wgReCaptchaSiteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+$wgReCaptchaSecretKey = $_ENV['RECAPTCHA_SECRET_KEY'];
+$wgReCaptchaSendRemoteIP = true;
+$wgCaptchaTriggers['edit'] = true;
+$wgCaptchaTriggers['create'] = true;
+$wgCaptchaTriggers['addurl'] = true;
+$wgCaptchaTriggers['createaccount'] = true;
+$wgCaptchaTriggers['badlogin'] = true;
+$wgCaptchaTriggersOnNamespace[NS_TALK]['edit'] = true;
+$wgCaptchaTriggersOnNamespace[NS_TALK]['create'] = true;
+$wgCaptchaTriggersOnNamespace[NS_TALK]['addurl'] = true;
 
 wfLoadExtension('WikiEditor');
 $wgHiddenPrefs[] = 'usebetatoolbar';
