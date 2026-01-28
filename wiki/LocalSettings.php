@@ -378,8 +378,8 @@ $isDevelopment = isset($_ENV['DEVELOPMENT']) && (bool) $_ENV['DEVELOPMENT'];
 
 if ($isDebug || $isDevelopment) {
 	$wgShowExceptionDetails = true;
-	$wgShowDebug = true;
-	$wgDevelopmentWarnings = true;
+	$wgShowDebug = false;
+	$wgDevelopmentWarnings = false;
 	$wgDebugToolbar = true;
 }
 
