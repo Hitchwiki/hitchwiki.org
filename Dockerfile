@@ -21,5 +21,12 @@ RUN chown -R www-data:www-data /var/www/html/extensions /var/www/html/skins
 COPY wiki/favicon.ico .
 COPY wiki/favicon.png .
 
-# If extensions need composer install, uncomment and adjust:
-# RUN composer update --no-dev
+# Install composer for extension dependency management
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+
+# Install git (required by composer for dev-branch dependencies like league/oauth2-server)
+RUN apt-get update && apt-get install -y --no-install-recommends git unzip && rm -rf /var/lib/apt/lists/*
+
+# Custom entrypoint: installs & verifies OAuth composer packages on startup
+COPY oauth/docker-entrypoint-custom.sh /usr/local/bin/
+ENTRYPOINT ["docker-entrypoint-custom.sh"]

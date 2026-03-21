@@ -6,8 +6,13 @@
 
 # Database dumps
 *.sql.gz
+*.xml.gz
 backups
 tools/hitchwiki-dumps
+
+# OAuth keys
+oauth/oauth2.key
+oauth/oauth2.pub
 
 # Logs
 *.log

@@ -12,6 +12,8 @@ services:
       # Configuration files and images
       - ./wiki/images:/var/www/html/images
       - ./wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./oauth/oauth2.key:/var/www/html/oauth2.key
+      - ./oauth/oauth2.pub:/var/www/html/oauth2.pub
     env_file:
       - .env
     healthcheck:

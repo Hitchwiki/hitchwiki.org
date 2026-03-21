@@ -82,7 +82,10 @@ This project uses Docker Compose to run MediaWiki with MySQL.
    docker-compose up -d
    ```
 
-5. **Access the wiki**:
+5. **Set up OAuth** *(TODO)* [e.g. used by adjacent sites like maps.hitchwiki.org]:
+   See [`oauth/README.md`](oauth/README.md) for generating keys and installing OAuth dependencies.
+
+6. **Access the wiki**:
    Open http://localhost:8080 in your browser.
 
 ## Dumps
@@ -105,6 +108,7 @@ Code and SQL dumps are also backed up to several machines controlled by @guaka a
 - `wiki/`: MediaWiki installation directory containing static and configuration files for the wiki.
 - `tools/`: Various scripts for maintenance, dumps, and extension management (e.g., `upgrade-extensions` for checking out versioned submodule branches).
 - `patches/`: Custom patches for MediaWiki upgrade process to override with fixes or changes (to be removed after deployment).
+- `oauth/`: OAuth2 setup files including RSA keys and custom entrypoint script. See [`oauth/README.md`](oauth/README.md) for details.
 - `extensions/`: Git submodules of used extensions; bundled extensions are not included here.
 - `sql/`: Databases to be imported during the upgrade process.
 - `backups/`: Used to save database snapshots during the upgrade process.
