@@ -340,6 +340,28 @@ $wgGroupPermissions['bureaucrat']['skipcaptcha'] = true;
 $wgGroupPermissions['sysop']['skipcaptcha'] = true;
 $wgGroupPermissions['sysop']['interwiki'] = true;
 
+### OAuth configuration start ###
+wfLoadExtension('OAuth');
+
+$wgOAuthSecretKey = $_ENV['OAUTH_SECRET_KEY'] ?? '';
+
+# Enable OAuth 2.0 (it is disabled by default)
+$wgOAuth2EnabledGrantTypes = [
+    "authorization_code",
+    "refresh_token",
+    "client_credentials"
+];
+
+# Minimal Permissions: Allow users to create their own "Consumers" (Apps)
+$wgGroupPermissions['user']['mwoauthproposeconsumer'] = true;
+$wgGroupPermissions['user']['mwoauthupdateownconsumer'] = true;
+$wgGroupPermissions['sysop']['mwoauthmanageconsumer'] = true;
+
+$wgOAuth2PrivateKey = "/var/www/html/oauth2.key";
+$wgOAuth2PublicKey  = "/var/www/html/oauth2.pub";
+# create oauth consumers on https://hitchwiki.org/en/Special:OAuthConsumerRegistration
+### OAuth configuration end ###
+
 ## Additional configuration
 $wgEmailConfirmToEdit = true;
 
