@@ -79,7 +79,7 @@ This project uses Docker Compose to run MediaWiki with MySQL.
 
    For a production-like setup after upgrade, you can use:
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 5. **Set up OAuth** *(TODO)* [e.g. used by adjacent sites like maps.hitchwiki.org]:
