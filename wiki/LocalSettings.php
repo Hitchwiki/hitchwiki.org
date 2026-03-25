@@ -311,6 +311,18 @@ $wgGroupPermissions['user']['torunblocked'] = true; # Authenticated users can br
 wfLoadExtension('ConfirmAccount');
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['bureaucrat']['createaccount'] = true;
+
+// setting which community members are responsible for approving new accounts
+if ( $wgLanguageCode == 'en' ) {
+    $wgConfirmAccountContact = array_map('trim', explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_EN'] ?? ''));
+}
+if ( $wgLanguageCode == 'fr' ) {
+    $wgConfirmAccountContact = array_map('trim', explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_FR'] ?? ''));
+}
+if ( $wgLanguageCode == 'de' ) {
+    $wgConfirmAccountContact = array_map('trim', explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_DE'] ?? ''));
+}
+
 $wgConfirmAccountRequestFormItems = [
 	'UserName' => ['enabled' => true],
 	'RealName' => ['enabled' => false],
