@@ -312,6 +312,15 @@ wfLoadExtension('ConfirmAccount');
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['bureaucrat']['createaccount'] = true;
 
+
+// simple bot prevention
+$wgHooks['ConfirmAccount__checkRequest'][] = function ( $user, $params, &$message ) {
+	if ( str_contains( $params['bio'] ?? '', '<br' ) ) {
+		$message = 'Thank you for your account request.'; // (not really)
+		return false;
+	}
+};
+
 // setting which community members are responsible for approving new accounts
 if ( $wgLanguageCode == 'en' ) {
     $wgConfirmAccountContact = array_map('trim', explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_EN'] ?? ''));
