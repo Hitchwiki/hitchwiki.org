@@ -123,6 +123,22 @@ Code and SQL dumps are also backed up to several machines controlled by @guaka a
 - MediaWiki uses MySQL with a separate database for each language (e.g. `hitchwiki_en`, `hitchwiki_de`, `hitchwiki_tr`, etc).
 - A few tables are shared across languages: Users, Interwiki, SpoofUser, Uploads, etc.
 
+## Google Search Console
+
+Hitchwiki is verified in [Google Search Console](https://search.google.com/search-console) via an HTML file served at the root of the domain.
+
+The verification file (`wiki/googlea8e45f716eafd720.html`) is mounted into the MediaWiki container via `docker-compose.yml`:
+
+```yaml
+- ./wiki/googlea8e45f716eafd720.html:/var/www/html/googlea8e45f716eafd720.html
+```
+
+If you need to re-verify or add a new property, place the new HTML verification file in `wiki/`, add a corresponding volume mount in `docker-compose.yml`, and recreate the container:
+
+```bash
+docker compose up -d --force-recreate mediawiki
+```
+
 ## Troubleshooting
 
 ### .env File Not Loading
