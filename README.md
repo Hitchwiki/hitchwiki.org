@@ -139,6 +139,18 @@ If you need to re-verify or add a new property, place the new HTML verification 
 docker compose up -d --force-recreate mediawiki
 ```
 
+## Deploying LocalSettings.php changes
+
+`LocalSettings.php` is bind-mounted into the container from the host. However, if the file inode changes (most text editors write a new file and rename it), the container won't see the update until restarted:
+
+```bash
+docker restart hitchwiki-mediawiki
+```
+
+## ConfirmAccount and bot prevention
+
+Directly make changes in the extension to filter unwanted account requests in `./extensions/ConfirmAccount/includes/business/AccountRequestSubmission.php`.
+
 ## Troubleshooting
 
 ### .env File Not Loading

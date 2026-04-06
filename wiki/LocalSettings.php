@@ -234,6 +234,8 @@ $wgDefaultSkin = "vector";
 
 ## Enabled extensions and configuration.
 wfLoadExtension('DismissableSiteNotice');
+wfLoadExtension('Echo');
+$wgDefaultUserOptions['echo-subscriptions-email-edit-user-talk'] = true;
 wfLoadExtension('ExternalData');
 wfLoadExtension('ParserFunctions');
 wfLoadExtension('GeoCrumbs');
@@ -312,24 +314,17 @@ wfLoadExtension('ConfirmAccount');
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['bureaucrat']['createaccount'] = true;
 
-
-// simple bot prevention
-$wgHooks['ConfirmAccount__checkRequest'][] = function ( $user, $params, &$message ) {
-	if ( str_contains( $params['bio'] ?? '', '<br' ) ) {
-		$message = 'Thank you for your account request.'; // (not really)
-		return false;
-	}
-};
-
 // setting which community members are responsible for approving new accounts
+// $wgConfirmAccountContact must be a single email string (or false); for multiple
+// recipients, grant the confirmaccount-notify right to their wiki accounts instead.
 if ( $wgLanguageCode == 'en' ) {
-    $wgConfirmAccountContact = array_map('trim', explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_EN'] ?? ''));
+    $wgConfirmAccountContact = trim( explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_EN'] ?? '')[0] ) ?: false;
 }
 if ( $wgLanguageCode == 'fr' ) {
-    $wgConfirmAccountContact = array_map('trim', explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_FR'] ?? ''));
+    $wgConfirmAccountContact = trim( explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_FR'] ?? '')[0] ) ?: false;
 }
 if ( $wgLanguageCode == 'de' ) {
-    $wgConfirmAccountContact = array_map('trim', explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_DE'] ?? ''));
+    $wgConfirmAccountContact = trim( explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_DE'] ?? '')[0] ) ?: false;
 }
 
 $wgConfirmAccountRequestFormItems = [
@@ -358,6 +353,7 @@ $wgGroupPermissions['autopatrolled']['autopatrol'] = true;
 $wgGroupPermissions['autopatrolled']['skipcaptcha'] = true;
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['bureaucrat']['skipcaptcha'] = true;
+$wgGroupPermissions['bureaucrat']['confirmaccount-notify'] = true;
 $wgGroupPermissions['sysop']['skipcaptcha'] = true;
 $wgGroupPermissions['sysop']['interwiki'] = true;
 

@@ -17,3 +17,5 @@ oauth/oauth2.pub
 # Logs
 *.log
 logs
+
+google*.html
