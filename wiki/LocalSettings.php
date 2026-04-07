@@ -314,19 +314,6 @@ wfLoadExtension('ConfirmAccount');
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['bureaucrat']['createaccount'] = true;
 
-// setting which community members are responsible for approving new accounts
-// $wgConfirmAccountContact must be a single email string (or false); for multiple
-// recipients, grant the confirmaccount-notify right to their wiki accounts instead.
-if ( $wgLanguageCode == 'en' ) {
-    $wgConfirmAccountContact = trim( explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_EN'] ?? '')[0] ) ?: false;
-}
-if ( $wgLanguageCode == 'fr' ) {
-    $wgConfirmAccountContact = trim( explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_FR'] ?? '')[0] ) ?: false;
-}
-if ( $wgLanguageCode == 'de' ) {
-    $wgConfirmAccountContact = trim( explode(',', $_ENV['CONFIRM_ACCOUNT_CONTACT_DE'] ?? '')[0] ) ?: false;
-}
-
 $wgConfirmAccountRequestFormItems = [
 	'UserName' => ['enabled' => true],
 	'RealName' => ['enabled' => false],

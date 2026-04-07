@@ -149,7 +149,7 @@ docker restart hitchwiki-mediawiki
 
 ## ConfirmAccount and bot prevention
 
-Directly make changes in the extension to filter unwanted account requests in `./extensions/ConfirmAccount/includes/business/AccountRequestSubmission.php`.
+Directly make changes in the extension to filter unwanted account requests in `./extensions/ConfirmAccount/includes/business/AccountRequestSubmission.php` under `// Add custom spam protection here`.
 
 ## Troubleshooting
 
