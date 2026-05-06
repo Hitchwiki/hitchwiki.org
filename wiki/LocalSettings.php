@@ -178,6 +178,33 @@ $wgUploadDirectory = "$IP/images/$wikiID";
 # Base Repository
 $wgRepositoryBaseUrl = "$wgServer/$defaultLang/Image:";
 
+# Share files uploaded on the default-language wiki with all other language wikis.
+# Non-default wikis read en's image/oldimage tables and serve files from en's images dir.
+if ( $wikiID !== $defaultLang ) {
+	$wgForeignFileRepos[] = [
+		'class'                  => ForeignDBRepo::class,
+		'name'                   => 'shared',
+		'directory'              => "$IP/images/$defaultLang",
+		'url'                    => "$wgScriptPath/images/$defaultLang",
+		'hashLevels'             => 2,
+		'thumbScriptUrl'         => false,
+		'transformVia404'        => false,
+		'hasSharedCache'         => true,
+		'descBaseUrl'            => "$wgServer/$defaultLang/wiki/File:",
+		'scriptDirUrl'           => "$wgServer/$defaultLang/w",
+		'fetchDescription'       => true,
+		'descriptionCacheExpiry' => 3600,
+
+		'dbType'                 => $wgDBtype,
+		'dbServer'               => $wgDBserver,
+		'dbUser'                 => $wgDBuser,
+		'dbPassword'             => $wgDBpassword,
+		'dbName'                 => $wgSharedDB,
+		'dbFlags'                => DBO_DEFAULT,
+		'tablePrefix'            => '',
+	];
+}
+
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = true;
 

@@ -19,3 +19,5 @@ oauth/oauth2.pub
 logs
 
 google*.html
+
+.claude/
