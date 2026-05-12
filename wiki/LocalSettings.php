@@ -446,6 +446,18 @@ if ($isDevelopment) {
 	];
 }
 
+## Add "Receive monthly newsletter" opt-in to the Email preferences section.
+## Stores the choice in user_properties as `hw-newsletter-monthly`;
+## sending the newsletter itself is handled separately.
+$wgHooks['GetPreferences'][] = function ( $user, &$preferences ) {
+	$preferences['hw-newsletter-monthly'] = [
+		'type' => 'toggle',
+		'label' => 'Receive monthly newsletter',
+		'section' => 'personal/email',
+	];
+	return true;
+};
+
 ## Load private settings if available
 $privateFile = dirname(__FILE__) . '/PrivateSettings.php';
 if (is_readable($privateFile)) {

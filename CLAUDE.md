@@ -49,5 +49,8 @@ Each language wiki has its own database. When adding/upgrading extensions or upg
 ### File permissions in container
 `LocalSettings.php` is bind-mounted read-only from the host. Edit it on the host side, not inside the container.
 
+### LocalSettings.php edits need a container restart
+`LocalSettings.php` is bind-mounted as a **single file**, not a directory. Editors that save atomically (vim, most IDEs, Claude Code's Edit tool) replace the file's inode, and the container keeps holding the old inode — so edits appear to have no effect inside the container. After any edit, run `docker restart hitchwiki-mediawiki` and verify with `docker exec hitchwiki-mediawiki grep <your-change> /var/www/html/LocalSettings.php`.
+
 ### DB error log
 Configured at `/var/log/mediawiki/hitchwiki-db-error.log` inside the container (may not exist if directory wasn't created).
