@@ -365,6 +365,7 @@ $wgGroupPermissions['sysop']['edit'] = true;
 $wgGroupPermissions['bot']['edit'] = true;
 $wgGroupPermissions['autopatrolled']['autopatrol'] = true;
 $wgGroupPermissions['autopatrolled']['skipcaptcha'] = true;
+$wgGroupPermissions['user']['skipcaptcha'] = true;
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['bureaucrat']['skipcaptcha'] = true;
 $wgGroupPermissions['bureaucrat']['confirmaccount-notify'] = true;
