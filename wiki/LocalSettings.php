@@ -447,15 +447,42 @@ if ($isDevelopment) {
 	];
 }
 
-## Add "Receive monthly newsletter" opt-in to the Email preferences section.
-## Stores the choice in user_properties as `hw-newsletter-monthly`;
-## sending the newsletter itself is handled separately.
+## Add a "Newsletter" subsection (rendered with the same heading style as the
+## sibling "Internationalisation" subsection) containing the "Receive monthly
+## newsletter" opt-in. Stores the choice in user_properties as
+## `hw-newsletter-monthly`; sending the newsletter itself is handled separately.
+## The subsection sits right above "Internationalisation" on Special:Preferences
+## and is directly linkable via Special:Preferences#mw-prefsection-personal-newsletter.
 $wgHooks['GetPreferences'][] = function ( $user, &$preferences ) {
-	$preferences['hw-newsletter-monthly'] = [
-		'type' => 'toggle',
-		'label' => 'Receive monthly newsletter',
-		'section' => 'personal/email',
+	$newsletter = [
+		'hw-newsletter-monthly' => [
+			'type' => 'toggle',
+			'label' => 'Receive monthly newsletter',
+			'section' => 'personal/newsletter',
+		],
 	];
+	$pos = false;
+	foreach ( array_keys( $preferences ) as $i => $key ) {
+		if ( ( $preferences[$key]['section'] ?? '' ) === 'personal/i18n' ) {
+			$pos = $i;
+			break;
+		}
+	}
+	if ( $pos !== false ) {
+		$preferences = array_slice( $preferences, 0, $pos, true )
+			+ $newsletter
+			+ array_slice( $preferences, $pos, null, true );
+	} else {
+		$preferences += $newsletter;
+	}
+	return true;
+};
+
+## Provide the heading text for the personal/newsletter subsection.
+$wgHooks['MessagesPreLoad'][] = function ( $title, &$message, $code ) {
+	if ( $title === 'Prefs-newsletter' ) {
+		$message = 'Newsletter';
+	}
 	return true;
 };
 
