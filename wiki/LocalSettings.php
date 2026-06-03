@@ -478,6 +478,11 @@ $wgHooks['GetPreferences'][] = function ( $user, &$preferences ) {
 	return true;
 };
 
+## Default the newsletter opt-in to on for new users (and anyone who hasn't
+## explicitly toggled it). Stored value lives in user_properties as
+## `hw-newsletter-monthly`; this only sets the fallback default.
+$wgDefaultUserOptions['hw-newsletter-monthly'] = 1;
+
 ## Provide the heading text for the personal/newsletter subsection.
 $wgHooks['MessagesPreLoad'][] = function ( $title, &$message, $code ) {
 	if ( $title === 'Prefs-newsletter' ) {
