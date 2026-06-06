@@ -352,6 +352,19 @@ $wgConfirmAccountRequestFormItems = [
 	'TermsOfService' => ['enabled' => false],
 ];
 
+# Restrict ConfirmAccount usernames to lowercase a-z and digits only.
+# Checks the raw typed name ($params['userName']) before MediaWiki canonicalises
+# it (the first letter is still auto-capitalised on account creation).
+# This is to prevent any downstream problems of handling usernames with odd symbols e.g. we saw some special characters for French accounts in the past.
+$wgHooks['ConfirmAccount::checkRequest'][] = function ( $user, $params, &$message ) {
+	$typedName = trim( $params['userName'] ?? '' );
+	if ( !preg_match( '/^[a-z0-9]+$/', $typedName ) ) {
+		$message = 'Username may only contain lowercase letters (a-z) and numbers (0-9), with no spaces or other characters.';
+		return false;
+	}
+	return true;
+};
+
 ## Group permissions
 $wgGroupPermissions['sysop']['abusefilter-modify'] = true;
 $wgGroupPermissions['*']['abusefilter-log-detail'] = true;
