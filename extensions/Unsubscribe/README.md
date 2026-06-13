@@ -89,14 +89,9 @@ existing `user_properties` table.
 # 403 with a bogus token
 curl -i 'https://hitchwiki.org/en/Special:Unsubscribe?u=1&t=deadbeef'
 
-# One-click POST with a correctly computed token → 200, and the option flips.
-# `userOptions` only operates in bulk in MW 1.44 (no per-user lookup), so read
-# the row straight from the shared DB to confirm the flip (an empty result =
-# (no row) = default-on subscribed):
+# One-click POST with a correctly computed token → 200, and the option flips
 docker exec hitchwiki-mediawiki php /var/www/html/maintenance/run.php \
-  sql --wiki=en --query="SELECT up_value FROM user_properties \
-    WHERE up_property = 'hw-newsletter-monthly' \
-      AND up_user = (SELECT user_id FROM user WHERE user_name = '<name>')"
+  userOptions --wiki=en --usename <name> hw-newsletter-monthly
 ```
 
 ## Newsletter sender wiring (external)
@@ -139,60 +134,3 @@ WHERE  u.user_email <> ''
 
 A query that selects only `up_value = '1'` rows would miss every default-on user
 who never visited their preferences.
-
-### What must be present on the server
-
-For both the unsubscribe endpoint and the recipient rebuild to work, the server
-needs:
-
-- The **`hitchwiki-mediawiki` container** running an image with the `Unsubscribe`
-  extension baked in (see [Install](#install)) and `wfLoadExtension`'d in
-  `LocalSettings.php`.
-- **`$wgUnsubscribeSecret`** set from `UNSUBSCRIBE_SECRET` in `.env`, and the
-  **same** secret configured in the external sender — otherwise every token
-  fails HMAC verification and no one can unsubscribe.
-- The **shared DB `hitchwiki_en`** reachable, with `user_properties` listed in
-  `$wgSharedTables` (so an opt-out on any wiki applies everywhere). The rebuild
-  reads `user` + `user_properties` from this DB only.
-- Recipients having a **confirmed** address: rows with an empty `user_email` or
-  a NULL `user_email_authenticated` are excluded by the query above.
-- No schema/`update.php` step — the option lives in the existing
-  `user_properties` table.
-
-### Running the rebuild on the server
-
-The query runs against the **shared** DB, so always pass `--wiki=en`. Do a
-dry-run count first, then emit the list the sender consumes:
-
-```bash
-# Dry-run: how many people will receive the next send
-docker exec hitchwiki-mediawiki php /var/www/html/maintenance/run.php \
-  sql --wiki=en --query="SELECT COUNT(*) AS recipients FROM user u \
-    LEFT JOIN user_properties p ON p.up_user = u.user_id \
-      AND p.up_property = 'hw-newsletter-monthly' \
-    WHERE u.user_email <> '' AND u.user_email_authenticated IS NOT NULL \
-      AND COALESCE(p.up_value, '1') NOT IN ('', '0')"
-
-# Full list (user_id + email) — feed to the sender or redirect to a file
-docker exec hitchwiki-mediawiki php /var/www/html/maintenance/run.php \
-  sql --wiki=en --query="SELECT u.user_id, u.user_email FROM user u \
-    LEFT JOIN user_properties p ON p.up_user = u.user_id \
-      AND p.up_property = 'hw-newsletter-monthly' \
-    WHERE u.user_email <> '' AND u.user_email_authenticated IS NOT NULL \
-      AND COALESCE(p.up_value, '1') NOT IN ('', '0')"
-```
-
-To honor a manual unsubscribe request, write an explicit `0` through the
-framework (so the default-on value can't silently re-subscribe them) — bulk-only
-`userOptions` can't target one user, so use `eval.php`:
-
-```bash
-docker exec -i hitchwiki-mediawiki php /var/www/html/maintenance/run.php \
-  eval --wiki=en <<'PHP'
-$s = MediaWiki\MediaWikiServices::getInstance();
-$u = $s->getUserFactory()->newFromName( '<name>' );
-$o = $s->getUserOptionsManager();
-$o->setOption( $u, 'hw-newsletter-monthly', 0 );
-$o->saveOptions( $u );
-PHP
-```
