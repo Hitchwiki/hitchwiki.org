@@ -1,0 +1,47 @@
+{
+	"name": "Unsubscribe",
+	"version": "1.0.0",
+	"author": [
+		"Hitchwiki"
+	],
+	"url": "https://hitchwiki.org",
+	"descriptionmsg": "unsubscribe-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Unsubscribe\\": "includes/"
+	},
+	"MessagesDirs": {
+		"Unsubscribe": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"UnsubscribeAlias": "Unsubscribe.alias.php"
+	},
+	"SpecialPages": {
+		"Unsubscribe": {
+			"class": "MediaWiki\\Extension\\Unsubscribe\\SpecialUnsubscribe",
+			"services": [
+				"UserFactory",
+				"UserOptionsManager"
+			]
+		}
+	},
+	"config": {
+		"UnsubscribeSecret": {
+			"value": "",
+			"description": "Shared HMAC secret used to sign one-click unsubscribe links. MUST match the secret used by the newsletter sender. Set via PrivateSettings.php / env, never commit a real value.",
+			"public": false
+		},
+		"UnsubscribeOptionName": {
+			"value": "hw-newsletter-monthly",
+			"description": "Key of the user option flipped off (set to 0) when a recipient unsubscribes.",
+			"public": false
+		}
+	},
+	"manifest_version": 2
+}

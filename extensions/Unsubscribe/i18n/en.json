@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hitchwiki"
+		]
+	},
+	"unsubscribe-desc": "One-click newsletter unsubscribe special page (RFC 8058).",
+	"unsubscribe-title": "Unsubscribe from the newsletter",
+	"unsubscribe-confirm": "Click the button below to stop receiving the Hitchwiki monthly newsletter at $1.",
+	"unsubscribe-button": "Unsubscribe",
+	"unsubscribe-done": "You have been unsubscribed from the Hitchwiki monthly newsletter.",
+	"unsubscribe-invalid": "This unsubscribe link is invalid or has expired."
+}

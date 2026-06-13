@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hitchwiki"
+		]
+	},
+	"unsubscribe-desc": "{{desc|name=Unsubscribe|url=https://hitchwiki.org}}",
+	"unsubscribe-title": "Page title and HTML title of [[Special:Unsubscribe]].",
+	"unsubscribe-confirm": "Text shown on the GET confirmation page. $1 is the recipient's email address.",
+	"unsubscribe-button": "Label of the submit button that performs the unsubscribe.",
+	"unsubscribe-done": "Success message shown after a human confirms the unsubscribe.",
+	"unsubscribe-invalid": "Error shown when the user id is unknown or the HMAC token does not verify."
+}
