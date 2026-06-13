@@ -337,6 +337,12 @@ $wgTitleBlacklistSources = [
 wfLoadExtension('TorBlock');
 $wgGroupPermissions['user']['torunblocked'] = true; # Authenticated users can browse via Tor
 
+## One-click newsletter unsubscribe (Special:Unsubscribe, RFC 8058). The shared
+## HMAC secret must match the value given to the newsletter sender; it lives in
+## .env (gitignored) and is injected into the container via env_file.
+wfLoadExtension('Unsubscribe');
+$wgUnsubscribeSecret = $_ENV['UNSUBSCRIBE_SECRET'] ?? '';
+
 wfLoadExtension('ConfirmAccount');
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['bureaucrat']['createaccount'] = true;
@@ -362,6 +368,35 @@ $wgHooks['ConfirmAccount::checkRequest'][] = function ( $user, $params, &$messag
 		$message = 'Username may only contain lowercase letters (a-z) and numbers (0-9), with no spaces or other characters.';
 		return false;
 	}
+	return true;
+};
+
+# Surface a "Request account" link on the login form.
+# Account creation is disabled above, so MediaWiki's core "create one" link is
+# hidden, and the Minerva (mobile) skin strips ConfirmAccount's injected
+# user-menu link for anonymous users (DefaultMainMenuBuilder::getPersonalToolsGroup
+# keeps only 'login'/'login-private'). That left mobile visitors with no visible
+# way to reach Special:RequestAccount. Adding it here renders it on the login form
+# for every skin, mobile included.
+$wgHooks['AuthChangeFormFields'][] = function ( $requests, $fieldInfo, &$formDescriptor, $action ) {
+	if ( $action !== MediaWiki\Auth\AuthManager::ACTION_LOGIN ) {
+		return true;
+	}
+	$href = SpecialPage::getTitleFor( 'RequestAccount' )->getLocalURL();
+	$formDescriptor['requestAccountLink'] = [
+		'type' => 'info',
+		'raw' => true,
+		'default' => MediaWiki\Html\Html::rawElement(
+			'div',
+			[ 'class' => 'mw-confirmaccount-requestaccount-link' ],
+			MediaWiki\Html\Html::element(
+				'a',
+				[ 'href' => $href ],
+				wfMessage( 'requestaccount-login' )->text()
+			)
+		),
+		'weight' => 100,
+	];
 	return true;
 };
 
