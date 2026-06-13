@@ -128,7 +128,8 @@ LEFT JOIN user_properties p
       AND p.up_property = 'hw-newsletter-monthly'
 WHERE  u.user_email <> ''
   AND  u.user_email_authenticated IS NOT NULL
-  AND  COALESCE(p.up_value, '1') <> '0';   -- default-on; only explicit '0' opts out
+  AND  COALESCE(p.up_value, '1') NOT IN ('', '0');   -- default-on; both the
+       -- one-click unsubscribe ('0') and the preferences-page toggle ('') opt out
 ```
 
 A query that selects only `up_value = '1'` rows would miss every default-on user
