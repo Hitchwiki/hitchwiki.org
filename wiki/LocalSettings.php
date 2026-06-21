@@ -343,6 +343,11 @@ $wgGroupPermissions['user']['torunblocked'] = true; # Authenticated users can br
 wfLoadExtension('Unsubscribe');
 $wgUnsubscribeSecret = $_ENV['UNSUBSCRIBE_SECRET'] ?? '';
 
+## Post a one-time "Thanks" message to a user's talk page when they make their
+## 3rd edit (counted globally, since the user table is shared). The message is
+## always posted on the English wiki, signed by Guaka and TillWenke.
+wfLoadExtension('ThanksOnThirdEdit');
+
 wfLoadExtension('ConfirmAccount');
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['bureaucrat']['createaccount'] = true;

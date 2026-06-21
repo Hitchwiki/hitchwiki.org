@@ -1,0 +1,80 @@
+{
+	"name": "ThanksOnThirdEdit",
+	"version": "1.0.0",
+	"author": [
+		"Hitchwiki"
+	],
+	"url": "https://hitchwiki.org",
+	"descriptionmsg": "thanksonthirdedit-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\ThanksOnThirdEdit\\": "includes/"
+	},
+	"MessagesDirs": {
+		"ThanksOnThirdEdit": [
+			"i18n"
+		]
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\ThanksOnThirdEdit\\Hooks",
+			"services": [
+				"UserFactory",
+				"UserOptionsManager",
+				"JobQueueGroupFactory",
+				"MainConfig"
+			]
+		}
+	},
+	"Hooks": {
+		"PageSaveComplete": "main"
+	},
+	"JobClasses": {
+		"thanksOnThirdEdit": "MediaWiki\\Extension\\ThanksOnThirdEdit\\ThanksMessageJob"
+	},
+	"config": {
+		"ThanksOnThirdEditThreshold": {
+			"value": 3,
+			"description": "Edit number that triggers the Thanks message (default: the user's 3rd edit). Counted globally across all language wikis, since the user table is shared.",
+			"public": true
+		},
+		"ThanksOnThirdEditTargetWiki": {
+			"value": "hitchwiki_en",
+			"description": "Wiki ID (database name) whose talk page the message is posted to, and whose job queue the post is enqueued on. Defaults to the shared English wiki.",
+			"public": false
+		},
+		"ThanksOnThirdEditFlagOption": {
+			"value": "hw-thanked-third-edit",
+			"description": "User option set to 1 once a user has been thanked, to guarantee the message is posted only once. Stored in the shared user_properties table, so it is global across all wikis.",
+			"public": false
+		},
+		"ThanksOnThirdEditSystemUser": {
+			"value": "Welcome",
+			"description": "Name of the system account credited with posting the Thanks message in page history.",
+			"public": false
+		},
+		"ThanksOnThirdEditHeading": {
+			"value": "Thanks",
+			"description": "Section heading for the Thanks message.",
+			"public": false
+		},
+		"ThanksOnThirdEditBody": {
+			"value": "Hey, thanks for your edits here, we like your work! Let me know if we can help with anything.",
+			"description": "Body text of the Thanks message, placed before the signatures.",
+			"public": false
+		},
+		"ThanksOnThirdEditSigners": {
+			"value": [
+				"Guaka",
+				"TillWenke"
+			],
+			"description": "Usernames whose signatures are appended to the message.",
+			"public": false
+		}
+	},
+	"manifest_version": 2
+}
