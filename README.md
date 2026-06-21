@@ -151,6 +151,17 @@ docker restart hitchwiki-mediawiki
 
 Directly make changes in the extension to filter unwanted account requests in `./extensions/ConfirmAccount/includes/business/AccountRequestSubmission.php` under `// Add custom spam protection here`.
 
+The extension ships with no setting to require a confirmed email address before a bureaucrat approves a request, so direct edits to the extension may be necessary to enforce this. We guard account creation against unconfirmed emails (the applicant must click the confirmation link emailed at request time) in:
+
+- `./extensions/ConfirmAccount/includes/business/ConfirmAccountPreAuthenticationProvider.php` — the authoritative gate that blocks creation for any unconfirmed request.
+- `./extensions/ConfirmAccount/includes/business/AccountConfirmSubmission.php` — early feedback shown to the bureaucrat on the request page.
+
+The `extensions/` directory is baked into the Docker image (`COPY extensions/` in the `Dockerfile`), not bind-mounted, so changes here require an image rebuild to take effect:
+
+```bash
+docker compose up -d --build
+```
+
 ## Troubleshooting
 
 ### .env File Not Loading
