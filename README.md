@@ -92,7 +92,7 @@ This project uses Docker Compose to run MediaWiki with MySQL.
 
 > **⚠️ As there is no public SQL dump available**, in order to get started with this repository, you will have to obtain one of the full nightly dumps from someone who has server access or figure out how to import the XML dumps.
 
-We're providing public backups of XML dumps and images, at https://hitchwiki.org/dumps.
+We're providing public backups of XML dumps and images, at https://dumps.hitchwiki.org/
 
 Code and SQL dumps are also backed up to several machines controlled by @guaka and @robokow. If you have server access you could do the same, you want to back up these directories:
 
