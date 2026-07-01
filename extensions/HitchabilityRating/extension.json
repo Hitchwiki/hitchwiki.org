@@ -1,0 +1,54 @@
+{
+	"name": "HitchabilityRating",
+	"version": "1.0.0",
+	"author": [
+		"Hitchwiki"
+	],
+	"url": "https://hitchwiki.org",
+	"descriptionmsg": "hitchabilityrating-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\HitchabilityRating\\": "includes/"
+	},
+	"MessagesDirs": {
+		"HitchabilityRating": [
+			"i18n"
+		]
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\HitchabilityRating\\Hooks",
+			"services": [
+				"MainConfig"
+			]
+		}
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "main"
+	},
+	"config": {
+		"HitchabilityRatingDataFile": {
+			"value": "/var/www/html/data/country_ratings.csv",
+			"description": "Absolute path (inside the container) to the CSV of per-country hitchability ratings. Columns: country_code,average_rating,ride_count. Regenerated from maps.hitchwiki.org — see data/README.md.",
+			"public": false
+		},
+		"HitchabilityRatingMinRides": {
+			"value": 10,
+			"description": "Minimum number of recorded rides required to show a rating. Countries with fewer rides (or with no data at all) render {{Unvalued}} instead.",
+			"public": true
+		},
+		"HitchabilityRatingAliases": {
+			"value": {
+				"UK": "GB",
+				"EL": "GR"
+			},
+			"description": "Maps wiki country codes used in <rating country='..'/> tags to the ISO 3166-1 alpha-2 codes used in the CSV. E.g. the wiki uses 'uk' for the United Kingdom while the data uses the ISO code 'GB'. Keys and values are compared upper-cased.",
+			"public": true
+		}
+	},
+	"manifest_version": 2
+}

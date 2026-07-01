@@ -106,6 +106,7 @@ Code and SQL dumps are also backed up to several machines controlled by @guaka a
 ### Project Structure
 
 - `wiki/`: MediaWiki installation directory containing static and configuration files for the wiki.
+- `data/`: Data files consumed by extensions, e.g. `country_ratings.csv` (see [Country hitchability ratings](#country-hitchability-ratings)). Regenerated from maps.hitchwiki.org.
 - `tools/`: Various scripts for maintenance, dumps, and extension management (e.g., `upgrade-extensions` for checking out versioned submodule branches).
 - `patches/`: Custom patches for MediaWiki upgrade process to override with fixes or changes (to be removed after deployment).
 - `oauth/`: OAuth2 setup files including RSA keys and custom entrypoint script. See [`oauth/README.md`](oauth/README.md) for details.
@@ -122,6 +123,22 @@ Code and SQL dumps are also backed up to several machines controlled by @guaka a
 
 - MediaWiki uses MySQL with a separate database for each language (e.g. `hitchwiki_en`, `hitchwiki_de`, `hitchwiki_tr`, etc).
 - A few tables are shared across languages: Users, Interwiki, SpoofUser, Uploads, etc.
+
+## Country hitchability ratings
+
+Country pages carry a `<rating country='xx'/>` tag in their infobox (e.g. `<rating country='sg'/>` on [Singapore](https://hitchwiki.org/en/Singapore)). The **HitchabilityRating** extension (`extensions/HitchabilityRating/`) resolves this tag into the matching hitchability sign from [Category:Templates Hitchability](https://hitchwiki.org/en/Category:Templates_Hitchability):
+
+| average rating | template     | meaning   |
+| -------------- | ------------ | --------- |
+| 5              | `{{very good}}` | very good |
+| 4              | `{{good}}`      | good      |
+| 3              | `{{average}}`   | average   |
+| 2              | `{{bad}}`       | bad       |
+| 1              | `{{senseless}}` | senseless |
+
+Countries with fewer than 10 recorded rides (or no data) render `{{Unvalued}}` instead, so weakly-evidenced ratings aren't shown as meaningful. The threshold is `$wgHitchabilityRatingMinRides`.
+
+The ratings come from `data/country_ratings.csv`, **which is an aggregate export from [maps.hitchwiki.org](https://maps.hitchwiki.org) and should be regenerated from there** — see [`data/README.md`](data/README.md). The CSV is baked into the image and bind-mounted read-only, so refreshing ratings only needs a file swap plus `docker restart hitchwiki-mediawiki`. Wiki codes that differ from the ISO codes in the CSV (e.g. `uk` → `GB`) are remapped via `$wgHitchabilityRatingAliases`.
 
 ## Google Search Console
 

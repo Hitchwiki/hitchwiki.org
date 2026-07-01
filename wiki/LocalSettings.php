@@ -266,6 +266,7 @@ $wgDefaultUserOptions['echo-subscriptions-email-edit-user-talk'] = true;
 wfLoadExtension('ExternalData');
 wfLoadExtension('ParserFunctions');
 wfLoadExtension('GeoCrumbs');
+wfLoadExtension('HitchabilityRating');
 wfLoadExtension('CheckUser');
 wfLoadExtension('Nuke');
 

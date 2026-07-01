@@ -11,6 +11,7 @@ services:
     volumes:
       # Configuration files and images
       - ./wiki/images:/var/www/html/images
+      - ./data:/var/www/html/data:ro
       - ./wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - ./wiki/googlea8e45f716eafd720.html:/var/www/html/googlea8e45f716eafd720.html
       - ./oauth/oauth2.key:/var/www/html/oauth2.key

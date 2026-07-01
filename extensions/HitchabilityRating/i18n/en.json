@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hitchwiki"
+		]
+	},
+	"hitchabilityrating-desc": "Adds the <code>&lt;rating country='xx'/&gt;</code> parser tag that renders a country's hitchability sign from maps.hitchwiki.org rating data."
+}

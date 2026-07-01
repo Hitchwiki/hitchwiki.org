@@ -14,6 +14,10 @@ COPY wiki/.htaccess .
 COPY skins/ /var/www/html/skins/
 COPY extensions/ /var/www/html/extensions/
 
+# Copy data files (e.g. country_ratings.csv used by the HitchabilityRating extension).
+# Also bind-mounted in docker-compose.yml so it can be refreshed without a rebuild.
+COPY data/ /var/www/html/data/
+
 # Set permissions for local extensions
 RUN chown -R www-data:www-data /var/www/html/extensions /var/www/html/skins
 
