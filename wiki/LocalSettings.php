@@ -427,9 +427,16 @@ $wgGroupPermissions['autopatrolled']['skipcaptcha'] = true;
 $wgGroupPermissions['user']['skipcaptcha'] = true;
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['bureaucrat']['skipcaptcha'] = true;
-$wgGroupPermissions['bureaucrat']['confirmaccount-notify'] = true;
 $wgGroupPermissions['sysop']['skipcaptcha'] = true;
 $wgGroupPermissions['sysop']['interwiki'] = true;
+
+// ConfirmAccount: only CheckUsers gets account approvals and notifications.
+$wgGroupPermissions['bureaucrat']['confirmaccount'] = true;
+$wgGroupPermissions['bureaucrat']['confirmaccount-notify'] = false;
+$wgGroupPermissions['sysop']['confirmaccount'] = true;
+$wgGroupPermissions['sysop']['confirmaccount-notify'] = false;
+$wgGroupPermissions['checkusers']['confirmaccount'] = true;
+$wgGroupPermissions['checkusers']['confirmaccount-notify'] = true;
 
 ### OAuth configuration start ###
 wfLoadExtension('OAuth');
