@@ -32,8 +32,8 @@
 	},
 	"config": {
 		"HitchabilityRatingDataFile": {
-			"value": "/var/www/html/data/country_ratings.csv",
-			"description": "Absolute path (inside the container) to the CSV of per-country hitchability ratings. Columns: country_code,average_rating,ride_count. Regenerated from maps.hitchwiki.org — see data/README.md.",
+			"value": "/var/www/maps.hitchwiki.org/dist/country_ratings.csv",
+			"description": "Absolute path (inside the container) to the CSV of per-country hitchability ratings exported by maps.hitchwiki.org. The CSV has a header row; this extension reads the country_code, hitchability and ride_count columns by name. Set via the HITCHABILITY_RATINGS_CSV env var in LocalSettings.php — see README.md.",
 			"public": false
 		},
 		"HitchabilityRatingMinRides": {

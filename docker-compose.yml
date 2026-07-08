@@ -12,6 +12,12 @@ services:
       # Configuration files and images
       - ./wiki/images:/var/www/html/images
       - ./data:/var/www/html/data:ro
+      # maps.hitchwiki.org export directory (holds country_ratings.csv), mounted read-only
+      # at the same path inside the container so HITCHABILITY_RATINGS_CSV resolves in both.
+      # Mounting the directory rather than the CSV keeps the ratings optional: if maps
+      # isn't deployed here, Docker just creates an empty dir and the extension degrades
+      # to {{Unvalued}} instead of the container failing on a missing bind source.
+      - ${HITCHABILITY_RATINGS_DIR}:${HITCHABILITY_RATINGS_DIR}:ro
       - ./wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - ./wiki/googlea8e45f716eafd720.html:/var/www/html/googlea8e45f716eafd720.html
       - ./oauth/oauth2.key:/var/www/html/oauth2.key

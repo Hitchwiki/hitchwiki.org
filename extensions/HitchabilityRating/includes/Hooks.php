@@ -3,9 +3,16 @@
  * HitchabilityRating — resolves the <rating country='xx'/> parser tag used in
  * country infoboxes into the matching hitchability sign template.
  *
- * The rating data lives in a CSV (columns: country_code,average_rating,ride_count)
- * that is regenerated from maps.hitchwiki.org. The average_rating is an integer 1–5
- * that maps onto the sign templates in [[:Category:Templates Hitchability]]:
+ * The rating data lives in a CSV exported by maps.hitchwiki.org (see the
+ * $wgHitchabilityRatingDataFile config / HITCHABILITY_RATINGS_CSV env var). The CSV has
+ * a header row; the columns used here are looked up by name:
+ *
+ *   country_code  — ISO 3166-1 alpha-2 code
+ *   hitchability  — average hitchability score (float), rounded here to the nearest 0–5
+ *   ride_count    — number of recorded rides backing the score
+ *
+ * The rounded hitchability (1–5) maps onto the sign templates in
+ * [[:Category:Templates Hitchability]]:
  *
  *   5 => {{very good}}   4 => {{good}}   3 => {{average}}   2 => {{bad}}   1 => {{senseless}}
  *
@@ -97,22 +104,45 @@ class Hooks implements ParserFirstCallInitHook {
 
 		$data = [];
 		$file = $this->config->get( 'HitchabilityRatingDataFile' );
-		if ( is_string( $file ) && is_readable( $file ) ) {
+		// The CSV is an optional maps.hitchwiki.org export that may be absent (e.g. maps
+		// isn't deployed on this host). is_file() also guards against the path being a
+		// directory, which is what Docker leaves behind when the bind-mount source is
+		// missing. In every such case we fall through to an empty dataset -> {{Unvalued}}.
+		if ( is_string( $file ) && is_file( $file ) && is_readable( $file ) ) {
 			$lines = file( $file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
-			foreach ( $lines as $line ) {
-				$cols = explode( ',', $line );
-				if ( count( $cols ) < 3 ) {
-					continue;
+
+			// The first row is a header; resolve the columns we need by name so the
+			// parser is robust to maps.hitchwiki.org adding or reordering columns.
+			$header = array_map(
+				static fn ( $h ) => strtolower( trim( $h ) ),
+				explode( ',', array_shift( $lines ) ?? '' )
+			);
+			$codeCol = array_search( 'country_code', $header, true );
+			$hitchCol = array_search( 'hitchability', $header, true );
+			$ridesCol = array_search( 'ride_count', $header, true );
+
+			if ( $codeCol !== false && $hitchCol !== false && $ridesCol !== false ) {
+				foreach ( $lines as $line ) {
+					$cols = explode( ',', $line );
+					if ( !isset( $cols[$codeCol], $cols[$hitchCol], $cols[$ridesCol] ) ) {
+						continue;
+					}
+					$code = strtoupper( trim( $cols[$codeCol] ) );
+					$hitch = trim( $cols[$hitchCol] );
+					// Skip rows without a code or without a numeric hitchability score.
+					if ( $code === '' || !is_numeric( $hitch ) ) {
+						continue;
+					}
+					$rating = (int)round( (float)$hitch );
+					// Hitchability scores must fall on the 0–5 scale; drop bad data.
+					if ( $rating < 0 || $rating > 5 ) {
+						continue;
+					}
+					$data[$code] = [
+						'rating' => $rating,
+						'rides' => (int)$cols[$ridesCol],
+					];
 				}
-				$code = strtoupper( trim( $cols[0] ) );
-				// Skip the header row and anything malformed.
-				if ( $code === '' || $code === 'COUNTRY_CODE' ) {
-					continue;
-				}
-				$data[$code] = [
-					'rating' => (int)round( (float)$cols[1] ),
-					'rides' => (int)$cols[2],
-				];
 			}
 		}
 

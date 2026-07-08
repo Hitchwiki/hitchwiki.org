@@ -267,6 +267,11 @@ wfLoadExtension('ExternalData');
 wfLoadExtension('ParserFunctions');
 wfLoadExtension('GeoCrumbs');
 wfLoadExtension('HitchabilityRating');
+// Per-country hitchability CSV exported by maps.hitchwiki.org. Read from the host path
+// given in HITCHABILITY_RATINGS_CSV (bind-mounted into the container at the same path).
+if (!empty($_ENV['HITCHABILITY_RATINGS_CSV'])) {
+	$wgHitchabilityRatingDataFile = $_ENV['HITCHABILITY_RATINGS_CSV'];
+}
 wfLoadExtension('CheckUser');
 wfLoadExtension('Nuke');
 

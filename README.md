@@ -106,7 +106,7 @@ Code and SQL dumps are also backed up to several machines controlled by @guaka a
 ### Project Structure
 
 - `wiki/`: MediaWiki installation directory containing static and configuration files for the wiki.
-- `data/`: Data files consumed by extensions, e.g. `country_ratings.csv` (see [Country hitchability ratings](#country-hitchability-ratings)). Regenerated from maps.hitchwiki.org.
+- `data/`: Data files consumed by extensions. (Country hitchability ratings are read from a separate maps export — see [Country hitchability ratings](#country-hitchability-ratings).)
 - `tools/`: Various scripts for maintenance, dumps, and extension management (e.g., `upgrade-extensions` for checking out versioned submodule branches).
 - `patches/`: Custom patches for MediaWiki upgrade process to override with fixes or changes (to be removed after deployment).
 - `oauth/`: OAuth2 setup files including RSA keys and custom entrypoint script. See [`oauth/README.md`](oauth/README.md) for details.
@@ -128,17 +128,29 @@ Code and SQL dumps are also backed up to several machines controlled by @guaka a
 
 Country pages carry a `<rating country='xx'/>` tag in their infobox (e.g. `<rating country='sg'/>` on [Singapore](https://hitchwiki.org/en/Singapore)). The **HitchabilityRating** extension (`extensions/HitchabilityRating/`) resolves this tag into the matching hitchability sign from [Category:Templates Hitchability](https://hitchwiki.org/en/Category:Templates_Hitchability):
 
-| average rating | template     | meaning   |
-| -------------- | ------------ | --------- |
-| 5              | `{{very good}}` | very good |
-| 4              | `{{good}}`      | good      |
-| 3              | `{{average}}`   | average   |
-| 2              | `{{bad}}`       | bad       |
-| 1              | `{{senseless}}` | senseless |
+| hitchability | template     | meaning   |
+| ------------ | ------------ | --------- |
+| 5            | `{{very good}}` | very good |
+| 4            | `{{good}}`      | good      |
+| 3            | `{{average}}`   | average   |
+| 2            | `{{bad}}`       | bad       |
+| 1            | `{{senseless}}` | senseless |
 
 Countries with fewer than 10 recorded rides (or no data) render `{{Unvalued}}` instead, so weakly-evidenced ratings aren't shown as meaningful. The threshold is `$wgHitchabilityRatingMinRides`.
 
-The ratings come from `data/country_ratings.csv`, **which is an aggregate export from [maps.hitchwiki.org](https://maps.hitchwiki.org) and should be regenerated from there** — see [`data/README.md`](data/README.md). The CSV is baked into the image and bind-mounted read-only, so refreshing ratings only needs a file swap plus `docker restart hitchwiki-mediawiki`. Wiki codes that differ from the ISO codes in the CSV (e.g. `uk` → `GB`) are remapped via `$wgHitchabilityRatingAliases`.
+### Where the data comes from
+
+The ratings are an aggregate export produced by [maps.hitchwiki.org](https://maps.hitchwiki.org). The wiki does **not** keep its own copy — it reads the maps export directly from the path in the `HITCHABILITY_RATINGS_CSV` env var (default `/var/www/maps.hitchwiki.org/dist/country_ratings.csv`). The maps export **directory** (`HITCHABILITY_RATINGS_DIR`, the CSV's parent) is bind-mounted into the container at the **same** path (see `docker-compose.yml`), and `LocalSettings.php` points `$wgHitchabilityRatingDataFile` at the CSV within it. Refreshing ratings is just maps regenerating the CSV — no wiki redeploy needed, though the extension caches the file per request, so changes appear on the next page parse (or after `docker restart hitchwiki-mediawiki`).
+
+The data is **optional**: on a host where maps isn't deployed, the mounted directory is simply empty (or absent), and every `<rating>` tag falls back to `{{Unvalued}}` — the container still starts normally. Mounting the directory rather than the CSV file is deliberate, so a missing export doesn't leave Docker holding a stray directory where a file is expected.
+
+The CSV has a header row; the extension reads three columns **by name**, so maps can add or reorder other columns freely:
+
+- `country_code` — ISO 3166-1 alpha-2 code.
+- `hitchability` — average hitchability score (float). It is rounded to the nearest integer and must fall on the **0–5** scale; rows with a blank/non-numeric or out-of-range value are ignored.
+- `ride_count` — number of recorded rides, compared against `$wgHitchabilityRatingMinRides`.
+
+Wiki codes that differ from the ISO codes in the CSV (e.g. `uk` → `GB`) are remapped via `$wgHitchabilityRatingAliases`.
 
 ## Google Search Console
 
