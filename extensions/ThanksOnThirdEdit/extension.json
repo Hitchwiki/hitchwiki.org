@@ -69,7 +69,6 @@
 		},
 		"ThanksOnThirdEditSigners": {
 			"value": [
-				"Guaka",
 				"TillWenke"
 			],
 			"description": "Usernames whose signatures are appended to the message.",
