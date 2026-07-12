@@ -28,7 +28,7 @@ and is tracked normally.
 
 Pinned at `29b70d97bde3998036cf68cf0dafa4ace462998a`, branch `REL1_44`.
 
-Two independent sets of changes. Apply both, in either order.
+Three independent sets of changes. Apply in any order.
 
 ### 1. Hitchwiki custom behaviour
 
@@ -196,6 +196,270 @@ account "areas" are configured:
 
 This whole section becomes unnecessary once the submodule is moved to `REL1_45` or later,
 which will contain both commits. Drop it at that point rather than carrying it forward.
+
+### 3. Email reminder for unconfirmed account requests
+
+A request cannot be approved until its email is confirmed (guard 1a above), but many
+applicants miss the single confirmation mail sent at signup. Nothing in MediaWiki core or
+any extension resends it for a *pending* request — core's `Special:ConfirmEmail` only
+works for already-registered users, and at this stage there is only a row in
+`account_requests` with no user account. So we built a reminder.
+
+A cron job (`tools/send_email_reminders.sh`, tracked in the parent repo, `*/15` in the
+hitchwiki crontab) runs the new maintenance script for every language wiki. The script
+resends the confirmation mail **once** per request, no earlier than 1h after signup, to
+addresses still unconfirmed. Idempotency is via a new nullable column
+`acr_email_reminded` (stamped after a successful send), so running it often is safe.
+
+Because the original plaintext token is never stored (only its md5), each reminder mints
+a **fresh** token and rewrites the stored hash + expiry so the new link validates.
+
+Save the block below to `/tmp/confirmaccount-email-reminder.patch` and apply it:
+
+```bash
+git -C extensions/ConfirmAccount apply /tmp/confirmaccount-email-reminder.patch
+```
+
+```diff
+diff --git a/i18n/requestaccount/en.json b/i18n/requestaccount/en.json
+--- a/i18n/requestaccount/en.json
++++ b/i18n/requestaccount/en.json
+@@ -43,6 +43,8 @@
+ 	"requestaccount-econf": "Your email address has been confirmed and will be listed as such in your account request.",
+ 	"requestaccount-email-subj": "{{SITENAME}} email address confirmation",
+ 	"requestaccount-email-body": "Someone, probably you from IP address $1, has requested an account \"$2\" with this email address on {{SITENAME}}.\n\nTo confirm that this account really does belong to you on {{SITENAME}}, open this link in your browser:\n\n$3\n\nIf the account is created, only you will be emailed the password.\nIf this is *not* you, do not follow the link.\nThis confirmation code will expire at $4.",
++	"requestaccount-email-subj-reminder": "Reminder: confirm your email address for {{SITENAME}}",
++	"requestaccount-email-body-reminder": "You requested an account \"$2\" on {{SITENAME}} (from IP address $1), but your email address has not been confirmed yet.\n\nUntil you confirm it, your account request cannot be approved. To confirm your email address, open this link in your browser:\n\n$3\n\nIf this was *not* you, you can ignore this email.\nThis confirmation code will expire at $4.",
+ 	"requestaccount-email-subj-admin": "{{SITENAME}} account request",
+ 	"requestaccount-email-body-admin": "$1 has requested an account and is waiting for confirmation.\nThe email address has been confirmed. You can confirm the request here:\n\n$2",
+ 	"acct_request_throttle_hit": "Sorry, you have already requested {{PLURAL:$1|1 account|$1 accounts}}.\nYou cannot make any more requests."
+diff --git a/i18n/requestaccount/qqq.json b/i18n/requestaccount/qqq.json
+--- a/i18n/requestaccount/qqq.json
++++ b/i18n/requestaccount/qqq.json
+@@ -56,6 +56,8 @@
+ 	"requestaccount-econf": "Used as success message.\n\nThis message is followed by a link which points to the Main page.",
+ 	"requestaccount-email-subj": "{{Identical|SITENAME e-mail address confirmation}}",
+ 	"requestaccount-email-body": "This text is sent in an email. Parameters:\n* $1 - an IP address\n* $2 - a requested user name (no GENDER support)\n* $3 - a URL\n* $4 - a date/time\n* $5 - (Optional) a date\n* $6 - (Optional) a time",
++	"requestaccount-email-subj-reminder": "Subject line of the reminder email sent when an account request's email address was not confirmed within an hour of signup.",
++	"requestaccount-email-body-reminder": "Body of the reminder email sent when an account request's email address is still unconfirmed. Parameters:\n* $1 - an IP address\n* $2 - a requested user name (no GENDER support)\n* $3 - a URL\n* $4 - a date/time",
+ 	"requestaccount-email-subj-admin": "{{Identical|SITENAME account request}}",
+ 	"requestaccount-email-body-admin": "This message is the email body text send to a site admin whenever someone has requested a new account.\nMore parameters can be added by adjusting $wgConfirmAdminEmailExtraFields.\n\nParameters:\n* $1 - username\n* $2 - URL",
+ 	"acct_request_throttle_hit": "Used as error message. Parameters:\n* $1 - number of accounts. value of <code>$wgAccountRequestThrottle</code>."
+diff --git a/includes/backend/ConfirmAccount.class.php b/includes/backend/ConfirmAccount.class.php
+--- a/includes/backend/ConfirmAccount.class.php
++++ b/includes/backend/ConfirmAccount.class.php
+@@ -126,6 +126,34 @@ class ConfirmAccount {
+ 		);
+ 	}
+ 
++	/**
++	 * Send a reminder email confirmation mail for a request whose address was
++	 * never confirmed. The caller supplies a (freshly minted) token whose hash
++	 * has already been persisted, since the original plaintext token is never
++	 * stored and cannot be recovered.
++	 *
++	 * @param User $user
++	 * @param string $ip User IP address
++	 * @param string $token
++	 * @param string $expiration
++	 * @return true|Status True on success, a Status object on failure.
++	 */
++	public static function sendConfirmationReminderMail( User $user, $ip, $token, $expiration ) {
++		$url = self::confirmationTokenUrl( $token );
++		$lang = MediaWikiServices::getInstance()->getUserOptionsManager()
++			->getOption( $user, 'language' );
++		return $user->sendMail(
++			wfMessage( 'requestaccount-email-subj-reminder' )->inLanguage( $lang )->text(),
++			wfMessage( 'requestaccount-email-body-reminder',
++				$ip,
++				$user->getName(),
++				$url,
++				MediaWikiServices::getInstance()->getContentLanguage()
++					->timeanddate( $expiration, false )
++			)->inLanguage( $lang )->text()
++		);
++	}
++
+ 	/**
+ 	 * Get request information from an email confirmation token
+ 	 *
+diff --git a/includes/backend/schema/ConfirmAccountUpdater.hooks.php b/includes/backend/schema/ConfirmAccountUpdater.hooks.php
+--- a/includes/backend/schema/ConfirmAccountUpdater.hooks.php
++++ b/includes/backend/schema/ConfirmAccountUpdater.hooks.php
+@@ -29,6 +29,9 @@ class ConfirmAccountUpdaterHooks implements
+ 			}
+ 			$updater->addExtensionIndex( 'account_requests', 'acr_email', "$base/patch-email-index.sql" );
+ 			$updater->addExtensionField( 'account_requests', 'acr_agent', "$base/patch-acr_agent.sql" );
++			$updater->addExtensionField(
++				'account_requests', 'acr_email_reminded', "$base/patch-acr_email_reminded.sql"
++			);
+ 			$updater->dropExtensionIndex(
+ 				'account_requests', 'acr_deleted_reg', "$base/patch-drop-acr_deleted_reg-index.sql"
+ 			);
+diff --git a/includes/backend/schema/mysql/ConfirmAccount.sql b/includes/backend/schema/mysql/ConfirmAccount.sql
+--- a/includes/backend/schema/mysql/ConfirmAccount.sql
++++ b/includes/backend/schema/mysql/ConfirmAccount.sql
+@@ -27,6 +27,9 @@ CREATE TABLE IF NOT EXISTS /*_*/account_requests (
+ 	acr_email_token binary(32),
+ 	-- Expiration date for the user_email_token
+ 	acr_email_token_expires varbinary(14),
++	-- Timestamp a reminder mail was sent when the email was left unconfirmed;
++	-- NULL until reminded, keeps the reminder maintenance script idempotent.
++	acr_email_reminded varbinary(14) default NULL,
+ 	-- A little about this user
+ 	acr_bio mediumblob NOT NULL,
+ 	-- Private info for reviewers to look at when considering request
+diff --git a/includes/backend/schema/mysql/patch-acr_email_reminded.sql b/includes/backend/schema/mysql/patch-acr_email_reminded.sql
+new file mode 100644
+--- /dev/null
++++ b/includes/backend/schema/mysql/patch-acr_email_reminded.sql
+@@ -0,0 +1,5 @@
++-- Adds a marker for the "unconfirmed email" reminder mail.
++-- NULL until a reminder has been sent; set to the send timestamp afterwards
++-- so the reminder maintenance script stays idempotent.
++
++ALTER TABLE /*_*/account_requests ADD acr_email_reminded varbinary(14) default NULL;
+diff --git a/maintenance/sendEmailReminders.php b/maintenance/sendEmailReminders.php
+new file mode 100644
+--- /dev/null
++++ b/maintenance/sendEmailReminders.php
+@@ -0,0 +1,131 @@
++<?php
++/**
++ * Send a reminder email to people who requested an account but never confirmed
++ * their email address. Intended to be run periodically from cron.
++ *
++ * A request cannot be approved until its email is confirmed, and many users
++ * miss the original confirmation mail. This resends it once, after the address
++ * has been left unconfirmed for a while (1 hour by default).
++ *
++ * Each reminder mints a fresh confirmation token (the original plaintext token
++ * is not stored, only its hash), updates the stored hash + expiry so the new
++ * link validates, and stamps acr_email_reminded so the reminder is sent only
++ * once per request.
++ */
++
++$IP = getenv( 'MW_INSTALL_PATH' ) ?: __DIR__ . '/../../..';
++require_once "$IP/maintenance/Maintenance.php";
++
++use MediaWiki\MediaWikiServices;
++use MediaWiki\User\User;
++
++class SendAccountRequestEmailReminders extends Maintenance {
++
++	public function __construct() {
++		parent::__construct();
++		$this->requireExtension( 'Confirm User Accounts' );
++		$this->addDescription(
++			'Resend the email-confirmation mail to account requests whose address ' .
++			'has been left unconfirmed for a while (once per request).'
++		);
++		$this->addOption( 'age',
++			'Minimum age in seconds since signup before reminding (default 3600 = 1 hour).',
++			false, true );
++		$this->addOption( 'dry-run', 'List who would be reminded without sending or writing anything.' );
++		$this->setBatchSize( 50 );
++	}
++
++	public function execute() {
++		global $wgEnableEmail, $wgConfirmAccountRejectAge;
++
++		if ( !$wgEnableEmail ) {
++			$this->fatalError( 'Email is disabled ($wgEnableEmail = false); cannot send reminders.' );
++		}
++
++		$minAge = (int)$this->getOption( 'age', 3600 );
++		$dryRun = $this->hasOption( 'dry-run' );
++
++		$dbw = $this->getDB( DB_PRIMARY );
++		$now = time();
++		// Only consider requests old enough to remind, but not so old that they
++		// are already past the rejection age (and about to be purged / rejected).
++		$olderThan = $dbw->timestamp( $now - $minAge );
++		$rejectCutoff = $dbw->timestamp( $now - $wgConfirmAccountRejectAge );
++
++		$res = $dbw->newSelectQueryBuilder()
++			->select( [ 'acr_id', 'acr_name', 'acr_email' ] )
++			->from( 'account_requests' )
++			->where( [
++				'acr_email_authenticated' => null, // not confirmed
++				'acr_deleted' => 0,                // not rejected
++				'acr_email_reminded' => null,      // not already reminded
++				'acr_email != ' . $dbw->addQuotes( '' ),
++				'acr_registration <= ' . $dbw->addQuotes( $olderThan ),
++				'acr_registration >= ' . $dbw->addQuotes( $rejectCutoff ),
++			] )
++			->orderBy( 'acr_id' )
++			->caller( __METHOD__ )
++			->fetchResultSet();
++
++		$sent = 0;
++		$failed = 0;
++		foreach ( $res as $row ) {
++			$user = User::newFromName( $row->acr_name, 'creatable' );
++			if ( !$user ) {
++				$this->error( "Skipping request {$row->acr_id}: invalid username '{$row->acr_name}'." );
++				continue;
++			}
++			$user->setEmail( $row->acr_email );
++
++			if ( $dryRun ) {
++				$this->output( "[dry-run] would remind {$row->acr_name} <{$row->acr_email}> (req {$row->acr_id})\n" );
++				$sent++;
++				continue;
++			}
++
++			// Mint a fresh token and persist its hash + expiry BEFORE sending,
++			// so the link in the mail validates. The original plaintext token
++			// was never stored, so we cannot reuse it.
++			$expiration = null; // set by reference
++			$token = ConfirmAccount::getConfirmationToken( $user, $expiration );
++			$dbw->newUpdateQueryBuilder()
++				->update( 'account_requests' )
++				->set( [
++					'acr_email_token' => md5( $token ),
++					'acr_email_token_expires' => $dbw->timestamp( $expiration ),
++				] )
++				->where( [ 'acr_id' => $row->acr_id ] )
++				->caller( __METHOD__ )
++				->execute();
++
++			$result = ConfirmAccount::sendConfirmationReminderMail(
++				$user, '', $token, $expiration );
++
++			if ( $result === true || ( is_object( $result ) && $result->isOK() ) ) {
++				// Mark reminded only after a successful send.
++				$dbw->newUpdateQueryBuilder()
++					->update( 'account_requests' )
++					->set( [ 'acr_email_reminded' => $dbw->timestamp( $now ) ] )
++					->where( [ 'acr_id' => $row->acr_id ] )
++					->caller( __METHOD__ )
++					->execute();
++				$this->output( "Reminded {$row->acr_name} <{$row->acr_email}> (req {$row->acr_id})\n" );
++				$sent++;
++			} else {
++				$msg = is_object( $result ) ? $result->getWikiText() : 'unknown error';
++				$this->error( "Failed to email {$row->acr_name} (req {$row->acr_id}): $msg" );
++				$failed++;
++			}
++
++			if ( $sent % $this->getBatchSize() === 0 ) {
++				$this->waitForReplication();
++			}
++		}
++
++		$verb = $dryRun ? 'would remind' : 'reminded';
++		$this->output( "Done: $verb $sent request(s)" . ( $failed ? ", $failed failed" : '' ) . ".\n" );
++	}
++}
++
++$maintClass = SendAccountRequestEmailReminders::class;
++require_once RUN_MAINTENANCE_IF_MAIN;
+```
+
+After applying, run `update.php` on **every** language wiki to add the `acr_email_reminded`
+column (it is per-wiki, not shared), then confirm the cron wrapper `tools/send_email_reminders.sh`
+is present and scheduled.
 
 ### Rebuild and verify
 
