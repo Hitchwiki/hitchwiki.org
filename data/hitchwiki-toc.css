@@ -1,0 +1,33 @@
+/**
+ * Sidebar Table of Contents for the legacy Vector skin.
+ * Loaded on every language wiki via the "hitchwiki.sidebarToc" ResourceLoader
+ * module (registered in LocalSettings.php); the accompanying hitchwiki-toc.js
+ * moves the article TOC into the left sidebar. IDs are prefixed with #mw-panel
+ * so these rules beat the generic ".portal .body { font-size:18px }" override.
+ */
+#mw-panel #p-toc .body {
+  font-size: 14px;
+  margin-left: 0.5em;
+}
+#mw-panel #p-toc .toc {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  display: block;
+}
+#mw-panel #p-toc .toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#mw-panel #p-toc .toc ul ul {
+  margin-left: 0.8em;
+}
+#mw-panel #p-toc .toc li {
+  margin: 0.15em 0;
+  line-height: 1.3;
+}
+#mw-panel #p-toc .toc .tocnumber {
+  color: #6a491d;
+  margin-right: 0.35em;
+}

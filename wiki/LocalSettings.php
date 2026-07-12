@@ -36,6 +36,7 @@ if ($envPath) {
 # Available domain names
 $hwLanguages = [
 	'bg' => 'Hitchwiki',
+	'cs' => 'Autostopwiki',
 	'de' => 'Tramperwiki',
 	'en' => 'Hitchwiki',
 	'es' => 'Autostopwiki',
@@ -53,6 +54,21 @@ $hwLanguages = [
 	'it' => 'Hitchwiki',
 	'lt' => 'Hitchwiki',
 	'uk' => 'Hitchwiki',
+	'sk' => 'Autostopwiki',
+	'fa' => 'Hitchwiki',
+	'ka' => 'Hitchwiki',
+	'el' => 'Hitchwiki',
+	'hu' => 'Hitchwiki',
+	'sv' => 'Hitchwiki',
+	'no' => 'Hitchwiki',
+	'da' => 'Hitchwiki',
+	'sr' => 'Hitchwiki',
+	'sl' => 'Hitchwiki',
+	'et' => 'Hitchwiki',
+	'lv' => 'Hitchwiki',
+	'ja' => 'Hitchwiki',
+	'ar' => 'Hitchwiki',
+	'mn' => 'Hitchwiki',
 ];
 
 # Create a string of valid language codes from $hwLanguages
@@ -258,6 +274,25 @@ $wgVectorNightMode['logged_out'] = true;
 
 ## Default skin: you can change the default skin. Use the internal symbolic names, i.e. 'vector', 'monobook'
 $wgDefaultSkin = "vector";
+
+# Persistent sidebar Table of Contents for legacy Vector.
+# Legacy Vector renders the TOC as an inline block in the article body; this
+# module (data/hitchwiki-toc.js + .css) relocates it into the left sidebar so
+# every page has an always-visible, Wikipedia-style contents list without
+# needing __TOC__. Loaded family-wide from here so it can't be forgotten on a
+# single language wiki. Only applies to the desktop Vector skin (Minerva has
+# its own mobile TOC).
+$wgResourceModules['hitchwiki.sidebarToc'] = [
+	'localBasePath' => "$IP/data",
+	'remoteBasePath' => "$wgResourceBasePath/data",
+	'scripts' => 'hitchwiki-toc.js',
+	'styles' => 'hitchwiki-toc.css',
+];
+$wgHooks['BeforePageDisplay'][] = function ( $out, $skin ) {
+	if ( $skin->getSkinName() === 'vector' ) {
+		$out->addModules( 'hitchwiki.sidebarToc' );
+	}
+};
 
 ## Enabled extensions and configuration.
 wfLoadExtension('DismissableSiteNotice');
