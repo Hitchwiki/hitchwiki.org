@@ -348,6 +348,16 @@ $wgSharedTables[] = 'interwiki';
 # concept (keyed by its English title) to the page title in every language.
 wfLoadExtension('CentralLangLinks');
 $wgSharedTables[] = 'page_translations';
+# Let any logged-in (account-approved) user manage translations via
+# Special:Translations, not just sysops.
+$wgGroupPermissions['user']['managetranslations'] = true;
+
+# Shared English news/events boxes: every language wiki's Template:Events and
+# Template:News are thin wrappers that transclude the English originals via the
+# `hwen` interwiki prefix (points at the container's internal Apache, so the
+# fetch bypasses the public Anubis interstitial). One source of truth = English.
+$wgEnableScaryTranscluding = true;
+$wgTranscludeCacheExpiry = 1800; // refresh the shared boxes at most every 30 min
 
 wfLoadExtension('AntiSpoof');
 $wgSharedTables[] = 'spoofuser';

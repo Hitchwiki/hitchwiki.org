@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hitchwiki"
+		]
+	},
+	"centrallanglinks-desc": "Centralised interlanguage links: one shared table maps each concept (keyed by its English page title) to the page title in every language.",
+	"translations": "Manage interlanguage translations",
+	"translations-summary": "Add, edit or remove the central interlanguage translations for a concept. The English page title is the concept key; changes take effect immediately on every language's sidebar.",
+	"right-managetranslations": "Manage central interlanguage translations",
+	"action-managetranslations": "manage central interlanguage translations",
+	"centrallanglinks-lookup-label": "Concept (English title) or any page title:",
+	"centrallanglinks-lookup-button": "Load",
+	"centrallanglinks-browse": "$1 concepts in the table. Enter a concept above, or pick one below:",
+	"centrallanglinks-editing": "Editing concept \"'''$1'''\" — $2 {{PLURAL:$2|translation|translations}}.",
+	"centrallanglinks-new": "No entry yet for \"$1\". Fill in the translations below to create it.",
+	"centrallanglinks-legend": "Translations",
+	"centrallanglinks-links-label": "One <code>lang:Title</code> per line",
+	"centrallanglinks-links-help": "Example: <code>de:Dresden</code>. Include one line per language, using each language's own page title. The English line is the concept key.",
+	"centrallanglinks-save": "Save translations",
+	"centrallanglinks-saved": "Saved translations for concept \"$1\".",
+	"centrallanglinks-error-noconcept": "No concept was given.",
+	"centrallanglinks-error-badline": "Could not parse \"$1\" — expected the form <code>lang:Title</code>.",
+	"centrallanglinks-error-badlang": "\"$1\" is not a known language code in this wiki family.",
+	"centrallanglinks-error-duplang": "Language \"$1\" is listed more than once.",
+	"log-name-translations": "Translation log",
+	"log-description-translations": "Changes to the central interlanguage translation table.",
+	"logentry-translations-update": "$1 {{GENDER:$2|updated}} the interlanguage translations for $3 ($4 {{PLURAL:$4|entry|entries}}: $5)"
+}

@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hitchwiki"
+		]
+	},
+	"centrallanglinks-desc": "{{desc|name=CentralLangLinks|url=https://hitchwiki.org}}",
+	"translations": "The name of [[Special:Translations]], shown as its page title.",
+	"translations-summary": "Intro text shown at the top of [[Special:Translations]].",
+	"right-managetranslations": "{{doc-right|managetranslations}}",
+	"action-managetranslations": "{{doc-action|managetranslations}}",
+	"centrallanglinks-lookup-label": "Label for the lookup input on Special:Translations.",
+	"centrallanglinks-lookup-button": "Label for the lookup submit button.",
+	"centrallanglinks-browse": "Shown when no concept is selected. $1 is the total number of concepts.",
+	"centrallanglinks-editing": "Heading when editing an existing concept. $1 is the concept key, $2 the number of translations.",
+	"centrallanglinks-new": "Notice shown when the looked-up concept has no entry yet. $1 is the concept key.",
+	"centrallanglinks-legend": "Fieldset legend for the edit form.",
+	"centrallanglinks-links-label": "Label for the translations textarea.",
+	"centrallanglinks-links-help": "Help text for the translations textarea.",
+	"centrallanglinks-save": "Label for the save button.",
+	"centrallanglinks-saved": "Success message after saving. $1 is the concept key.",
+	"centrallanglinks-error-noconcept": "Error shown when no concept key is present on save.",
+	"centrallanglinks-error-badline": "Error for an unparseable line. $1 is the offending line.",
+	"centrallanglinks-error-badlang": "Error for an unknown language code. $1 is the code.",
+	"centrallanglinks-error-duplang": "Error when a language appears twice. $1 is the code.",
+	"log-name-translations": "{{doc-logpage}} Name of the translation log shown on [[Special:Log]].",
+	"log-description-translations": "Description of the translation log.",
+	"logentry-translations-update": "{{Logentry}} Parameters: $1 performer, $2 performer username (for GENDER), $3 concept target page, $4 number of translations, $5 comma-separated language codes."
+}
