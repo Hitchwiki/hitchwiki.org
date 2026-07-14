@@ -1,0 +1,26 @@
+{
+	"name": "CentralLangLinks",
+	"version": "0.1.0",
+	"author": [
+		"Hitchwiki"
+	],
+	"url": "https://hitchwiki.org",
+	"description": "Centralised interlanguage links for the Hitchwiki language family. A single shared table (page_translations) maps a concept, keyed by its English page title, to the page title in every other language. The LanguageLinks hook renders the sidebar from that table instead of from per-page [[xx:Title]] wikitext, so a translation set is edited in exactly one place with English as the ground truth.",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.44.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\CentralLangLinks\\": "src/"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\CentralLangLinks\\Hooks"
+		}
+	},
+	"Hooks": {
+		"LanguageLinks": "main",
+		"LoadExtensionSchemaUpdates": "main"
+	},
+	"manifest_version": 2
+}

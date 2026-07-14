@@ -344,6 +344,11 @@ $wgDefaultMobileSkin = 'minerva';
 wfLoadExtension('Interwiki');
 $wgSharedTables[] = 'interwiki';
 
+# Centralised interlanguage links: one shared page_translations table maps a
+# concept (keyed by its English title) to the page title in every language.
+wfLoadExtension('CentralLangLinks');
+$wgSharedTables[] = 'page_translations';
+
 wfLoadExtension('AntiSpoof');
 $wgSharedTables[] = 'spoofuser';
 
