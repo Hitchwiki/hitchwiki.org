@@ -607,6 +607,25 @@ $wgHooks['MessagesPreLoad'][] = function ( $title, &$message, $code ) {
 	return true;
 };
 
+## Umami analytics (self-hosted). The tracker is served first-party from
+## hitchwiki.org/1p/* by Caddy — a script loaded from the analytics hostname
+## itself is dropped by a sizeable share of blocklists, from our own domain it
+## is not. The tracker derives its collect URL from its own script src, so
+## /1p/script.js posts to /1p/api/send with no extra config.
+## Disabled by not setting MEDIAWIKI_UMAMI_WEBSITE_ID.
+$hwUmamiWebsiteId = $_ENV['MEDIAWIKI_UMAMI_WEBSITE_ID'] ?? getenv('MEDIAWIKI_UMAMI_WEBSITE_ID') ?: '';
+$hwUmamiScriptUrl = $_ENV['MEDIAWIKI_UMAMI_SCRIPT_URL'] ?? getenv('MEDIAWIKI_UMAMI_SCRIPT_URL') ?: 'https://hitchwiki.org/1p/script.js';
+if ($hwUmamiWebsiteId !== '') {
+	$wgHooks['BeforePageDisplay'][] = static function ( $out ) use ( $hwUmamiWebsiteId, $hwUmamiScriptUrl ) {
+		$src = htmlspecialchars( $hwUmamiScriptUrl, ENT_QUOTES );
+		$id = htmlspecialchars( $hwUmamiWebsiteId, ENT_QUOTES );
+		$out->addHeadItem(
+			'umami-analytics',
+			"<script defer src=\"{$src}\" data-website-id=\"{$id}\"></script>"
+		);
+	};
+}
+
 ## Load private settings if available
 $privateFile = dirname(__FILE__) . '/PrivateSettings.php';
 if (is_readable($privateFile)) {
