@@ -23,6 +23,7 @@
 	"centrallanglinks-error-badline": "Could not parse \"$1\" — expected the form <code>lang:Title</code>.",
 	"centrallanglinks-error-badlang": "\"$1\" is not a known language code in this wiki family.",
 	"centrallanglinks-error-duplang": "Language \"$1\" is listed more than once.",
+	"centrallanglinks-error-badtitle": "\"$1\" is not a valid page title.",
 	"log-name-translations": "Translation log",
 	"log-description-translations": "Changes to the central interlanguage translation table.",
 	"logentry-translations-update": "$1 {{GENDER:$2|updated}} the interlanguage translations for $3 ($4 {{PLURAL:$4|entry|entries}}: $5)"

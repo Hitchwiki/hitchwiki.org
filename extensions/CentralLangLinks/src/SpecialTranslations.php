@@ -58,7 +58,7 @@ class SpecialTranslations extends SpecialPage {
 	 * of an existing per-language title, or (failing both) a new English key.
 	 */
 	private function resolveConcept( string $input ): string {
-		$key = strtr( trim( $input ), ' ', '_' );
+		$key = TitleKey::normalize( $input ) ?? strtr( trim( $input ), ' ', '_' );
 		$dbr = MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
 
 		$asConcept = $dbr->newSelectQueryBuilder()
@@ -178,9 +178,13 @@ class SpecialTranslations extends SpecialPage {
 	 * @return Status|true
 	 */
 	public function onSave( array $data ) {
-		$concept = strtr( trim( (string)( $data['conceptkey'] ?? '' ) ), ' ', '_' );
-		if ( $concept === '' ) {
+		$rawConcept = trim( (string)( $data['conceptkey'] ?? '' ) );
+		if ( $rawConcept === '' ) {
 			return Status::newFatal( 'centrallanglinks-error-noconcept' );
+		}
+		$concept = TitleKey::normalize( $rawConcept );
+		if ( $concept === null ) {
+			return Status::newFatal( 'centrallanglinks-error-badtitle', $rawConcept );
 		}
 		$family = array_fill_keys( array_keys( $GLOBALS['hwLanguages'] ?? [] ), true );
 
@@ -203,10 +207,14 @@ class SpecialTranslations extends SpecialPage {
 				return Status::newFatal( 'centrallanglinks-error-duplang', $lang );
 			}
 			$seen[$lang] = true;
+			$title = TitleKey::normalize( $parts[1] );
+			if ( $title === null ) {
+				return Status::newFatal( 'centrallanglinks-error-badtitle', trim( $parts[1] ) );
+			}
 			$rows[] = [
 				'pt_concept' => $concept,
 				'pt_lang' => $lang,
-				'pt_title' => strtr( trim( $parts[1] ), ' ', '_' ),
+				'pt_title' => $title,
 			];
 		}
 

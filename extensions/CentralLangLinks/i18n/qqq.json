@@ -23,6 +23,7 @@
 	"centrallanglinks-error-badline": "Error for an unparseable line. $1 is the offending line.",
 	"centrallanglinks-error-badlang": "Error for an unknown language code. $1 is the code.",
 	"centrallanglinks-error-duplang": "Error when a language appears twice. $1 is the code.",
+	"centrallanglinks-error-badtitle": "Error for a title MediaWiki cannot parse as a page title. $1 is the offending title.",
 	"log-name-translations": "{{doc-logpage}} Name of the translation log shown on [[Special:Log]].",
 	"log-description-translations": "Description of the translation log.",
 	"logentry-translations-update": "{{Logentry}} Parameters: $1 performer, $2 performer username (for GENDER), $3 concept target page, $4 number of translations, $5 comma-separated language codes."

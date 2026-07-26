@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\CentralLangLinks\Maintenance;
 
+use MediaWiki\Extension\CentralLangLinks\TitleKey;
 use MediaWiki\Maintenance\Maintenance;
 
 $IP = getenv( 'MW_INSTALL_PATH' ) ?: __DIR__ . '/../../..';
@@ -74,10 +75,14 @@ class SetTranslations extends Maintenance {
 	}
 
 	/**
-	 * Normalise a page title to its DB key form (spaces -> underscores).
+	 * Normalise a page title to the exact DB key form the hook looks up.
 	 */
 	private function titleKey( string $title ): string {
-		return strtr( trim( $title ), ' ', '_' );
+		$key = TitleKey::normalize( $title );
+		if ( $key === null ) {
+			$this->fatalError( "Invalid page title '$title'." );
+		}
+		return $key;
 	}
 }
 
