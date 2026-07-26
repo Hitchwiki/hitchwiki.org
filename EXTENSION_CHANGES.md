@@ -461,6 +461,41 @@ After applying, run `update.php` on **every** language wiki to add the `acr_emai
 column (it is per-wiki, not shared), then confirm the cron wrapper `tools/send_email_reminders.sh`
 is present and scheduled.
 
+### 4. Unicode-aware biography word count
+
+`AccountRequestSubmission.php`'s minimum-word-count check for the biography field used
+PHP's `str_word_count()`, which only recognizes ASCII letters (`a-z`, `A-Z`, plus `'`/`-`
+inside a word). It silently counts 0 words for a biography written in Cyrillic, Greek,
+CJK, or any other non-Latin script, so those applicants could never clear the
+`$wgConfirmAccountRequestFormItems['Biography']['minWords']` threshold (20, set in
+`wiki/LocalSettings.php`) no matter how long their bio actually was.
+
+Save the block below to `/tmp/confirmaccount-unicode-wordcount.patch` and apply it:
+
+```bash
+git -C extensions/ConfirmAccount apply /tmp/confirmaccount-unicode-wordcount.patch
+```
+
+```diff
+diff --git a/includes/business/AccountRequestSubmission.php b/includes/business/AccountRequestSubmission.php
+--- a/includes/business/AccountRequestSubmission.php
++++ b/includes/business/AccountRequestSubmission.php
+@@ -144,7 +144,10 @@
+ 		}
+ 		# Check if biography is long enough
+-		if ( $formConfig['Biography']['enabled']
+-			&& str_word_count( $this->bio ) < $formConfig['Biography']['minWords'] ) {
++		# str_word_count() only recognizes ASCII letters, so it undercounts
++		# biographies written in Cyrillic or other non-Latin scripts; count
++		# words as whitespace-separated runs of letters/numbers instead.
++		$bioWordCount = preg_match_all( '/[\p{L}\p{N}]+/u', $this->bio );
++		if ( $formConfig['Biography']['enabled']
++			&& $bioWordCount < $formConfig['Biography']['minWords'] ) {
+ 			$minWords = $formConfig['Biography']['minWords'];
+ 
+ 			return [
+```
+
 ### Rebuild and verify
 
 Extensions are baked into the image, so a restart is not enough:
