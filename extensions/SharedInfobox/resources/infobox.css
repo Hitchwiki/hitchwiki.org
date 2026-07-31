@@ -1,0 +1,82 @@
+/**
+ * Styling for the borrowed English infobox.
+ *
+ * These rules also live in MediaWiki:Common.css on most wikis of the family,
+ * where they were pasted wiki by wiki — and so were missing on the two whose
+ * Common.css had never been copied over, leaving the infobox as an unstyled
+ * full-width table. The extension that injects the box ships its styling with
+ * it, so no wiki can be missing them and a new language wiki needs nothing.
+ *
+ * Kept byte-identical to the English MediaWiki:Common.css block so that the two
+ * cannot drift into disagreeing with each other.
+ */
+
+.infobox {
+	width: 25em;
+	text-align: left;
+	font-size: 85%;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	border-collapse: separate;
+	clear: right;
+	float: right;
+	margin: 0 0 20px 20px;
+}
+
+.infobox-h1 {
+	text-align: center;
+}
+
+/* text-align: center alone does not work, because the collapse toggle shares
+ * the same cell. */
+.infobox-h1 div {
+	font-size: large;
+	width: 80%;
+	margin: auto;
+}
+
+/* Hide/show switch */
+.infobox .mw-collapsible-toggle,
+.infobox .mw-collapsible-toggle a {
+	font-weight: normal;
+	color: black;
+}
+
+/* Second heading ("Information") */
+.infobox-h2 {
+	text-align: center;
+	background: #d8e2ef;
+	border-top: 1px solid #aaa;
+}
+
+.infobox th {
+	padding: 0.3em;
+}
+
+.infobox th.infobox-h2 {
+	padding: 0;
+}
+
+/* Flags, coats of arms and the like */
+.infobox .floatright {
+	margin: 0;
+}
+
+.infobox-map div {
+	margin: 0 5px 5px 5px !important;
+}
+
+/* The "See full map" caption */
+.infobox-map small {
+	position: relative;
+	bottom: 7px;
+}
+
+/* The box holds English text on a wiki in another language; on a right-to-left
+ * wiki it still reads left to right, but it belongs on the side the rest of
+ * the layout puts it. */
+.mw-content-rtl .shared-infobox {
+	float: left;
+	clear: left;
+	margin: 0 20px 20px 0;
+}

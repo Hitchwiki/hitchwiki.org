@@ -44,6 +44,17 @@
 			"value": "CACHE_ANYTHING"
 		}
 	},
+	"ResourceModules": {
+		"ext.sharedInfobox.styles": {
+			"styles": [
+				"infobox.css"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "SharedInfobox/resources"
+	},
 	"HookHandlers": {
 		"main": {
 			"class": "MediaWiki\\Extension\\SharedInfobox\\Hooks",

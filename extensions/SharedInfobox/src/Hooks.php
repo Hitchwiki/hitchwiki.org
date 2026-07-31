@@ -91,6 +91,11 @@ class Hooks implements OutputPageBeforeHTMLHook {
 		if ( $infobox === '' ) {
 			return;
 		}
+		// Most wikis of the family carry these rules in MediaWiki:Common.css,
+		// but a couple never had that file copied over and showed the box
+		// unstyled. Shipping the styles with the injection covers every wiki,
+		// including any added later.
+		$out->addModuleStyles( 'ext.sharedInfobox.styles' );
 		$text = InfoboxHtml::insertIntoContent( $text, $infobox );
 	}
 
