@@ -1,0 +1,62 @@
+{
+	"name": "SharedInfobox",
+	"version": "0.1.0",
+	"author": [
+		"Hitchwiki"
+	],
+	"url": "https://hitchwiki.org",
+	"descriptionmsg": "sharedinfobox-desc",
+	"description": "One infobox per concept, owned by the English wiki. On a non-English wiki, an article whose English counterpart is known (via the shared page_translations table of CentralLangLinks) renders the English article's leading infobox instead of carrying its own copy, so the facts are edited in exactly one place.",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.44.0",
+		"extensions": {
+			"CentralLangLinks": "*"
+		}
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\SharedInfobox\\": "src/"
+	},
+	"MessagesDirs": {
+		"SharedInfobox": [
+			"i18n"
+		]
+	},
+	"config": {
+		"SharedInfoboxSourceLanguage": {
+			"description": "Language code of the wiki that owns the infoboxes. Pages on this wiki are never touched.",
+			"value": "en"
+		},
+		"SharedInfoboxSourceApi": {
+			"description": "api.php of the source wiki. Defaults to the container-internal Apache so the fetch bypasses the public interstitial, mirroring the `hwen` interwiki prefix.",
+			"value": "http://localhost/en/api.php"
+		},
+		"SharedInfoboxSourceArticlePath": {
+			"description": "Article path of the source wiki, used to recognise links that can be pointed at a local translation instead.",
+			"value": "/en/$1"
+		},
+		"SharedInfoboxCacheExpiry": {
+			"description": "Seconds a fetched infobox is reused before the source wiki is asked again.",
+			"value": 1800
+		},
+		"SharedInfoboxCacheType": {
+			"description": "Object cache to hold fetched infoboxes. CACHE_ANYTHING falls back to the database when no in-memory cache is configured, which matters here because $wgMainCacheType is CACHE_NONE and the WAN cache would therefore store nothing at all.",
+			"value": "CACHE_ANYTHING"
+		}
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\SharedInfobox\\Hooks",
+			"services": [
+				"MainConfig",
+				"ConnectionProvider",
+				"ObjectCacheFactory",
+				"HttpRequestFactory"
+			]
+		}
+	},
+	"Hooks": {
+		"OutputPageBeforeHTML": "main"
+	},
+	"manifest_version": 2
+}

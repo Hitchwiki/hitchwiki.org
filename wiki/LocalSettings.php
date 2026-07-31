@@ -183,9 +183,15 @@ $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = true;
+## Uploads only happen on the default-language (en) wiki now, so every image
+## lives in one place (images/en). Non-default wikis read en's files via the
+## ForeignDBRepo below and send users who try to upload to en's Special:Upload.
+$wgEnableUploads = ( $wikiID === $defaultLang );
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
+if ( $wikiID !== $defaultLang ) {
+	$wgUploadNavigationUrl = "$wgServer/$defaultLang/Special:Upload";
+}
 
 # Upload Paths
 $wgUploadPath = "$wgScriptPath/images/$wikiID";
@@ -384,6 +390,13 @@ $wgGroupPermissions['user']['managetranslations'] = true;
 # fetch bypasses the public Anubis interstitial). One source of truth = English.
 $wgEnableScaryTranscluding = true;
 $wgTranscludeCacheExpiry = 1800; // refresh the shared boxes at most every 30 min
+
+# Shared infoboxes: a translated article does not carry its own infobox, it
+# renders the English article's one (looked up through page_translations). Same
+# idea as the news boxes above — the facts are edited on the English article and
+# nowhere else — but the infobox templates only exist on the English wiki, so
+# what crosses over is rendered HTML fetched from the internal Apache.
+wfLoadExtension('SharedInfobox');
 
 wfLoadExtension('AntiSpoof');
 $wgSharedTables[] = 'spoofuser';

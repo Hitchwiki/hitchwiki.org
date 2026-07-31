@@ -9,7 +9,7 @@ Hitchwiki is a multilingual MediaWiki (1.44.2) wiki family running in Docker. Ea
 - **Docker**: single `hitchwiki-mediawiki` container, config in `docker-compose.yml`
 - **MediaWiki config**: `wiki/LocalSettings.php` (bind-mounted into container at `/var/www/html/LocalSettings.php`)
 - **Environment**: `.env` file at project root, loaded via `vlucas/phpdotenv`
-- **Languages**: bg, de, en, es, fi, fr, he, hr, nl, pl, pt, ro, ru, tr, zh, it, lt, uk
+- **Languages**: ar, bg, cs, da, de, el, en, es, et, fa, fi, fr, he, hr, hu, it, ja, ka, lt, lv, mn, nl, no, pl, pt, ro, ru, sk, sl, sr, sv, tr, uk, zh (defined in `$hwLanguages` in `wiki/LocalSettings.php`)
 - **Database per language**: `hitchwiki_<lang>` (e.g. `hitchwiki_en`, `hitchwiki_de`)
 - **Shared DB**: `hitchwiki_en` — shares `user`, `user_properties`, `user_autocreate_serial`, `interwiki`, `spoofuser` tables across all wikis
 - **Extensions dir**: `extensions/` at project root (bind-mounted or built into image)
@@ -34,6 +34,24 @@ docker restart hitchwiki-mediawiki
 # Get current config values for a wiki
 docker exec hitchwiki-mediawiki php /var/www/html/maintenance/run.php getConfiguration --wiki=<lang> --format=json --settings="wgSharedTables wgSharedDB wgDBname"
 ```
+
+## Bulk-editing articles
+
+When making programmatic changes to article content (e.g. via `maintenance/edit.php` or the API), always edit as a bot: pass `--bot` (`edit.php`) or `bot=1`/use a bot-flagged account, so the edits are flagged as bot edits rather than cluttering Recent Changes and watchlists like a human edit would.
+
+## Infoboxes live on the English wiki
+
+Articles on the other language wikis do not carry their own `{{Infobox …}}`.
+The `SharedInfobox` extension renders the English counterpart's infobox on them
+instead, matched through the shared `page_translations` table, so infobox facts
+have a single source of truth. Edit the English article to change what every
+language shows.
+
+Every language wiki is migrated. What remains are a handful of articles whose
+English counterpart does not exist yet (mostly Polish, Russian and Ukrainian
+towns); they keep their own infobox until someone writes the English article.
+The migration scripts, and the mapping each language needs, are described in
+`extensions/SharedInfobox/README.md`.
 
 ## Troubleshooting
 
