@@ -31,6 +31,7 @@
 [submodule "extensions/ConfirmAccount"]
 	path = extensions/ConfirmAccount
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/ConfirmAccount
+	ignore = dirty
 [submodule "extensions/OAuth"]
 	path = extensions/OAuth
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/OAuth
