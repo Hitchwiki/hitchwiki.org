@@ -294,6 +294,32 @@ $wgHooks['BeforePageDisplay'][] = function ( $out, $skin ) {
 	}
 };
 
+# Footer "places" links (Privacy policy / About / Legal Notice / Volunteer).
+# Core builds these from MediaWiki:Privacypage, :Aboutpage and :Disclaimerpage,
+# which on every non-English wiki point at a translated Project: page that does
+# not actually exist. Instead every wiki links to the one English page, while the
+# link *label* stays in the reader's interface language. "Volunteer" is a new
+# entry (English label everywhere) pointing at the English Roles article.
+$hwFooterPlaces = [
+	'privacy'     => [ 'msg' => 'privacy',     'page' => 'Hitchwiki:Privacy_policy' ],
+	'about'       => [ 'msg' => 'aboutsite',   'page' => 'Hitchwiki:About' ],
+	'disclaimers' => [ 'msg' => 'disclaimers', 'page' => 'Hitchwiki:Legal_Notice' ],
+	'volunteer'   => [ 'text' => 'Volunteer',  'page' => 'Roles' ],
+];
+$wgHooks['SkinAddFooterLinks'][] = function ( $skin, $key, &$footerItems )
+	use ( $hwFooterPlaces, $wgServer, $defaultLang ) {
+	if ( $key !== 'places' ) {
+		return;
+	}
+	foreach ( $hwFooterPlaces as $id => $link ) {
+		$footerItems[$id] = MediaWiki\Html\Html::element(
+			'a',
+			[ 'href' => "$wgServer/$defaultLang/" . $link['page'] ],
+			$link['text'] ?? $skin->msg( $link['msg'] )->text()
+		);
+	}
+};
+
 ## Enabled extensions and configuration.
 wfLoadExtension('DismissableSiteNotice');
 wfLoadExtension('Echo');
