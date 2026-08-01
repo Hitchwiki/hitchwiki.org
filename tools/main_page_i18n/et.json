@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "lisa/muuda sündmust",
+  "events_label": "Sündmused",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berliini märk",
+    "guitar": "Tramprennen muusika teel",
+    "iran": "Hääletamine Iraanis",
+    "italy": "Hääletamine Itaalias",
+    "moscow": "Moskva Punane väljak",
+    "split_dubrovnik": "Tramprennen: Splitist Dubrovnikusse",
+    "taklamakan": "Taklamakani kõrb, Hiina"
+  },
+  "gallery_header": "Hääletamise galerii",
+  "ingress": "Hitchwiki on koostööpõhine veebisait, kus kogutakse teavet [[hitchhiking]] ja teiste äärmiselt odavate transpordiviiside kohta. Jaga julgelt oma teadmisi teiste hääletajatega! Siiani on meil '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' artiklit eesti keeles, kirjutatud ja toimetatud [[hitchhiker]]ite poolt üle kogu maailma.",
+  "nav_links": "[[Hitchwiki:Community Portal|Kogukond]] &nbsp;•[[:Category:General info|Üldinfo]] &nbsp;•&nbsp; [[:maps:| Hääletamise kaart]] &nbsp;•&nbsp; [[Top Tips|Parimad nõuanded]] &nbsp;•&nbsp; [[First time hitchhiking|Esimest korda]] &nbsp;•&nbsp; [[Hitchhiker's safety|Ohutus]]  &nbsp;•&nbsp; [[Where to hitchhike|Kus hääletada?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Hääletajate pealevõtmine]] &nbsp;•&nbsp; [[Hitchhiking races|Võistlused]]  &nbsp;•&nbsp; [[Roles|Tule vabatahtlikuks]] </span> &nbsp;•&nbsp; [[Hitchwiki:Tõlkimine|Tõlkimine]]",
+  "news_edit_label": "lisa/muuda uudist",
+  "news_label": "Uudised",
+  "nomad_desc": "madala/ilma eelarveta reisimise juhend",
+  "races_header": "EI TAHA JÄÄDA ILMA VÕISTLUSTEST JA SÜNDMUSTEST?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Registreeru]] meie uudiskirja saajaks oma [[Special:RequestAccount|Hitchwiki kontoga]].",
+  "related_header": "Seotud projektid",
+  "signal_text": "Saa esmaklassilisi nõuandeid üle 800 hääletajalt meie Signali vestluses",
+  "tagline": "Maailma hääletamise juhend.",
+  "trash_desc": "konteinerisukeldumine",
+  "trustroots_desc": "külalislahkuse vahetus",
+  "upload_cta": "Kas tabasid teel hämmastava hetke? [[Special:Upload|Klõpsa siia, et oma fotosid üles laadida]]!"
+}

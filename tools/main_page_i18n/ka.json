@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "დაამატეთ/რედაქტირეთ ღონისძიება",
+  "events_label": "ღონისძიებები",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen ბერლინის ნიშანი",
+    "guitar": "Tramprennen მუსიკა გზაზე",
+    "iran": "ავტოსტოპი ირანში",
+    "italy": "ავტოსტოპი იტალიაში",
+    "moscow": "მოსკოვის წითელი მოედანი",
+    "split_dubrovnik": "Tramprennen: სპლიტიდან დუბროვნიკამდე",
+    "taklamakan": "თაკლამაკანის უდაბნო, ჩინეთი"
+  },
+  "gallery_header": "ავტოსტოპის გალერეა",
+  "ingress": "Hitchwiki არის კოლაბორაციული ვებსაიტი, რომელიც აგროვებს ინფორმაციას [[hitchhiking]]-ისა და სხვა უკიდურესად იაფი ტრანსპორტის გზების შესახებ. გთხოვთ, [[Help:Contents|გაუზიარეთ თქვენი ცოდნა]] სხვა ავტოსტოპერებს! ამჟამად ჩვენ გვაქვს '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' სტატია ქართულად, დაწერილი და რედაქტირებული ავტოსტოპერების მიერ მთელი მსოფლიოდან.",
+  "nav_links": "[[Hitchwiki:Community Portal|საზოგადოება]] &nbsp;•[[:Category:General info|ზოგადი ინფორმაცია]] &nbsp;•&nbsp; [[:maps:| ავტოსტოპის რუკა]] &nbsp;•&nbsp; [[Top Tips|საუკეთესო რჩევები]] &nbsp;•&nbsp; [[First time hitchhiking|პირველი ავტოსტოპი]] &nbsp;•&nbsp; [[Hitchhiker's safety|უსაფრთხოება]]  &nbsp;•&nbsp; [[Where to hitchhike|სად ვიმგზავროთ ავტოსტოპით?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|ავტოსტოპერების აყვანა]] &nbsp;•&nbsp; [[Hitchhiking races|შეჯიბრებები]]  &nbsp;•&nbsp; [[Roles|გახდით მოხალისე ჩვენთან]] </span> &nbsp;•&nbsp; [[Hitchwiki:თარგმანი|თარგმანი]]",
+  "news_edit_label": "დაამატეთ/რედაქტირეთ სიახლე",
+  "news_label": "სიახლეები",
+  "nomad_desc": "დაბალი/არაფინანსური მოგზაურობის გზამკვლევი",
+  "races_header": "არ გსურთ გამოტოვოთ შეჯიბრებები და ღონისძიებები?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|დარეგისტრირდით]] ჩვენს საინფორმაციო ბიულეტენზე თქვენი [[Special:RequestAccount|Hitchwiki ანგარიშით]].",
+  "related_header": "დაკავშირებული პროექტები",
+  "signal_text": "მიიღეთ უშუალო რჩევები 800-ზე მეტი ავტოსტოპერისგან ჩვენს Signal ჩატში",
+  "tagline": "გზამკვლევი ავტოსტოპით მოგზაურობისთვის.",
+  "trash_desc": "ნაგვის ყუთების ძიება",
+  "trustroots_desc": "სტუმართმოყვარეობის გაცვლა",
+  "upload_cta": "გაიღეთ საოცარი მომენტი გზაზე? [[Special:Upload|დააწკაპუნეთ აქ, რომ ატვირთოთ თქვენი ფოტოები]]!"
+}

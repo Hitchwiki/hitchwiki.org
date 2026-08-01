@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "lisää/muokkaa tapahtumaa",
+  "events_label": "Tapahtumat",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen-kyltti, Berliini",
+    "guitar": "Tramprennen: musiikkia matkalla",
+    "iran": "Liftaamista Iranissa",
+    "italy": "Liftaamista Italiassa",
+    "moscow": "Moskova, Punainen tori",
+    "split_dubrovnik": "Tramprennen: Splitistä Dubrovnikiin",
+    "taklamakan": "Taklamakanin autiomaa, Kiina"
+  },
+  "gallery_header": "Liftausgalleria",
+  "ingress": "Liftariwiki on yhteisöllinen sivusto, jonne kerätään tietoa [[hitchhiking|liftaamisesta]] ja muista erittäin halvoista matkustustavoista. [[Help:Contents|Jaa tietosi]] rohkeasti muiden liftarien kanssa! Tähän mennessä meillä on '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' suomenkielistä artikkelia, joita ovat kirjoittaneet ja muokanneet [[hitchhiker|liftarit]] ympäri maailmaa.",
+  "nav_links": "[[Hitchwiki:Community Portal|Yhteisö]] &nbsp;•[[:Category:General info|Yleistä tietoa]] &nbsp;•&nbsp; [[:maps:| Liftauskartta]] &nbsp;•&nbsp; [[Top Tips|Parhaat vinkit]] &nbsp;•&nbsp; [[First time hitchhiking|Ensimmäistä kertaa]] &nbsp;•&nbsp; [[Hitchhiker's safety|Turvallisuus]]  &nbsp;•&nbsp; [[Where to hitchhike|Missä liftata?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Liftarien kyytiin ottaminen]] &nbsp;•&nbsp; [[Hitchhiking races|Kilpailut]]  &nbsp;•&nbsp; [[Roles|Ryhdy vapaaehtoiseksi]] &nbsp;•&nbsp; [[Liftariwiki:Kääntäminen|Kääntäminen]] </span>",
+  "news_edit_label": "lisää/muokkaa uutista",
+  "news_label": "Uutiset",
+  "nomad_desc": "pienen/nollabudjetin matkaopas",
+  "races_header": "ETKÖ HALUA MISSATA KILPAILUJA JA TAPAHTUMIA?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Rekisteröidy]] uutiskirjeeseemme [[Special:RequestAccount|Hitchwiki-tililläsi]].",
+  "related_header": "Liittyvät projektit",
+  "signal_text": "Saat ensikäden neuvoja yli 800 liftarilta Signal-chatissamme",
+  "tagline": "Opas maailman kiertämiseen liftaamalla.",
+  "trash_desc": "ruoan keräämistä roskiksista",
+  "trustroots_desc": "vieraanvaraisuuden vaihto",
+  "upload_cta": "Otitko upean hetken tien päällä? [[Special:Upload|Klikkaa tästä ja lataa omat kuvasi]]!"
+}

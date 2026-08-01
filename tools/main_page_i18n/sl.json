@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "dodaj/uredi dogodek",
+  "events_label": "Dogodki",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berlin znak",
+    "guitar": "Tramprennen glasba na cesti",
+    "iran": "Štopanje v Iranu",
+    "italy": "Štopanje v Italiji",
+    "moscow": "Moskovski Rdeči trg",
+    "split_dubrovnik": "Tramprennen: Split do Dubrovnika",
+    "taklamakan": "Puščava Taklamakan, Kitajska"
+  },
+  "gallery_header": "Galerija štopanja",
+  "ingress": "Hitchwiki je sodelovalna spletna stran za zbiranje informacij o [[hitchhiking|štopanju]] in drugih načinih izjemno poceni prevoza. Prosto [[Help:Contents|delite svoje znanje]] z drugimi štoparji! Do zdaj imamo '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' člankov v slovenščini, ki so jih napisali in uredili [[hitchhiker|štoparji]] po vsem svetu.",
+  "nav_links": "[[Hitchwiki:Community Portal|Skupnost]] &nbsp;•[[:Category:General info|Splošne informacije]] &nbsp;•&nbsp; [[:maps:| Zemljevid za štopanje]] &nbsp;•&nbsp; [[Top Tips|Najboljši nasveti]] &nbsp;•&nbsp; [[First time hitchhiking|Prvič]] &nbsp;•&nbsp; [[Hitchhiker's safety|Varnost]]  &nbsp;•&nbsp; [[Where to hitchhike|Kje štopati?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Pobiranje štoparjev]] &nbsp;•&nbsp; [[Hitchhiking races|Dirke]]  &nbsp;•&nbsp; [[Roles|Prostovoljstvo pri nas]] </span> &nbsp;•&nbsp; [[Hitchwiki:Prevajanje|Prevajanje]]",
+  "news_edit_label": "dodaj/uredi novice",
+  "news_label": "Novice",
+  "nomad_desc": "vodič za potovanja z nizkim/brez proračuna",
+  "races_header": "NE ŽELITE ZAMUDITI DIRK IN DOGODKOV?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Prijavite se]] na naše novice s svojim [[Special:RequestAccount|Hitchwiki računom]].",
+  "related_header": "Sorodni projekti",
+  "signal_text": "Pridobite nasvete iz prve roke od več kot 800 štoparjev v našem Signal klepetu",
+  "tagline": "Vodič za štopanje po svetu.",
+  "trash_desc": "potapljanje v smetnjake",
+  "trustroots_desc": "izmenjava gostoljubja",
+  "upload_cta": "Ste ujeli čudovit trenutek na cesti? [[Special:Upload|Kliknite tukaj, da naložite svoje fotografije]]!"
+}

@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "adaugă/editează eveniment",
+  "events_label": "Evenimente",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Semnul Tramprennen din Berlin",
+    "guitar": "Tramprennen: muzică pe drum",
+    "iran": "Autostop în Iran",
+    "italy": "Autostop în Italia",
+    "moscow": "Piața Roșie, Moscova",
+    "split_dubrovnik": "Tramprennen: din Split la Dubrovnik",
+    "taklamakan": "Deșertul Taklamakan, China"
+  },
+  "gallery_header": "Galeria autostopului",
+  "ingress": "Hitchwiki este un site colaborativ pentru adunarea de informații despre [[hitchhiking|autostop]] și alte moduri de transport extrem de ieftine. Simte-te liber să-ți [[Help:Contents|împărtășești cunoștințele]] cu alți autostopiști! Până acum avem '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' articole în română, scrise și editate de [[hitchhiker|autostopiști]] din toată lumea.",
+  "nav_links": "[[Hitchwiki:Community Portal|Comunitate]] &nbsp;•[[:Categorie:Informație generală|Informație generală]] &nbsp;•&nbsp; [[:maps:| Hartă pentru autostop]] &nbsp;•&nbsp; [[Top Tips|Sfaturi de bază]] &nbsp;•&nbsp; [[Autostopul pentru prima dată|Prima dată]] &nbsp;•&nbsp; [[Securitatea autostopistului|Securitate]]  &nbsp;•&nbsp; [[Where to hitchhike|Unde faci autostop?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Luarea autostopiștilor]] &nbsp;•&nbsp; [[Hitchhiking races|Curse]]  &nbsp;•&nbsp; [[Roles|Fii voluntar]] &nbsp;•&nbsp; [[Hitchwiki:Traducere|Traducere]]  </span>",
+  "news_edit_label": "adaugă/editează știre",
+  "news_label": "Noutăți",
+  "nomad_desc": "ghid de călătorie cu buget minim/fără buget",
+  "races_header": "NU VREI SĂ RATEZI CURSELE ȘI EVENIMENTELE?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Înscrie-te]] la newsletter-ul nostru cu [[Special:RequestAccount|contul tău Hitchwiki]].",
+  "related_header": "Proiecte înrudite",
+  "signal_text": "Primește sfaturi directe de la peste 800 de autostopiști în chatul nostru Signal",
+  "tagline": "Ghidul pentru autostop în toată lumea.",
+  "trash_desc": "recuperarea mâncării din containere",
+  "trustroots_desc": "schimb de ospitalitate",
+  "upload_cta": "Ai surprins un moment minunat pe drum? [[Special:Upload|Apasă aici pentru a-ți încărca propriile fotografii]]!"
+}

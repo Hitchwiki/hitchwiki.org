@@ -1,0 +1,74 @@
+/* Styles that belong with data/hitchwiki-common.js, loaded family-wide as part of
+ * the "hitchwiki.common" module. Kept here rather than in MediaWiki:Common.css
+ * for the same reason as the JavaScript: there are 34 of those and they drift.
+ */
+
+/* The infobox map: a mosaic of raster tiles, a full-size link to Hitchwiki Maps
+ * underneath, and one pin per well-rated hitchhiking spot on top. */
+.hw-map {
+	position: relative;
+	overflow: hidden;
+	/* Width and height are set inline from the <map> tag's viewport. */
+}
+
+/* Covers the whole mosaic, below the pins. */
+.hw-map-base {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+}
+
+/* One hitchhiking spot. Positioned by its centre, so the dot sits exactly on the
+ * coordinate rather than hanging below and to the right of it. */
+.hw-map-pin {
+	position: absolute;
+	z-index: 2;
+	width: 11px;
+	height: 11px;
+	margin: -6px 0 0 -6px; /* half the box plus the border, to centre it */
+	border: 2px solid #fff;
+	border-radius: 50%;
+	background: #2e7d32;
+	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.55 );
+	cursor: pointer;
+	/* An empty anchor still has to be a box. */
+	display: block;
+	text-decoration: none;
+}
+
+.hw-map-pin:hover,
+.hw-map-pin:focus {
+	width: 15px;
+	height: 15px;
+	margin: -8px 0 0 -8px;
+	z-index: 3;
+	background: #1b5e20;
+	outline: none;
+}
+
+/* Five-star spots earn a brighter dot than merely four-star ones, so a glance at
+ * a city map says where to head first. */
+.hw-map-pin[ data-rating="5" ] {
+	background: #f9a825;
+}
+
+.hw-map-pin[ data-rating="5" ]:hover,
+.hw-map-pin[ data-rating="5" ]:focus {
+	background: #ef6c00;
+}
+
+/* Keyboard users get a visible ring; the dot alone is too subtle to track. */
+.hw-map-pin:focus-visible {
+	box-shadow: 0 0 0 3px rgba( 25, 118, 210, 0.9 );
+}
+
+/* Night mode (Vector 2022's dark theme) darkens the page around a map that stays
+ * bright; a slightly dimmed mosaic stops it glaring. */
+@media screen {
+	html.skin-theme-clientpref-night .hw-map img {
+		filter: brightness( 0.85 ) contrast( 1.05 );
+	}
+}

@@ -14,10 +14,17 @@ tools/hitchwiki-dumps
 oauth/oauth2.key
 oauth/oauth2.pub
 
+# Cached OpenStreetMap tiles for the infobox maps (~270 MB of binaries, and
+# reproducible at any time with tools/seed_map_tiles.py)
+tiles
+
 # Logs
 *.log
+*.out
 logs
 
 google*.html
 
 .claude/
+# Per-map spot data for the infobox map pins (rebuilt by tools/build_map_spots.py)
+spots

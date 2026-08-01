@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "pridėti/redaguoti renginį",
+  "events_label": "Renginiai",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen ženklas, Berlynas",
+    "guitar": "Tramprennen muzika kelyje",
+    "iran": "Autostopas Irane",
+    "italy": "Autostopas Italijoje",
+    "moscow": "Maskva, Raudonoji aikštė",
+    "split_dubrovnik": "Tramprennen: iš Splito į Dubrovniką",
+    "taklamakan": "Taklamakano dykuma, Kinija"
+  },
+  "gallery_header": "Autostopo galerija",
+  "ingress": "Hitchwiki yra bendradarbiavimo svetainė, kaupianti informaciją apie [[hitchhiking|autostopą]] ir kitus itin pigaus keliavimo būdus. Drąsiai [[Help:Contents|pasidalykite savo žiniomis]] su kitais autostopininkais! Kol kas turime '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' straipsnių lietuvių kalba, parašytų ir suredaguotų [[hitchhiker|autostopininkų]] iš viso pasaulio.",
+  "nav_links": "[[Hitchwiki:Community Portal|Bendruomenė]] &nbsp;•[[:Category:General info|Bendra informacija]] &nbsp;•&nbsp; [[:maps:| Autostopo žemėlapis]] &nbsp;•&nbsp; [[Top Tips|Geriausi patarimai]] &nbsp;•&nbsp; [[First time hitchhiking|Pirmą kartą]] &nbsp;•&nbsp; [[Hitchhiker's safety|Saugumas]]  &nbsp;•&nbsp; [[Where to hitchhike|Kur stopinti?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Autostopininkų paėmimas]] &nbsp;•&nbsp; [[Hitchhiking races|Lenktynės]]  &nbsp;•&nbsp; [[Roles|Savanoriaukite su mumis]] &nbsp;•&nbsp; [[Hitchwiki:Vertimas|Vertimas]] </span>",
+  "news_edit_label": "pridėti/redaguoti naujieną",
+  "news_label": "Naujienos",
+  "nomad_desc": "kelionių vadovas mažam/jokiam biudžetui",
+  "races_header": "NENORITE PRALEISTI LENKTYNIŲ IR RENGINIŲ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Užsiregistruokite]] mūsų naujienlaiškiui su savo [[Special:RequestAccount|Hitchwiki paskyra]].",
+  "related_header": "Susiję projektai",
+  "signal_text": "Gaukite patarimų iš pirmų lūpų iš daugiau nei 800 autostopininkų mūsų Signal pokalbyje",
+  "tagline": "Keliavimo autostopu po pasaulį vadovas.",
+  "trash_desc": "maisto ieškojimas šiukšliadėžėse",
+  "trustroots_desc": "svetingumo mainai",
+  "upload_cta": "Užfiksavote nuostabią akimirką kelyje? [[Special:Upload|Spauskite čia ir įkelkite savo nuotraukas]]!"
+}

@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "הוספה/עריכה של אירוע",
+  "events_label": "אירועים",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "שלט Tramprennen, ברלין",
+    "guitar": "Tramprennen: מוזיקה בדרכים",
+    "iran": "טרמפים באיראן",
+    "italy": "טרמפים באיטליה",
+    "moscow": "הכיכר האדומה, מוסקבה",
+    "split_dubrovnik": "Tramprennen: מספליט לדוברובניק",
+    "taklamakan": "מדבר טקלמקן, סין"
+  },
+  "gallery_header": "גלריית הטרמפים",
+  "ingress": "ויקיטרמפ הוא אתר שיתופי לאיסוף מידע על [[hitchhiking|טרמפים]] ודרכי נסיעה זולות אחרות. מוזמנים [[Help:Contents|לשתף את הידע שלכם]] עם טרמפיסטים אחרים! נכון לעכשיו יש לנו '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' ערכים בעברית, שנכתבו ונערכו על ידי [[hitchhiker|טרמפיסטים]] מרחבי העולם.",
+  "nav_links": "[[Hitchwiki:Community Portal|קהילה]] &nbsp;•[[:Category:מידע כללי|מידע כללי]] &nbsp;•&nbsp; [[:maps:| מפה לטרמפים]] &nbsp;•&nbsp; [[טיפים|טיפים מובילים]] &nbsp;•&nbsp; [[פעם ראשונה|פעם ראשונה]] &nbsp;•&nbsp; [[הבטיחות בטרמפים|בטיחות]]  &nbsp;•&nbsp; [[איפה ומתי?|איפה תופסים טרמפ?]]  &nbsp;•&nbsp; [[הנהג|לאסוף טרמפיסטים]] &nbsp;•&nbsp; [[Hitchhiking races|תחרויות]]  &nbsp;•&nbsp; [[Roles|התנדבו איתנו]] &nbsp;•&nbsp; [[Hitchwiki:תרגום|תרגום]]  </span>",
+  "news_edit_label": "הוספה/עריכה של חדשה",
+  "news_label": "חדשות",
+  "nomad_desc": "מדריך טיולים בתקציב נמוך/ללא תקציב",
+  "races_header": "לא רוצים לפספס תחרויות ואירועים?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|הירשמו]] לניוזלטר שלנו עם [[Special:RequestAccount|חשבון ויקיטרמפ]] שלכם.",
+  "related_header": "מיזמים קשורים",
+  "signal_text": "קבלו עצות ממקור ראשון מעל 800 טרמפיסטים בצ'אט הסיגנל שלנו",
+  "tagline": "ויקיטרמפ: המדריך לקפיצה מהנה על הרכב הבא לקראתך",
+  "trash_desc": "חיפוש אוכל וחפצים בפחי אשפה",
+  "trustroots_desc": "רשת אירוח הדדי",
+  "upload_cta": "צילמתם רגע מדהים בדרכים? [[Special:Upload|לחצו כאן כדי להעלות את התמונות שלכם]]!"
+}

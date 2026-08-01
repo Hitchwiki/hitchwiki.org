@@ -39,6 +39,35 @@ docker exec hitchwiki-mediawiki php /var/www/html/maintenance/run.php getConfigu
 
 When making programmatic changes to article content (e.g. via `maintenance/edit.php` or the API), always edit as a bot: pass `--bot` (`edit.php`) or `bot=1`/use a bot-flagged account, so the edits are flagged as bot edits rather than cluttering Recent Changes and watchlists like a human edit would.
 
+## User pages live on the English wiki
+
+The `user` table is shared, so a contributor is one person family-wide and gets
+one profile. A `MediaWikiPerformAction` hook in `wiki/LocalSettings.php` sends
+`NS_USER` and `NS_USER_TALK` views on every non-`en` wiki to the English
+equivalent — `/it/Utente:X` → `/en/User:X`, `/de/Benutzer_Diskussion:X` →
+`/en/User_talk:X` — whether or not a local page exists.
+
+Deliberate exclusions:
+
+- **Subpages stay local.** `User:X/common.js` and `User:X/common.css` are loaded
+  per-wiki by ResourceLoader and would break if they redirected; sandboxes and
+  drafts belong to the wiki they were written on.
+- **Views only.** `action=edit`, `action=history`, `?redirect=no`, `&oldid=` and
+  `&diff=` still reach the local page, so the 310 pre-existing non-`en` user
+  pages and their attribution history remain reachable — they were left in place,
+  not deleted.
+- It is a **302**. A 301 would be cached by browsers and by Cloudflare in front
+  of us and would be painful to walk back.
+
+Caveat of redirecting `NS_USER_TALK`: a message left on a local wiki's talk page
+still triggers that wiki's "you have new messages" bar, but following it lands on
+the English talk page. Point people at `/en/User_talk:X` for conversations.
+
+The 6 non-`en` user pages with real content whose author had no English user page
+were copied to `en` first (bot edits, source page named in the edit summary for
+attribution). 13 more orphans held nothing but `[[categoría:WikiMochilero]]` and
+were not copied.
+
 ## Infoboxes live on the English wiki
 
 Articles on the other language wikis do not carry their own `{{Infobox …}}`.
@@ -52,6 +81,70 @@ English counterpart does not exist yet (mostly Polish, Russian and Ukrainian
 towns); they keep their own infobox until someone writes the English article.
 The migration scripts, and the mapping each language needs, are described in
 `extensions/SharedInfobox/README.md`.
+
+## Main pages are templated, not hand-copied
+
+All 34 language wikis' front pages (`Main Page`, `Hauptseite`, `Accueil`, …)
+share one structure — header, nav links, newsletter box, Events/News boxes,
+gallery, related projects. They used to be 34 independent hand-translated
+copies that silently drifted (missing `__NOTOC__`, a stray editorial HTML
+comment, five of them on an older layout entirely). Now the structure lives
+once in `tools/main_page_template.wikitext` and each language's strings live
+in `tools/main_page_i18n/<lang>.json`:
+
+```bash
+python3 tools/build_main_pages.py render de        # preview generated wikitext
+python3 tools/build_main_pages.py push de           # write it to that wiki
+python3 tools/build_main_pages.py push all          # every language wiki
+python3 tools/build_main_pages.py extract <lang>    # re-pull strings from a live page
+```
+
+A structural change (new section, restyle a class) goes in the template once and
+`push all` propagates it; a wording change goes in one language's JSON file.
+
+`he`, `it`, `ro`, `ru` and `uk` used to have genuinely different, older-style
+front pages (their own box layouts, `it`'s own `{{Eventi}}`/`{{Notizie}}`
+templates, `ru`'s a plain redirect to `АвтостопВики`) instead of translations
+of the standard one. They were brought onto the shared structure — reusing
+whichever of their existing links/phrasing already matched a standard field,
+translating the rest — so run `extract <lang>` again before hand-editing one
+of those five JSON files, in case a manual translation pass improves on what's
+there now. `uk` is the one exception that needed no new translation: it
+already had the full standard layout plus two genuinely extra community boxes,
+which `extra_sections` in its JSON preserves untouched.
+
+## Site JavaScript is family-wide, not per-wiki
+
+Do not put shared JavaScript in `MediaWiki:Common.js`. It lives in
+`data/hitchwiki-common.js` and is loaded on every wiki as the `hitchwiki.common`
+ResourceLoader module (registered in `wiki/LocalSettings.php`). The per-wiki
+`MediaWiki:Common.js` pages used to hold 34 copies of it that had drifted into six
+versions, 26 of them missing the infobox map code altogether.
+
+Each wiki's `MediaWiki:Common.js` is still loaded on top of the module, so
+language-specific JavaScript remains possible — but never paste shared code back
+into one. It would then run twice, and the parts that toggle something (the
+`Special:Block` checkbox defaults) would toggle straight back off.
+
+## Infobox map tiles are self-hosted
+
+The `<map lat=… lng=… zoom=… />` tag in an infobox is turned into a 3×3 mosaic of
+OpenStreetMap raster tiles by `data/hitchwiki-common.js`. The tiles come from our
+own origin at `/tiles/{z}/{x}/{y}.png` (`./tiles` bind-mounted read-only into the
+container), **not** from `tile.openstreetmap.org` — fetching them per page view
+across ~4,500 articles violates the OSM tile usage policy.
+
+`tools/seed_map_tiles.py` derives the needed set from the wikitext and downloads
+what is missing; a weekly cron tops it up. A tile that is not cached yet falls back
+to OSM once, so a newly added map is never a blank hole.
+
+On top of the mosaic each map draws a clickable pin per well-rated hitchhiking spot,
+from `spots/{z}/{x}/{y}.js` (`tools/build_map_spots.py`, rebuilt daily). Note the
+`.js` extension on what is really JSON: **Cloudflare fronts the site and answers a
+plain `.json` request with a 403 interstitial**, while `.js`/`.css`/`.png` pass as
+static assets. Both static directories carry a `.htaccess` with `RewriteEngine Off`,
+without which a miss is handed to MediaWiki's rewrite as a 301 into `index.php`
+instead of a 404. See `data/README.md`.
 
 ## Troubleshooting
 

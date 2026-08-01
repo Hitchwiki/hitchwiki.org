@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "add/edit event",
+  "events_label": "Events",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berlin sign",
+    "guitar": "Tramprennen music on the road",
+    "iran": "Hitchhiking in Iran",
+    "italy": "Hitchhiking in Italy",
+    "moscow": "Moscow Red Square",
+    "split_dubrovnik": "Tramprennen: Split to Dubrovnik",
+    "taklamakan": "Taklamakan Desert, China"
+  },
+  "gallery_header": "Hitchhiking Gallery",
+  "ingress": "[[Hitchwiki:About|Hitchwiki]] is a collaborative website for gathering information about [[hitchhiking]] and other ways of extremely cheap transport. Feel free to [[Help:Contents|share your knowledge]] with other hitchhikers! So far we have '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' articles in English, written and edited by [[hitchhiker]]s around the globe.",
+  "nav_links": "[[Hitchwiki:Community Portal|Community]] &nbsp;•[[:Category:General info|General info]] &nbsp;•&nbsp; [[:maps:| Map for Hitchhiking]] &nbsp;•&nbsp; [[Top Tips]] &nbsp;•&nbsp; [[First time hitchhiking|First time]] &nbsp;•&nbsp; [[Hitchhiker's safety|Safety]]  &nbsp;•&nbsp; [[Where to hitchhike|Where to hitchhike?]]  &nbsp;•&nbsp; [[Picking up hitchhikers]] &nbsp;•&nbsp; [[Hitchhiking races|Races]] &nbsp;•&nbsp; [[Roles|Volunteer with us]] &nbsp;•&nbsp; [[Hitchwiki:Translation|Translation]]  </span>",
+  "news_edit_label": "add/edit news",
+  "news_label": "News",
+  "nomad_desc": "low/no budget travel guide",
+  "races_header": "DON'T WANT TO MISS OUT ON RACES AND EVENTS?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Register]] to our newsletter with your [[Special:RequestAccount|Hitchwiki account]].",
+  "related_header": "Related projects",
+  "signal_text": "Get first-hand advice from over 800 hitchhikers in our Signal Chat",
+  "tagline": "The Guide to Hitchhiking the World.",
+  "trash_desc": "dumpster diving",
+  "trustroots_desc": "hospitality exchange",
+  "upload_cta": "Captured an amazing moment on the road? [[Special:Upload|Click here to upload your own photos]]!"
+}

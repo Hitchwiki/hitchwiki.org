@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "افزودن/ویرایش رویداد",
+  "events_label": "رویدادها",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "تابلوی ترامپرنن برلین",
+    "guitar": "موسیقی ترامپرنن در جاده",
+    "iran": "سفر با خودرو در ایران",
+    "italy": "سفر با خودرو در ایتالیا",
+    "moscow": "میدان سرخ مسکو",
+    "split_dubrovnik": "ترامپرنن: اسپلیت به دوبرونیک",
+    "taklamakan": "بیابان تکله‌مکان، چین"
+  },
+  "gallery_header": "گالری سفر با خودرو",
+  "ingress": "Hitchwiki یک وب‌سایت مشارکتی برای جمع‌آوری اطلاعات درباره [[hitchhiking]] و دیگر روش‌های حمل و نقل بسیار ارزان است. احساس راحتی کنید و [[Help:Contents|دانش خود را به اشتراک بگذارید]] با دیگر مسافران! تاکنون ما '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' مقاله به زبان فارسی داریم که توسط [[hitchhiker]]ها از سراسر جهان نوشته و ویرایش شده‌اند.",
+  "nav_links": "[[Hitchwiki:Community Portal|جامعه]] &nbsp;•[[:Category:General info|اطلاعات عمومی]] &nbsp;•&nbsp; [[:maps:| نقشه برای سفر با خودرو]] &nbsp;•&nbsp; [[Top Tips|نکات برتر]] &nbsp;•&nbsp; [[First time hitchhiking|اولین بار]] &nbsp;•&nbsp; [[Hitchhiker's safety|ایمنی]]  &nbsp;•&nbsp; [[Where to hitchhike|کجا سفر با خودرو کنیم؟]]  &nbsp;•&nbsp; [[Picking up hitchhikers|سوار کردن مسافران]] &nbsp;•&nbsp; [[Hitchhiking races|مسابقات]]  &nbsp;•&nbsp; [[Roles|با ما داوطلب شوید]] </span> &nbsp;•&nbsp; [[Hitchwiki:ترجمه|ترجمه]]",
+  "news_edit_label": "افزودن/ویرایش اخبار",
+  "news_label": "اخبار",
+  "nomad_desc": "راهنمای سفر با بودجه کم/بدون بودجه",
+  "races_header": "نمی‌خواهید مسابقات و رویدادها را از دست بدهید؟",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|ثبت‌نام]] در خبرنامه ما با [[Special:RequestAccount|حساب کاربری Hitchwiki]] خود.",
+  "related_header": "پروژه‌های مرتبط",
+  "signal_text": "دریافت مشاوره مستقیم از بیش از ۸۰۰ مسافر در چت سیگنال ما",
+  "tagline": "راهنمای سفر با خودرو در سراسر جهان.",
+  "trash_desc": "جستجو در زباله‌دان‌ها",
+  "trustroots_desc": "تبادل مهمان‌نوازی",
+  "upload_cta": "لحظه‌ای شگفت‌انگیز را در جاده ثبت کرده‌اید؟ [[Special:Upload|اینجا کلیک کنید تا عکس‌های خود را آپلود کنید]]!"
+}

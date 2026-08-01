@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "Termin hinzufügen/bearbeiten",
+  "events_label": "Termine",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen-Schild, Berlin",
+    "guitar": "Tramprennen: Musik unterwegs",
+    "iran": "Trampen im Iran",
+    "italy": "Trampen in Italien",
+    "moscow": "Moskau, Roter Platz",
+    "split_dubrovnik": "Tramprennen: von Split nach Dubrovnik",
+    "taklamakan": "Taklamakan-Wüste, China"
+  },
+  "gallery_header": "Trampergalerie",
+  "ingress": "Tramperwiki ist eine gemeinschaftliche Website zum Sammeln von Informationen über das [[hitchhiking|Trampen]] und andere Arten extrem günstiger Fortbewegung. [[Help:Contents|Teile dein Wissen]] gern mit anderen Trampern! Bisher haben wir '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' deutschsprachige Artikel, geschrieben und bearbeitet von [[hitchhiker|Trampern]] rund um den Globus.",
+  "nav_links": "[[Hitchwiki:Community Portal|Community]] &nbsp;•[[:Category:General info|Allgemeine Infos]] &nbsp;•&nbsp; [[:maps:| Tramperkarte]] &nbsp;•&nbsp; [[Top Tips|Top-Tipps]] &nbsp;•&nbsp; [[First time hitchhiking|Das erste Mal]] &nbsp;•&nbsp; [[Hitchhiker's safety|Sicherheit]]  &nbsp;•&nbsp; [[Where to hitchhike|Wo trampen?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Tramper mitnehmen]] &nbsp;•&nbsp; [[Hitchhiking races|Rennen]]  &nbsp;•&nbsp; [[Roles|Werde aktiv bei uns]] &nbsp;•&nbsp; [[Tramperwiki:Übersetzung|Übersetzung]] </span>",
+  "news_edit_label": "Neuigkeit hinzufügen/bearbeiten",
+  "news_label": "Neuigkeiten",
+  "nomad_desc": "Reiseführer für kleines/kein Budget",
+  "races_header": "DU WILLST KEINE RENNEN UND EVENTS VERPASSEN?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Registriere dich]] für unseren Newsletter mit deinem [[Special:RequestAccount|Hitchwiki-Konto]].",
+  "related_header": "Verwandte Projekte",
+  "signal_text": "Hol dir Rat aus erster Hand von über 800 Trampern in unserem Signal-Chat",
+  "tagline": "Der Ratgeber fürs Trampen um die Welt.",
+  "trash_desc": "Containern (Dumpster Diving)",
+  "trustroots_desc": "Gastfreundschaftsnetzwerk",
+  "upload_cta": "Einen tollen Moment unterwegs eingefangen? [[Special:Upload|Klicke hier, um deine eigenen Fotos hochzuladen]]!"
+}

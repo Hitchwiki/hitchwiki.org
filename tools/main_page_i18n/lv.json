@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "pievienot/labot pasākumu",
+  "events_label": "Pasākumi",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berlīnes zīme",
+    "guitar": "Tramprennen mūzika ceļā",
+    "iran": "Stopēšana Irānā",
+    "italy": "Stopēšana Itālijā",
+    "moscow": "Maskavas Sarkanā laukuma",
+    "split_dubrovnik": "Tramprennen: Splita uz Dubrovniku",
+    "taklamakan": "Taklamakāna tuksnesis, Ķīna"
+  },
+  "gallery_header": "Stopēšanas galerija",
+  "ingress": "Hitchwiki ir sadarbības vietne, kurā tiek apkopota informācija par [[hitchhiking|stopēšanu]] un citiem ārkārtīgi lētiem transporta veidiem. Jūtieties brīvi [[Help:Contents|dalīties ar savām zināšanām]] ar citiem stopētājiem! Līdz šim mums ir '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' raksti latviešu valodā, kurus rakstījuši un rediģējuši [[hitchhiker|stopētāji]] no visas pasaules.",
+  "nav_links": "[[Hitchwiki:Community Portal|Kopiena]] &nbsp;•[[:Category:General info|Vispārīga informācija]] &nbsp;•&nbsp; [[:maps:| Karte stopēšanai]] &nbsp;•&nbsp; [[Top Tips|Labākie padomi]] &nbsp;•&nbsp; [[First time hitchhiking|Pirmā reize]] &nbsp;•&nbsp; [[Hitchhiker's safety|Drošība]]  &nbsp;•&nbsp; [[Where to hitchhike|Kur stopēt?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Stopētāju uzņemšana]] &nbsp;•&nbsp; [[Hitchhiking races|Sacensības]]  &nbsp;•&nbsp; [[Roles|Brīvprātīgais darbs pie mums]] </span> &nbsp;•&nbsp; [[Hitchwiki:Tulkošana|Tulkošana]]",
+  "news_edit_label": "pievienot/labot jaunumu",
+  "news_label": "Jaunumi",
+  "nomad_desc": "ceļvedis ceļošanai ar zemu/bez budžeta",
+  "races_header": "NEVĒLATIES PALAIST GARĀM SACENSĪBAS UN PASĀKUMUS?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Reģistrējieties]] mūsu jaunumu vēstulei ar savu [[Special:RequestAccount|Hitchwiki kontu]].",
+  "related_header": "Saistītie projekti",
+  "signal_text": "Saņemiet padomus no vairāk nekā 800 stopētājiem mūsu Signal čatā",
+  "tagline": "Ceļvedis stopēšanai pa pasauli.",
+  "trash_desc": "konteineru niršana",
+  "trustroots_desc": "viesmīlības apmaiņa",
+  "upload_cta": "Vai esat iemūžinājis brīnišķīgu mirkli ceļā? [[Special:Upload|Klikšķiniet šeit, lai augšupielādētu savas fotogrāfijas]]!"
+}

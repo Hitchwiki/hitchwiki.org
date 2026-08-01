@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "etkinlik ekle/düzenle",
+  "events_label": "Etkinlikler",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen tabelası, Berlin",
+    "guitar": "Tramprennen: yolda müzik",
+    "iran": "İran'da otostop",
+    "italy": "İtalya'da otostop",
+    "moscow": "Moskova, Kızıl Meydan",
+    "split_dubrovnik": "Tramprennen: Split'ten Dubrovnik'e",
+    "taklamakan": "Taklamakan Çölü, Çin"
+  },
+  "gallery_header": "Otostop galerisi",
+  "ingress": "Otostopviki, [[hitchhiking|otostop]] ve son derece ucuz diğer ulaşım yöntemleri hakkında bilgi toplamak için oluşturulmuş ortak bir web sitesidir. Bildiklerinizi diğer otostopçularla [[Help:Contents|paylaşmaktan]] çekinmeyin! Şu ana kadar dünyanın dört bir yanından [[hitchhiker|otostopçular]] tarafından yazılıp düzenlenen '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' Türkçe makalemiz var.",
+  "nav_links": "[[Hitchwiki:Community Portal|Topluluk]] &nbsp;•[[:Category:General info|Genel bilgi]] &nbsp;•&nbsp; [[:maps:| Otostop haritası]] &nbsp;•&nbsp; [[Top Tips|En iyi ipuçları]] &nbsp;•&nbsp; [[First time hitchhiking|İlk kez]] &nbsp;•&nbsp; [[Hitchhiker's safety|Güvenlik]]  &nbsp;•&nbsp; [[Where to hitchhike|Nerede otostop çekmeli?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Otostopçu almak]] &nbsp;•&nbsp; [[Hitchhiking races|Yarışlar]]  &nbsp;•&nbsp; [[Roles|Bizimle gönüllü olun]] &nbsp;•&nbsp; [[Otostopviki:Çeviri|Çeviri]] </span>",
+  "news_edit_label": "haber ekle/düzenle",
+  "news_label": "Haberler",
+  "nomad_desc": "düşük/sıfır bütçeli seyahat rehberi",
+  "races_header": "YARIŞLARI VE ETKİNLİKLERİ KAÇIRMAK İSTEMİYOR MUSUNUZ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Kaydolun]] ve [[Special:RequestAccount|Hitchwiki hesabınızla]] bültenimize abone olun.",
+  "related_header": "İlgili projeler",
+  "signal_text": "Signal sohbetimizde 800'den fazla otostopçudan ilk elden tavsiye alın",
+  "tagline": "Dünyayı otostopla gezmenin rehberi.",
+  "trash_desc": "çöpten yiyecek toplama",
+  "trustroots_desc": "misafirperverlik ağı",
+  "upload_cta": "Yolda harika bir an mı yakaladınız? [[Special:Upload|Kendi fotoğraflarınızı yüklemek için buraya tıklayın]]!"
+}

@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "dodaj/edytuj wydarzenie",
+  "events_label": "Wydarzenia",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tablica Tramprennen, Berlin",
+    "guitar": "Tramprennen: muzyka w drodze",
+    "iran": "Autostop w Iranie",
+    "italy": "Autostop we Włoszech",
+    "moscow": "Moskwa, Plac Czerwony",
+    "split_dubrovnik": "Tramprennen: ze Splitu do Dubrownika",
+    "taklamakan": "Pustynia Takla Makan, Chiny"
+  },
+  "gallery_header": "Galeria autostopu",
+  "ingress": "Autostopwiki to wspólna strona internetowa gromadząca informacje o [[hitchhiking|autostopie]] i innych sposobach niezwykle taniego podróżowania. Śmiało [[Help:Contents|podziel się swoją wiedzą]] z innymi autostopowiczami! Jak dotąd mamy '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' artykułów po polsku, napisanych i redagowanych przez [[hitchhiker|autostopowiczów]] z całego świata.",
+  "nav_links": "[[Hitchwiki:Community Portal|Społeczność]] &nbsp;•[[:Category:General info|Informacje ogólne]] &nbsp;•&nbsp; [[:maps:| Mapa autostopu]] &nbsp;•&nbsp; [[Top Tips|Najlepsze wskazówki]] &nbsp;•&nbsp; [[First time hitchhiking|Pierwszy raz]] &nbsp;•&nbsp; [[Hitchhiker's safety|Bezpieczeństwo]]  &nbsp;•&nbsp; [[Where to hitchhike|Gdzie stopować?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Zabieranie autostopowiczów]] &nbsp;•&nbsp; [[Hitchhiking races|Wyścigi]]  &nbsp;•&nbsp; [[Roles|Zostań wolontariuszem]] &nbsp;•&nbsp; [[Autostopwiki:Tłumaczenie|Tłumaczenie]] </span>",
+  "news_edit_label": "dodaj/edytuj aktualność",
+  "news_label": "Aktualności",
+  "nomad_desc": "przewodnik po tanim/bezkosztowym podróżowaniu",
+  "races_header": "NIE CHCESZ PRZEGAPIĆ WYŚCIGÓW I WYDARZEŃ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Zarejestruj się]] do naszego newslettera za pomocą [[Special:RequestAccount|konta Hitchwiki]].",
+  "related_header": "Powiązane projekty",
+  "signal_text": "Zdobądź porady z pierwszej ręki od ponad 800 autostopowiczów na naszym czacie Signal",
+  "tagline": "Przewodnik po autostopie dookoła świata.",
+  "trash_desc": "nurkowanie w śmietnikach",
+  "trustroots_desc": "wymiana gościnności",
+  "upload_cta": "Uchwyciłeś niezwykły moment w drodze? [[Special:Upload|Kliknij tutaj, aby przesłać własne zdjęcia]]!"
+}

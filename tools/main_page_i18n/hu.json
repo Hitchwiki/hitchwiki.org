@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "esemény hozzáadása/szerkesztése",
+  "events_label": "Események",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berlin tábla",
+    "guitar": "Tramprennen zene az úton",
+    "iran": "Stoppolás Iránban",
+    "italy": "Stoppolás Olaszországban",
+    "moscow": "Moszkva Vörös tér",
+    "split_dubrovnik": "Tramprennen: Splitből Dubrovnikba",
+    "taklamakan": "Taklamakan sivatag, Kína"
+  },
+  "gallery_header": "Stoppolási Galéria",
+  "ingress": "A Hitchwiki egy közösségi weboldal, amely információkat gyűjt a [[hitchhiking|stoppolásról]] és más rendkívül olcsó utazási módokról. Nyugodtan [[Help:Contents|oszd meg tudásodat]] más stopposokkal! Eddig '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' cikkünk van magyarul, amelyeket a világ minden tájáról érkező [[hitchhiker|stopposok]] írtak és szerkesztettek.",
+  "nav_links": "[[Hitchwiki:Community Portal|Közösség]] &nbsp;•[[:Category:General info|Általános információk]] &nbsp;•&nbsp; [[:maps:| Stoppolási térkép]] &nbsp;•&nbsp; [[Top Tips|Legjobb tippek]] &nbsp;•&nbsp; [[First time hitchhiking|Első alkalom]] &nbsp;•&nbsp; [[Hitchhiker's safety|Biztonság]]  &nbsp;•&nbsp; [[Where to hitchhike|Hol stoppoljunk?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Stopposok felvétele]] &nbsp;•&nbsp; [[Hitchhiking races|Versenyek]]  &nbsp;•&nbsp; [[Roles|Önkénteskedj velünk]] </span> &nbsp;•&nbsp; [[Hitchwiki:Fordítás|Fordítás]]",
+  "news_edit_label": "hír hozzáadása/szerkesztése",
+  "news_label": "Hírek",
+  "nomad_desc": "alacsony/nincs költségvetésű utazási útmutató",
+  "races_header": "NEM AKARSZ LEMARADNI A VERSENYEKRŐL ÉS ESEMÉNYEKRŐL?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Iratkozz fel]] a hírlevelünkre a [[Special:RequestAccount|Hitchwiki fiókoddal]].",
+  "related_header": "Kapcsolódó projektek",
+  "signal_text": "Szerezz első kézből tanácsokat több mint 800 stoppostól a Signal csevegésünkben",
+  "tagline": "Útmutató a világ körüli stoppoláshoz.",
+  "trash_desc": "kukázás",
+  "trustroots_desc": "vendéglátó csere",
+  "upload_cta": "Elkaptál egy csodálatos pillanatot az úton? [[Special:Upload|Kattints ide, hogy feltöltsd saját fotóidat]]!"
+}

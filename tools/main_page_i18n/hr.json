@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "dodaj/uredi događaj",
+  "events_label": "Događaji",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen znak, Berlin",
+    "guitar": "Tramprennen: glazba na putu",
+    "iran": "Autostopiranje u Iranu",
+    "italy": "Autostopiranje u Italiji",
+    "moscow": "Moskva, Crveni trg",
+    "split_dubrovnik": "Tramprennen: od Splita do Dubrovnika",
+    "taklamakan": "Pustinja Taklamakan, Kina"
+  },
+  "gallery_header": "Galerija autostopa",
+  "ingress": "Hitchwiki je suradnička web stranica za prikupljanje informacija o [[hitchhiking|autostopiranju]] i drugim načinima iznimno jeftinog putovanja. Slobodno [[Help:Contents|podijelite svoje znanje]] s drugim autostoperima! Dosad imamo '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' članaka na hrvatskom, koje su napisali i uredili [[hitchhiker|autostoperi]] iz cijelog svijeta.",
+  "nav_links": "[[Hitchwiki:Community Portal|Zajednica]] &nbsp;•[[:Category:General info|Opće informacije]] &nbsp;•&nbsp; [[:maps:| Karta za autostop]] &nbsp;•&nbsp; [[Top Tips|Najbolji savjeti]] &nbsp;•&nbsp; [[First time hitchhiking|Prvi put]] &nbsp;•&nbsp; [[Hitchhiker's safety|Sigurnost]]  &nbsp;•&nbsp; [[Where to hitchhike|Gdje autostopirati?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Pokupljanje autostopera]] &nbsp;•&nbsp; [[Hitchhiking races|Utrke]]  &nbsp;•&nbsp; [[Roles|Volontirajte s nama]] &nbsp;•&nbsp; [[Hitchwiki:Prevođenje|Prevođenje]] </span>",
+  "news_edit_label": "dodaj/uredi novost",
+  "news_label": "Novosti",
+  "nomad_desc": "vodič za putovanja s malim/nikakvim budžetom",
+  "races_header": "NE ŽELITE PROPUSTITI UTRKE I DOGAĐAJE?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Registrirajte se]] za naš newsletter sa svojim [[Special:RequestAccount|Hitchwiki računom]].",
+  "related_header": "Povezani projekti",
+  "signal_text": "Dobijte savjete iz prve ruke od više od 800 autostopera u našem Signal chatu",
+  "tagline": "Vodič za autostopiranje svijetom.",
+  "trash_desc": "prekapanje po kontejnerima",
+  "trustroots_desc": "razmjena gostoprimstva",
+  "upload_cta": "Uhvatili ste nevjerojatan trenutak na putu? [[Special:Upload|Kliknite ovdje za prijenos vlastitih fotografija]]!"
+}

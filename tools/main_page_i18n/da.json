@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "tilføj/rediger event",
+  "events_label": "Events",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berlin skilt",
+    "guitar": "Tramprennen musik på vejen",
+    "iran": "Tomle i Iran",
+    "italy": "Tomle i Italien",
+    "moscow": "Den Røde Plads i Moskva",
+    "split_dubrovnik": "Tramprennen: Split til Dubrovnik",
+    "taklamakan": "Taklamakan-ørkenen, Kina"
+  },
+  "gallery_header": "Tomle Galleri",
+  "ingress": "Hitchwiki er en samarbejdsplatform til at samle information om [[hitchhiking|tomlen]] og andre måder at rejse ekstremt billigt på. Del gerne din [[Help:Contents|viden]] med andre tomlere! Indtil videre har vi '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' artikler på dansk, skrevet og redigeret af [[hitchhiker|tomlere]] verden over.",
+  "nav_links": "[[Hitchwiki:Community Portal|Fællesskab]] &nbsp;•[[:Category:General info|Generel info]] &nbsp;•&nbsp; [[:maps:| Kort til tomlen]] &nbsp;•&nbsp; [[Top Tips|Top tips]] &nbsp;•&nbsp; [[First time hitchhiking|Første gang]] &nbsp;•&nbsp; [[Hitchhiker's safety|Sikkerhed]]  &nbsp;•&nbsp; [[Where to hitchhike|Hvor skal man tomle?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Samle tomlere op]] &nbsp;•&nbsp; [[Hitchhiking races|Løb]]  &nbsp;•&nbsp; [[Roles|Bliv frivillig hos os]] </span> &nbsp;•&nbsp; [[Hitchwiki:Oversættelse|Oversættelse]]",
+  "news_edit_label": "tilføj/rediger nyheder",
+  "news_label": "Nyheder",
+  "nomad_desc": "lav/ingen budget rejseguide",
+  "races_header": "VIL DU IKKE GÅ GLIP AF LØB OG EVENTS?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Tilmeld]] dig vores nyhedsbrev med din [[Special:RequestAccount|Hitchwiki-konto]].",
+  "related_header": "Relaterede projekter",
+  "signal_text": "Få førstehåndsråd fra over 800 tomlere i vores Signal Chat",
+  "tagline": "Guiden til at tomle verden rundt.",
+  "trash_desc": "skraldedykning",
+  "trustroots_desc": "gæstfrihedsudveksling",
+  "upload_cta": "Har du fanget et fantastisk øjeblik på vejen? [[Special:Upload|Klik her for at uploade dine egne billeder]]!"
+}

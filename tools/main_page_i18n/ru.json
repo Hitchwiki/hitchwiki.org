@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "добавить/редактировать событие",
+  "events_label": "События",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Указатель Tramprennen, Берлин",
+    "guitar": "Tramprennen: музыка в дороге",
+    "iran": "Автостоп в Иране",
+    "italy": "Автостоп в Италии",
+    "moscow": "Красная площадь, Москва",
+    "split_dubrovnik": "Tramprennen: из Сплита в Дубровник",
+    "taklamakan": "Пустыня Такла-Макан, Китай"
+  },
+  "gallery_header": "Галерея автостопа",
+  "ingress": "АвтостопВики — это совместный сайт для сбора информации об [[hitchhiking|автостопе]] и других крайне дешёвых способах передвижения. Делитесь своими знаниями с другими автостопщиками! Сейчас у нас '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' статей на русском языке, написанных и отредактированных [[hitchhiker|автостопщиками]] со всего мира.",
+  "nav_links": "[[Hitchwiki:Community Portal|Сообщество]] &nbsp;•[[:Категория:Общая информация|Общая информация]] &nbsp;•&nbsp; [[:maps:| Карта для автостопа]] &nbsp;•&nbsp; [[Основные советы|Основные советы]] &nbsp;•&nbsp; [[Автостопом в первый раз|Первый раз]] &nbsp;•&nbsp; [[Безопасность автостопщика|Безопасность]]  &nbsp;•&nbsp; [[Where to hitchhike|Где стопить?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Подбор автостопщиков]] &nbsp;•&nbsp; [[Hitchhiking races|Гонки]]  &nbsp;•&nbsp; [[Roles|Стань волонтёром]] &nbsp;•&nbsp; [[Hitchwiki:Перевод|Перевод]]  </span>",
+  "news_edit_label": "добавить/редактировать новость",
+  "news_label": "Новости",
+  "nomad_desc": "гид по путешествиям с минимальным бюджетом",
+  "races_header": "НЕ ХОЧЕШЬ ПРОПУСТИТЬ ГОНКИ И СОБЫТИЯ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Подпишись]] на нашу рассылку со своим [[Special:RequestAccount|аккаунтом Hitchwiki]].",
+  "related_header": "Похожие проекты",
+  "signal_text": "Получи советы из первых рук от более чем 800 автостопщиков в нашем Signal-чате",
+  "tagline": "Путеводитель по автостопу вокруг света.",
+  "trash_desc": "фриганизм",
+  "trustroots_desc": "обмен гостеприимством",
+  "upload_cta": "Поймал классный момент в дороге? [[Special:Upload|Нажми сюда, чтобы загрузить свои фото]]!"
+}

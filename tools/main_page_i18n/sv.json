@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "lägg till/redigera evenemang",
+  "events_label": "Evenemang",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berlin skylt",
+    "guitar": "Tramprennen musik på vägen",
+    "iran": "Liftning i Iran",
+    "italy": "Liftning i Italien",
+    "moscow": "Moskva Röda torget",
+    "split_dubrovnik": "Tramprennen: Split till Dubrovnik",
+    "taklamakan": "Taklamakanöknen, Kina"
+  },
+  "gallery_header": "Liftargalleri",
+  "ingress": "Hitchwiki är en samarbetswebbplats för att samla information om [[hitchhiking|liftning]] och andra sätt att resa extremt billigt. Känn dig fri att [[Help:Contents|dela din kunskap]] med andra liftare! Hittills har vi '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' artiklar på svenska, skrivna och redigerade av [[hitchhiker|liftare]] runt om i världen.",
+  "nav_links": "[[Hitchwiki:Community Portal|Community]] &nbsp;•[[:Category:General info|Allmän info]] &nbsp;•&nbsp; [[:maps:| Karta för liftning]] &nbsp;•&nbsp; [[Top Tips|Topp Tips]] &nbsp;•&nbsp; [[First time hitchhiking|Första gången]] &nbsp;•&nbsp; [[Hitchhiker's safety|Säkerhet]]  &nbsp;•&nbsp; [[Where to hitchhike|Var ska man lifta?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Plocka upp liftare]] &nbsp;•&nbsp; [[Hitchhiking races|Tävlingar]]  &nbsp;•&nbsp; [[Roles|Volontärarbeta med oss]] </span> &nbsp;•&nbsp; [[Hitchwiki:Översättning|Översättning]]",
+  "news_edit_label": "lägg till/redigera nyheter",
+  "news_label": "Nyheter",
+  "nomad_desc": "låg/ingen budget reseguide",
+  "races_header": "VILL DU INTE MISSA TÄVLINGAR OCH EVENEMANG?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Registrera dig]] för vårt nyhetsbrev med ditt [[Special:RequestAccount|Hitchwiki-konto]].",
+  "related_header": "Relaterade projekt",
+  "signal_text": "Få förstahandsråd från över 800 liftare i vår Signal-chat",
+  "tagline": "Guiden till att lifta världen runt.",
+  "trash_desc": "dumpstring",
+  "trustroots_desc": "gästfrihetsutbyte",
+  "upload_cta": "Fångade du ett fantastiskt ögonblick på vägen? [[Special:Upload|Klicka här för att ladda upp dina egna foton]]!"
+}

@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "ajouter/modifier un événement",
+  "events_label": "Événements",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Panneau Tramprennen, Berlin",
+    "guitar": "Tramprennen : musique sur la route",
+    "iran": "Auto-stop en Iran",
+    "italy": "Auto-stop en Italie",
+    "moscow": "Moscou, place Rouge",
+    "split_dubrovnik": "Tramprennen : de Split à Dubrovnik",
+    "taklamakan": "Désert du Taklamakan, Chine"
+  },
+  "gallery_header": "Galerie de l'auto-stop",
+  "ingress": "Hitchwiki est un site collaboratif qui rassemble des informations sur l'[[hitchhiking|auto-stop]] et d'autres moyens de transport extrêmement bon marché. N'hésitez pas à [[Help:Contents|partager vos connaissances]] avec d'autres auto-stoppeurs ! Nous avons déjà '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' articles en français, écrits et modifiés par des [[hitchhiker|auto-stoppeurs]] du monde entier.",
+  "nav_links": "[[Hitchwiki:Community Portal|Communauté]] &nbsp;•[[:Category:General info|Infos générales]] &nbsp;•&nbsp; [[:maps:| Carte pour l'auto-stop]] &nbsp;•&nbsp; [[Top Tips|Meilleurs conseils]] &nbsp;•&nbsp; [[First time hitchhiking|Première fois]] &nbsp;•&nbsp; [[Hitchhiker's safety|Sécurité]]  &nbsp;•&nbsp; [[Where to hitchhike|Où faire du stop ?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Prendre des auto-stoppeurs]] &nbsp;•&nbsp; [[Hitchhiking races|Courses]]  &nbsp;•&nbsp; [[Roles|Devenez bénévole]] &nbsp;•&nbsp; [[Hitchwiki:Traduction|Traduction]] </span>",
+  "news_edit_label": "ajouter/modifier une actualité",
+  "news_label": "Actualités",
+  "nomad_desc": "guide de voyage à petit/sans budget",
+  "races_header": "VOUS NE VOULEZ PAS MANQUER LES COURSES ET LES ÉVÉNEMENTS ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Inscrivez-vous]] à notre newsletter avec votre [[Special:RequestAccount|compte Hitchwiki]].",
+  "related_header": "Projets liés",
+  "signal_text": "Obtenez des conseils de première main de plus de 800 auto-stoppeurs dans notre chat Signal",
+  "tagline": "Le guide de l'auto-stop à travers le monde.",
+  "trash_desc": "récupération dans les poubelles",
+  "trustroots_desc": "échange d'hospitalité",
+  "upload_cta": "Vous avez capturé un moment inoubliable sur la route ? [[Special:Upload|Cliquez ici pour téléverser vos propres photos]] !"
+}

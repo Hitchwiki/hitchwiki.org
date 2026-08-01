@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "aggiungi/modifica evento",
+  "events_label": "Eventi",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Cartello del Tramprennen a Berlino",
+    "guitar": "Tramprennen: musica in viaggio",
+    "iran": "Autostop in Iran",
+    "italy": "Autostop in Italia",
+    "moscow": "Piazza Rossa, Mosca",
+    "split_dubrovnik": "Tramprennen: da Spalato a Dubrovnik",
+    "taklamakan": "Deserto del Taklamakan, Cina"
+  },
+  "gallery_header": "Galleria dell'autostop",
+  "ingress": "Hitchwiki è un sito collaborativo per raccogliere informazioni sull'[[hitchhiking|autostop]] e altri modi di viaggiare a bassissimo costo. Sentiti libero di [[Help:Contents|condividere le tue conoscenze]] con altri autostoppisti! Finora abbiamo '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' articoli in italiano, scritti e curati da [[hitchhiker|autostoppisti]] di tutto il mondo.",
+  "nav_links": "[[Hitchwiki:Community Portal|Comunità]] &nbsp;•[[:Categoria:Informazioni generali|Informazioni generali]] &nbsp;•&nbsp; [[:maps:| Mappa per l'autostop]] &nbsp;•&nbsp; [[Consigli generali|Consigli utili]] &nbsp;•&nbsp; [[Prima volta|Prima volta]] &nbsp;•&nbsp; [[Sicurezza|Sicurezza]]  &nbsp;•&nbsp; [[Dove fare autostop|Dove fare autostop?]]  &nbsp;•&nbsp; [[Dare un passaggio ad un autostoppista|Dare un passaggio]] &nbsp;•&nbsp; [[Hitchhiking races|Gare]]  &nbsp;•&nbsp; [[Roles|Diventa volontario]] &nbsp;•&nbsp; [[Hitchwiki:Traduzione|Traduzione]]  </span>",
+  "news_edit_label": "aggiungi/modifica notizia",
+  "news_label": "Notizie",
+  "nomad_desc": "guida di viaggio a basso/nessun budget",
+  "races_header": "NON VUOI PERDERTI GARE ED EVENTI?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Iscriviti]] alla nostra newsletter con il tuo [[Special:RequestAccount|account Hitchwiki]].",
+  "related_header": "Progetti collegati",
+  "signal_text": "Ricevi consigli di prima mano da oltre 800 autostoppisti nella nostra Chat Signal",
+  "tagline": "La Guida per girare il Mondo in Autostop!",
+  "trash_desc": "recupero cibo nei cassonetti",
+  "trustroots_desc": "scambio di ospitalità",
+  "upload_cta": "Hai catturato un momento fantastico in viaggio? [[Special:Upload|Clicca qui per caricare le tue foto]]!"
+}

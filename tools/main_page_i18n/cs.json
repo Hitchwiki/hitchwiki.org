@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "přidat/upravit akci",
+  "events_label": "Akce",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen, Berlín",
+    "guitar": "Tramprennen, hudba na cestě",
+    "iran": "Autostop v Íránu",
+    "italy": "Autostop v Itálii",
+    "moscow": "Moskva, Rudé náměstí",
+    "split_dubrovnik": "Tramprennen: Split do Dubrovníku",
+    "taklamakan": "Poušť Taklamakan, Čína"
+  },
+  "gallery_header": "Galerie autostopu",
+  "ingress": "Hitchwiki je spolupracující webová stránka pro shromažďování informací o [[hitchhiking|autostopu]] a dalších způsobech extrémně levné dopravy. Neváhejte [[Help:Contents|sdílet své znalosti]] s ostatními stopaři! Dosud máme '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' článků v češtině, napsaných a upravených [[hitchhiker|stopaři]] z celého světa.",
+  "nav_links": "[[Hitchwiki:Community Portal|Komunita]] &nbsp;•[[:Category:General info|Obecné informace]] &nbsp;•&nbsp; [[:maps:| Mapa pro autostop]] &nbsp;•&nbsp; [[Top Tips|Nejlepší tipy]] &nbsp;•&nbsp; [[First time hitchhiking|Poprvé]] &nbsp;•&nbsp; [[Hitchhiker's safety|Bezpečnost]]  &nbsp;•&nbsp; [[Where to hitchhike|Kde stopovat?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Brát stopaře]] &nbsp;•&nbsp; [[Hitchhiking races|Závody]]  &nbsp;•&nbsp; [[Roles|Dobrovolničte s námi]] </span> &nbsp;•&nbsp; [[Autostopwiki:Překlad|Překlad]]",
+  "news_edit_label": "přidat/upravit novinku",
+  "news_label": "Novinky",
+  "nomad_desc": "průvodce cestováním s nízkým/žádným rozpočtem",
+  "races_header": "NECHCETE SI NECHAT UJÍT ZÁVODY A AKCE?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Zaregistrujte se]] k našemu newsletteru se svým [[Special:RequestAccount|Hitchwiki účtem]].",
+  "related_header": "Související projekty",
+  "signal_text": "Získejte rady z první ruky od více než 800 stopařů v našem Signal chatu",
+  "tagline": "Průvodce autostopem po světě.",
+  "trash_desc": "dumpster diving",
+  "trustroots_desc": "výměna pohostinnosti",
+  "upload_cta": "Zachytili jste úžasný moment na cestě? [[Special:Upload|Klikněte zde pro nahrání vlastních fotografií]]!"
+}

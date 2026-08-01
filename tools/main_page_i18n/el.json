@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "προσθήκη/επεξεργασία εκδήλωσης",
+  "events_label": "Εκδηλώσεις",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Πινακίδα Tramprennen Βερολίνου",
+    "guitar": "Μουσική Tramprennen στο δρόμο",
+    "iran": "Autostop στο Ιράν",
+    "italy": "Autostop στην Ιταλία",
+    "moscow": "Κόκκινη Πλατεία Μόσχας",
+    "split_dubrovnik": "Tramprennen: Σπλιτ προς Ντουμπρόβνικ",
+    "taklamakan": "Έρημος Τακλαμακάν, Κίνα"
+  },
+  "gallery_header": "Συλλογή Autostop",
+  "ingress": "Το Hitchwiki είναι ένας συνεργατικός ιστότοπος για τη συλλογή πληροφοριών σχετικά με το [[hitchhiking]] και άλλους τρόπους εξαιρετικά φθηνής μεταφοράς. Μη διστάσετε να [[Help:Contents|μοιραστείτε τις γνώσεις σας]] με άλλους autostopίστες! Μέχρι στιγμής έχουμε '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' άρθρα στα Ελληνικά, γραμμένα και επεξεργασμένα από [[hitchhiker]]s σε όλο τον κόσμο.",
+  "nav_links": "[[Hitchwiki:Community Portal|Κοινότητα]] &nbsp;•[[:Category:General info|Γενικές πληροφορίες]] &nbsp;•&nbsp; [[:maps:| Χάρτης για Autostop]] &nbsp;•&nbsp; [[Top Tips|Κορυφαίες Συμβουλές]] &nbsp;•&nbsp; [[First time hitchhiking|Πρώτη φορά]] &nbsp;•&nbsp; [[Hitchhiker's safety|Ασφάλεια]]  &nbsp;•&nbsp; [[Where to hitchhike|Πού να κάνετε autostop;]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Παραλαβή autostopιστών]] &nbsp;•&nbsp; [[Hitchhiking races|Αγώνες]]  &nbsp;•&nbsp; [[Roles|Γίνετε εθελοντής μαζί μας]] </span> &nbsp;•&nbsp; [[Hitchwiki:Μετάφραση|Μετάφραση]]",
+  "news_edit_label": "προσθήκη/επεξεργασία νέων",
+  "news_label": "Νέα",
+  "nomad_desc": "οδηγός ταξιδιού με χαμηλό/καθόλου προϋπολογισμό",
+  "races_header": "ΔΕΝ ΘΕΛΕΤΕ ΝΑ ΧΑΣΕΤΕ ΑΓΩΝΕΣ ΚΑΙ ΕΚΔΗΛΩΣΕΙΣ;",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Εγγραφείτε]] στο ενημερωτικό μας δελτίο με τον [[Special:RequestAccount|λογαριασμό σας στο Hitchwiki]].",
+  "related_header": "Σχετικά έργα",
+  "signal_text": "Λάβετε συμβουλές από πρώτο χέρι από πάνω από 800 autostopίστες στο Signal Chat μας",
+  "tagline": "Ο Οδηγός για το Autostop στον Κόσμο.",
+  "trash_desc": "αναζήτηση σε κάδους",
+  "trustroots_desc": "ανταλλαγή φιλοξενίας",
+  "upload_cta": "Καταγράψατε μια καταπληκτική στιγμή στο δρόμο; [[Special:Upload|Κάντε κλικ εδώ για να ανεβάσετε τις δικές σας φωτογραφίες]]!"
+}

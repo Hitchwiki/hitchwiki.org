@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "イベントを追加/編集",
+  "events_label": "イベント",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "トランプレネン ベルリンの看板",
+    "guitar": "トランプレネン 道中の音楽",
+    "iran": "イランでのヒッチハイク",
+    "italy": "イタリアでのヒッチハイク",
+    "moscow": "モスクワ赤の広場",
+    "split_dubrovnik": "トランプレネン：スプリットからドゥブロヴニク",
+    "taklamakan": "中国、タクラマカン砂漠"
+  },
+  "gallery_header": "ヒッチハイクギャラリー",
+  "ingress": "Hitchwikiは、ヒッチハイクや他の非常に安価な交通手段に関する情報を集めるための協力的なウェブサイトです。ぜひ他のヒッチハイカーと[[Help:Contents|あなたの知識を共有]]してください！これまでに、世界中の[[hitchhiker]]によって書かれ編集された記事が'''[[Special:Statistics|{{NUMBEROFARTICLES}}]]'''件、日本語であります。",
+  "nav_links": "[[Hitchwiki:Community Portal|コミュニティ]] &nbsp;•[[:Category:General info|一般情報]] &nbsp;•&nbsp; [[:maps:| ヒッチハイク用地図]] &nbsp;•&nbsp; [[Top Tips|トップのヒント]] &nbsp;•&nbsp; [[First time hitchhiking|初めてのヒッチハイク]] &nbsp;•&nbsp; [[Hitchhiker's safety|安全]]  &nbsp;•&nbsp; [[Where to hitchhike|どこでヒッチハイクする？]]  &nbsp;•&nbsp; [[Picking up hitchhikers|ヒッチハイカーを乗せる]] &nbsp;•&nbsp; [[Hitchhiking races|レース]]  &nbsp;•&nbsp; [[Roles|私たちと一緒にボランティア]] </span> &nbsp;•&nbsp; [[Hitchwiki:翻訳|翻訳]]",
+  "news_edit_label": "ニュースを追加/編集",
+  "news_label": "ニュース",
+  "nomad_desc": "低予算/無予算の旅行ガイド",
+  "races_header": "レースやイベントを見逃したくないですか？",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|ニュースレターに登録]]して、あなたの[[Special:RequestAccount|Hitchwikiアカウント]]で。",
+  "related_header": "関連プロジェクト",
+  "signal_text": "800人以上のヒッチハイカーから直接アドバイスを受けるには、私たちのSignalチャットに参加してください",
+  "tagline": "世界をヒッチハイクするためのガイド。",
+  "trash_desc": "ダンプスターダイビング",
+  "trustroots_desc": "ホスピタリティ交換",
+  "upload_cta": "道中の素晴らしい瞬間を捉えましたか？[[Special:Upload|ここをクリックしてあなた自身の写真をアップロード]]してください！"
+}

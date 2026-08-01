@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "evenement toevoegen/bewerken",
+  "events_label": "Evenementen",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen-bord, Berlijn",
+    "guitar": "Tramprennen: muziek onderweg",
+    "iran": "Liften in Iran",
+    "italy": "Liften in Italië",
+    "moscow": "Moskou, Rode Plein",
+    "split_dubrovnik": "Tramprennen: van Split naar Dubrovnik",
+    "taklamakan": "Taklamakan-woestijn, China"
+  },
+  "gallery_header": "Liftgalerij",
+  "ingress": "Hitchwiki is een samenwerkingswebsite voor het verzamelen van informatie over [[hitchhiking|liften]] en andere manieren van extreem goedkoop reizen. Voel je vrij om je [[Help:Contents|kennis te delen]] met andere lifters! Tot nu toe hebben we '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' artikelen in het Nederlands, geschreven en bewerkt door [[hitchhiker|lifters]] over de hele wereld.",
+  "nav_links": "[[Hitchwiki:Community Portal|Gemeenschap]] &nbsp;•[[:Category:General info|Algemene info]] &nbsp;•&nbsp; [[:maps:| Kaart voor liften]] &nbsp;•&nbsp; [[Top Tips|Beste tips]] &nbsp;•&nbsp; [[First time hitchhiking|Eerste keer]] &nbsp;•&nbsp; [[Hitchhiker's safety|Veiligheid]]  &nbsp;•&nbsp; [[Where to hitchhike|Waar liften?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Lifters oppikken]] &nbsp;•&nbsp; [[Hitchhiking races|Races]]  &nbsp;•&nbsp; [[Roles|Word vrijwilliger bij ons]] &nbsp;•&nbsp; [[Hitchwiki:Vertaling|Vertaling]] </span>",
+  "news_edit_label": "nieuws toevoegen/bewerken",
+  "news_label": "Nieuws",
+  "nomad_desc": "reisgids voor laag/geen budget",
+  "races_header": "WIL JE GEEN RACES EN EVENEMENTEN MISSEN?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Schrijf je in]] voor onze nieuwsbrief met je [[Special:RequestAccount|Hitchwiki-account]].",
+  "related_header": "Gerelateerde projecten",
+  "signal_text": "Krijg advies uit eerste hand van meer dan 800 lifters in onze Signal-chat",
+  "tagline": "De gids om de wereld rond te liften.",
+  "trash_desc": "voedsel uit containers halen",
+  "trustroots_desc": "gastvrijheidsuitwisseling",
+  "upload_cta": "Een geweldig moment onderweg vastgelegd? [[Special:Upload|Klik hier om je eigen foto’s te uploaden]]!"
+}

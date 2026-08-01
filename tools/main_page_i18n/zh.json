@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "添加/编辑活动",
+  "events_label": "活动",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen 柏林路牌",
+    "guitar": "Tramprennen：路上的音乐",
+    "iran": "在伊朗搭车",
+    "italy": "在意大利搭车",
+    "moscow": "莫斯科红场",
+    "split_dubrovnik": "Tramprennen：从斯普利特到杜布罗夫尼克",
+    "taklamakan": "塔克拉玛干沙漠，中国"
+  },
+  "gallery_header": "搭车相册",
+  "ingress": "Hitchwiki 是一个协作网站，用于收集关于[[hitchhiking|搭便车]]和其他极其廉价出行方式的信息。欢迎与其他搭车者[[Help:Contents|分享你的知识]]！目前我们已有由世界各地[[hitchhiker|搭车者]]撰写和编辑的 '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' 篇中文条目。",
+  "nav_links": "[[Hitchwiki:Community Portal|社区]] &nbsp;•[[:Category:General info|一般信息]] &nbsp;•&nbsp; [[:maps:| 搭车地图]] &nbsp;•&nbsp; [[Top Tips|顶级贴士]] &nbsp;•&nbsp; [[First time hitchhiking|第一次]] &nbsp;•&nbsp; [[Hitchhiker's safety|安全]]  &nbsp;•&nbsp; [[Where to hitchhike|在哪里搭车？]]  &nbsp;•&nbsp; [[Picking up hitchhikers|搭载搭车者]] &nbsp;•&nbsp; [[Hitchhiking races|比赛]]  &nbsp;•&nbsp; [[Roles|加入我们做志愿者]] &nbsp;•&nbsp; [[Hitchwiki:翻译|翻译]] </span>",
+  "news_edit_label": "添加/编辑新闻",
+  "news_label": "新闻",
+  "nomad_desc": "低/零预算旅行指南",
+  "races_header": "不想错过比赛和活动吗？",
+  "register_text": "使用你的 [[Special:RequestAccount|Hitchwiki 账户]][[Special:Preferences#mw-prefsection-personal-newsletter|注册]]我们的新闻邮件。",
+  "related_header": "相关项目",
+  "signal_text": "在我们的 Signal 聊天中获取 800 多位搭车者的第一手建议",
+  "tagline": "环游世界搭车指南。",
+  "trash_desc": "垃圾箱寻食",
+  "trustroots_desc": "住宿交换",
+  "upload_cta": "在路上捕捉到精彩瞬间了吗？[[Special:Upload|点击这里上传你自己的照片]]！"
+}

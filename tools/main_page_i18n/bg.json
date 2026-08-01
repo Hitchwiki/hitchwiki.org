@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "добавяне/редактиране на събитие",
+  "events_label": "Събития",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Табела Tramprennen, Берлин",
+    "guitar": "Tramprennen: музика на пътя",
+    "iran": "Стопаджийство в Иран",
+    "italy": "Стопаджийство в Италия",
+    "moscow": "Москва, Червен площад",
+    "split_dubrovnik": "Tramprennen: от Сплит до Дубровник",
+    "taklamakan": "Пустиня Такламакан, Китай"
+  },
+  "gallery_header": "Галерия за стопаджийство",
+  "ingress": "Hitchwiki е съвместен уебсайт за събиране на информация за [[hitchhiking|стопаджийството]] и други начини за изключително евтино пътуване. Не се колебайте да [[Help:Contents|споделите знанията си]] с други стопаджии! Досега имаме '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' статии на български, написани и редактирани от [[hitchhiker|стопаджии]] по целия свят.",
+  "nav_links": "[[Hitchwiki:Community Portal|Общност]] &nbsp;•[[:Category:General info|Обща информация]] &nbsp;•&nbsp; [[:maps:| Карта за стопаджийство]] &nbsp;•&nbsp; [[Top Tips|Най-добри съвети]] &nbsp;•&nbsp; [[First time hitchhiking|Първи път]] &nbsp;•&nbsp; [[Hitchhiker's safety|Безопасност]]  &nbsp;•&nbsp; [[Where to hitchhike|Къде да спираме на стоп?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Вземане на стопаджии]] &nbsp;•&nbsp; [[Hitchhiking races|Състезания]]  &nbsp;•&nbsp; [[Roles|Станете доброволец при нас]] &nbsp;•&nbsp; [[Hitchwiki:Превод|Превод]] </span>",
+  "news_edit_label": "добавяне/редактиране на новина",
+  "news_label": "Новини",
+  "nomad_desc": "пътеводител за пътуване с малък/никакъв бюджет",
+  "races_header": "НЕ ИСКАТЕ ДА ПРОПУСНЕТЕ СЪСТЕЗАНИЯ И СЪБИТИЯ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Регистрирайте се]] за нашия бюлетин с вашия [[Special:RequestAccount|акаунт в Hitchwiki]].",
+  "related_header": "Свързани проекти",
+  "signal_text": "Получете съвети от първа ръка от над 800 стопаджии в нашия чат в Signal",
+  "tagline": "Пътеводителят за стопаджийство по света.",
+  "trash_desc": "ровене в контейнерите за храна",
+  "trustroots_desc": "обмен на гостоприемство",
+  "upload_cta": "Уловихте невероятен момент на пътя? [[Special:Upload|Кликнете тук, за да качите свои снимки]]!"
+}

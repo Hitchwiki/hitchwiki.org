@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "додати/редагувати подію",
+  "events_label": "Події",
+  "extra_sections": "\n<div class=\"frontpage_ptg frontpage_box\">\n== Рекомендовані статті ==\n* [[Україна]]\n* [[Європа]]\n* [[Як автостопити дівчині]]\n{{Міста України}}\n</div>\n\n<div class=\"frontpage_ptg frontpage_box\">\n== Приєднайся до команди ==\nХочеш розвивати вікі разом з нами, але не знаєш, з чого почати? Заходь у [https://www.facebook.com/hitchwikiUkr/ нашу FB-групу], обговорюй завдання, наповнюй вікі інформацією.\n* [[Як наповнювати Hitchwiki]]\n</div>\n\n",
+  "gallery_captions": {
+    "berlin_sign": "Знак Tramprennen, Берлін",
+    "guitar": "Tramprennen: музика в дорозі",
+    "iran": "Автостоп в Ірані",
+    "italy": "Автостоп в Італії",
+    "moscow": "Червона площа, Москва",
+    "split_dubrovnik": "Tramprennen: зі Спліту до Дубровника",
+    "taklamakan": "Пустеля Такла-Макан, Китай"
+  },
+  "gallery_header": "Галерея автостопу",
+  "ingress": "Hitchwiki (Автостоп Вікі) — це спільний проєкт зі збору інформації про [[hitchhiking|автостоп]] та інші способи вкрай дешевих подорожей. Ділись своїми знаннями з іншими автостопниками! Наразі маємо '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' статей українською, написаних і відредагованих [[hitchhiker|автостопниками]] з усього світу.",
+  "nav_links": "[[Hitchwiki:Community Portal|Спільнота]] &nbsp;•[[:Category:General info|Загальна інформація]] &nbsp;•&nbsp; [[:maps:| Карта для автостопу]] &nbsp;•&nbsp; [[Top Tips|Топ поради]] &nbsp;•&nbsp; [[First time hitchhiking|Перший раз]] &nbsp;•&nbsp; [[Hitchhiker's safety|Безпека]]  &nbsp;•&nbsp; [[Where to hitchhike|Де автостопити?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Підбір автостопників]] &nbsp;•&nbsp; [[Hitchhiking races|Перегони]]  &nbsp;•&nbsp; [[Roles|Приєднуйся до нас]] &nbsp;•&nbsp; [[Hitchwiki:Переклад|Переклад]]  </span>",
+  "news_edit_label": "додати/редагувати новину",
+  "news_label": "Новини",
+  "nomad_desc": "путівник для подорожей з мінімальним бюджетом",
+  "races_header": "НЕ ХОЧЕШ ПРОПУСТИТИ ПЕРЕГОНИ ТА ПОДІЇ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Зареєструйся]] на нашу розсилку зі своїм [[Special:RequestAccount|акаунтом Hitchwiki]].",
+  "related_header": "Споріднені проєкти",
+  "signal_text": "Отримай поради з перших вуст від понад 800 автостопників у нашому Signal-чаті",
+  "tagline": "Путівник автостопом по світу.",
+  "trash_desc": "пошук їжі та речей на смітниках",
+  "trustroots_desc": "мережа гостинності",
+  "upload_cta": "Спіймав чудовий момент у дорозі? [[Special:Upload|Натисни тут, щоб завантажити власні фото]]!"
+}

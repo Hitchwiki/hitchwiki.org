@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "adicionar/editar evento",
+  "events_label": "Eventos",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Placa Tramprennen, Berlim",
+    "guitar": "Tramprennen: música na estrada",
+    "iran": "Carona no Irã",
+    "italy": "Carona na Itália",
+    "moscow": "Moscou, Praça Vermelha",
+    "split_dubrovnik": "Tramprennen: de Split a Dubrovnik",
+    "taklamakan": "Deserto de Taklamakan, China"
+  },
+  "gallery_header": "Galeria de carona",
+  "ingress": "O Hitchwiki é um site colaborativo para reunir informações sobre [[hitchhiking|carona]] e outras formas de transporte extremamente barato. Fique à vontade para [[Help:Contents|compartilhar o seu conhecimento]] com outros caroneiros! Até agora temos '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' artigos em português, escritos e editados por [[hitchhiker|caroneiros]] de todo o mundo.",
+  "nav_links": "[[Hitchwiki:Community Portal|Comunidade]] &nbsp;•[[:Category:General info|Informações gerais]] &nbsp;•&nbsp; [[:maps:| Mapa para carona]] &nbsp;•&nbsp; [[Top Tips|Melhores dicas]] &nbsp;•&nbsp; [[First time hitchhiking|Primeira vez]] &nbsp;•&nbsp; [[Hitchhiker's safety|Segurança]]  &nbsp;•&nbsp; [[Where to hitchhike|Onde pegar carona?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Dar carona]] &nbsp;•&nbsp; [[Hitchhiking races|Corridas]]  &nbsp;•&nbsp; [[Roles|Seja voluntário conosco]] &nbsp;•&nbsp; [[Hitchwiki:Tradução|Tradução]] </span>",
+  "news_edit_label": "adicionar/editar notícia",
+  "news_label": "Notícias",
+  "nomad_desc": "guia de viagem de baixo/nenhum orçamento",
+  "races_header": "NÃO QUER PERDER CORRIDAS E EVENTOS?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Cadastre-se]] na nossa newsletter com a sua [[Special:RequestAccount|conta do Hitchwiki]].",
+  "related_header": "Projetos relacionados",
+  "signal_text": "Receba conselhos em primeira mão de mais de 800 caroneiros no nosso chat do Signal",
+  "tagline": "O guia para andar de carona pelo mundo.",
+  "trash_desc": "garimpo em lixeiras (dumpster diving)",
+  "trustroots_desc": "troca de hospitalidade",
+  "upload_cta": "Capturou um momento incrível na estrada? [[Special:Upload|Clique aqui para enviar as suas próprias fotos]]!"
+}

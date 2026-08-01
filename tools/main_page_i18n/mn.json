@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "үйл явдал нэмэх/засах",
+  "events_label": "Үйл явдлууд",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Берлин тэмдэг",
+    "guitar": "Tramprennen зам дээрх хөгжим",
+    "iran": "Иранд аялал хийх",
+    "italy": "Италид аялал хийх",
+    "moscow": "Москва Улаан талбай",
+    "split_dubrovnik": "Tramprennen: Сплитээс Дубровник руу",
+    "taklamakan": "Такла-Макан цөл, Хятад"
+  },
+  "gallery_header": "Аяллын галерей",
+  "ingress": "Hitchwiki бол [[hitchhiking]] болон маш хямд тээврийн бусад аргуудын талаар мэдээлэл цуглуулах хамтын вэбсайт юм. Бусад аялалчидтай [[Help:Contents|мэдлэгээ хуваалцах]] эрх чөлөөтэй байгаарай! Одоогоор бид дэлхийн өнцөг булан бүрээс [[hitchhiker]]-уудын бичиж, засварласан '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' өгүүлэлтэй байна.",
+  "nav_links": "[[Hitchwiki:Community Portal|Нийгэмлэг]] &nbsp;•[[:Category:General info|Ерөнхий мэдээлэл]] &nbsp;•&nbsp; [[:maps:| Аяллын газрын зураг]] &nbsp;•&nbsp; [[Top Tips|Шилдэг зөвлөмжүүд]] &nbsp;•&nbsp; [[First time hitchhiking|Анх удаа]] &nbsp;•&nbsp; [[Hitchhiker's safety|Аюулгүй байдал]]  &nbsp;•&nbsp; [[Where to hitchhike|Хаана аялал хийх вэ?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Аялалчдыг авах]] &nbsp;•&nbsp; [[Hitchhiking races|Уралдаанууд]]  &nbsp;•&nbsp; [[Roles|Бидэнтэй сайн дурын ажил хийх]] </span> &nbsp;•&nbsp; [[Hitchwiki:Орчуулга|Орчуулга]]",
+  "news_edit_label": "мэдээ нэмэх/засах",
+  "news_label": "Мэдээ",
+  "nomad_desc": "бага/тэг төсөвтэй аяллын гарын авлага",
+  "races_header": "УРАЛДААНУУД БА ҮЙЛ ЯВДЛУУДЫГ АЛДАХЫГ ХҮСЭХГҮЙ БАЙНА УУ?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Манай мэдээллийн товхимолд бүртгүүлнэ үү]] таны [[Special:RequestAccount|Hitchwiki бүртгэлээр]].",
+  "related_header": "Холбоотой төслүүд",
+  "signal_text": "Манай Signal чатад 800 гаруй аялалчдаас шууд зөвлөгөө аваарай",
+  "tagline": "Дэлхийгээр аялж буй хөтөч.",
+  "trash_desc": "хогийн сав ухах",
+  "trustroots_desc": "зочломтгой солилцоо",
+  "upload_cta": "Зам дээр гайхалтай мөчийг барьж авсан уу? [[Special:Upload|Өөрийнхөө зургийг оруулахаар энд дарна уу]]!"
+}

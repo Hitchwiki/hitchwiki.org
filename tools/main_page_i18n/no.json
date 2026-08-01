@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "legg til/rediger arrangement",
+  "events_label": "Arrangementer",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Tramprennen Berlin-skilt",
+    "guitar": "Tramprennen musikk på veien",
+    "iran": "Haiking i Iran",
+    "italy": "Haiking i Italia",
+    "moscow": "Moskva Røde Plass",
+    "split_dubrovnik": "Tramprennen: Split til Dubrovnik",
+    "taklamakan": "Taklamakan-ørkenen, Kina"
+  },
+  "gallery_header": "Haikegalleri",
+  "ingress": "Hitchwiki er et samarbeidsnettsted for å samle informasjon om [[hitchhiking|haiking]] og andre måter å reise ekstremt billig på. Del gjerne din kunnskap med andre haikere! Så langt har vi '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' artikler på norsk, skrevet og redigert av [[hitchhiker|haikere]] over hele verden.",
+  "nav_links": "[[Hitchwiki:Community Portal|Fellesskap]] &nbsp;•[[:Category:General info|Generell info]] &nbsp;•&nbsp; [[:maps:| Kart for haiking]] &nbsp;•&nbsp; [[Top Tips|Topp tips]] &nbsp;•&nbsp; [[First time hitchhiking|Første gang]] &nbsp;•&nbsp; [[Hitchhiker's safety|Sikkerhet]]  &nbsp;•&nbsp; [[Where to hitchhike|Hvor å haike?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Plukke opp haikere]] &nbsp;•&nbsp; [[Hitchhiking races|Løp]]  &nbsp;•&nbsp; [[Roles|Bli frivillig hos oss]] </span> &nbsp;•&nbsp; [[Hitchwiki:Oversettelse|Oversettelse]]",
+  "news_edit_label": "legg til/rediger nyheter",
+  "news_label": "Nyheter",
+  "nomad_desc": "lav/ingen budsjett reiseguide",
+  "races_header": "VIL DU IKKE GÅ GLIPP AV LØP OG ARRANGEMENTER?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Registrer deg]] for vårt nyhetsbrev med din [[Special:RequestAccount|Hitchwiki-konto]].",
+  "related_header": "Relaterte prosjekter",
+  "signal_text": "Få førstehåndsråd fra over 800 haikere i vår Signal-chat",
+  "tagline": "Guider til haiking verden rundt.",
+  "trash_desc": "dumpster diving",
+  "trustroots_desc": "gjestfrihetsutveksling",
+  "upload_cta": "Har du fanget et fantastisk øyeblikk på veien? [[Special:Upload|Klikk her for å laste opp dine egne bilder]]!"
+}

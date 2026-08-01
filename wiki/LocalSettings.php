@@ -193,6 +193,56 @@ if ( $wikiID !== $defaultLang ) {
 	$wgUploadNavigationUrl = "$wgServer/$defaultLang/Special:Upload";
 }
 
+# Same idea for user pages: a contributor is one person across the whole family
+# (the user table is shared, see $wgSharedDB above), so there is one profile and
+# one talk page for them, on the English wiki. /it/Utente:X and
+# /de/Benutzer_Diskussion:X redirect to /en/User:X and /en/User_talk:X instead of
+# being up to 34 separate pages that nobody keeps in sync.
+#
+# Only base pages redirect. Subpages deliberately stay local: User:X/common.js
+# and User:X/common.css are loaded per-wiki by ResourceLoader and would stop
+# working anywhere else, and sandboxes/drafts belong to the wiki they were
+# written on.
+#
+# Views only. action=edit, action=history, ?redirect=no, &oldid= and &diff= all
+# still reach the local page, so the pre-existing local user pages (310 of them
+# when this was introduced) and their attribution history remain reachable.
+#
+# 302, not 301: a permanent redirect gets cached by browsers and by Cloudflare in
+# front of us, which would make this very awkward to walk back. Switch to 301
+# once the arrangement has settled.
+if ( $wikiID !== $defaultLang ) {
+	$wgHooks['MediaWikiPerformAction'][] = static function (
+		$output, $article, $title, $user, $request, $mediaWiki
+	) use ( $defaultLang ) {
+		if ( !$title->inNamespaces( NS_USER, NS_USER_TALK ) ) {
+			return true;
+		}
+		if ( $request->getVal( 'action', 'view' ) !== 'view' ) {
+			return true;
+		}
+		# Explicit history/diff/no-redirect browsing keeps working locally.
+		if ( $request->getCheck( 'redirect' ) || $request->getCheck( 'oldid' )
+			|| $request->getCheck( 'diff' )
+		) {
+			return true;
+		}
+		# Subpages stay put (see above).
+		if ( str_contains( $title->getDBkey(), '/' ) ) {
+			return true;
+		}
+
+		$prefix = $title->getNamespace() === NS_USER ? 'User:' : 'User_talk:';
+		$output->redirect(
+			$output->getConfig()->get( MediaWiki\MainConfigNames::Server )
+				. "/$defaultLang/" . $prefix . wfUrlencode( $title->getDBkey() ),
+			'302'
+		);
+
+		return false;
+	};
+}
+
 # Upload Paths
 $wgUploadPath = "$wgScriptPath/images/$wikiID";
 $wgUploadDirectory = "$IP/images/$wikiID";
@@ -298,6 +348,26 @@ $wgHooks['BeforePageDisplay'][] = function ( $out, $skin ) {
 	if ( $skin->getSkinName() === 'vector' ) {
 		$out->addModules( 'hitchwiki.sidebarToc' );
 	}
+};
+
+# Family-wide site JavaScript (infobox maps, the Special:Block defaults, the
+# coordinate and "add your own experience" prompts, the user-page Maps banner).
+# This used to be MediaWiki:Common.js on each wiki separately: 34 copies that had
+# drifted into six different versions, and 26 of them had lost the infobox map
+# code entirely, so those wikis printed the raw "<map lat=… />" tag where a map
+# belonged. Keeping it in data/hitchwiki-common.js means one source of truth that
+# cannot be forgotten on a single language wiki. Every wiki's own
+# MediaWiki:Common.js is still loaded by core on top of this module, so
+# wiki-specific JavaScript stays possible without touching this file.
+$wgResourceModules['hitchwiki.common'] = [
+	'localBasePath' => "$IP/data",
+	'remoteBasePath' => "$wgResourceBasePath/data",
+	'scripts' => 'hitchwiki-common.js',
+	'styles' => 'hitchwiki-common.css',
+	'dependencies' => [ 'mediawiki.util' ],
+];
+$wgHooks['BeforePageDisplay'][] = static function ( $out, $skin ) {
+	$out->addModules( 'hitchwiki.common' );
 };
 
 # Footer "places" links (Privacy policy / About / Legal Notice / Volunteer).
@@ -511,6 +581,12 @@ $wgGroupPermissions['sysop']['abusefilter-revert'] = true;
 $wgGroupPermissions['user']['edit'] = true;
 $wgGroupPermissions['sysop']['edit'] = true;
 $wgGroupPermissions['bot']['edit'] = true;
+
+# Lock non-flagship wikis to sysop/bot edits only; en/de/fr remain fully open.
+$hwLockedWikis = array_diff(array_keys($hwLanguages), ['en', 'de', 'fr']);
+if (in_array($wikiID, $hwLockedWikis, true)) {
+	$wgGroupPermissions['user']['edit'] = false;
+}
 $wgGroupPermissions['autopatrolled']['autopatrol'] = true;
 $wgGroupPermissions['autopatrolled']['skipcaptcha'] = true;
 $wgGroupPermissions['user']['skipcaptcha'] = true;

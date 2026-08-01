@@ -16,6 +16,17 @@ services:
       # isn't deployed here, Docker just creates an empty dir and the extension degrades
       # to {{Unvalued}} instead of the container failing on a missing bind source.
       - ${HITCHABILITY_RATINGS_DIR}:${HITCHABILITY_RATINGS_DIR}:ro
+      # OpenStreetMap raster tiles for the infobox maps, served from our own origin
+      # at /tiles/{z}/{x}/{y}.png. Previously every one of ~4,500 article page views
+      # fetched these straight from tile.openstreetmap.org, against the OSM tile
+      # usage policy. Seeded and refreshed by tools/seed_map_tiles.py on the host;
+      # read-only here because nothing in the wiki should ever write a tile.
+      - ./tiles:/var/www/html/tiles:ro
+      # Per-map hitchhiking spot data behind the infobox map pins, one small JSON
+      # file per map window. Served from our own origin because maps.hitchwiki.org
+      # sends no Access-Control-Allow-Origin, so fetching its spots.json from a
+      # hitchwiki.org page would be blocked by CORS. Built by tools/build_map_spots.py.
+      - ./spots:/var/www/html/spots:ro
       - ./wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - ./wiki/googlea8e45f716eafd720.html:/var/www/html/googlea8e45f716eafd720.html
       - ./wiki/google77220cfb918d56fd.html:/var/www/html/google77220cfb918d56fd.html

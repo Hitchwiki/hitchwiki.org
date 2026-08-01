@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "أضف/حرر فعالية",
+  "events_label": "الفعاليات",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "لافتة ترامبرينن برلين",
+    "guitar": "موسيقى ترامبرينن على الطريق",
+    "iran": "الترحال في إيران",
+    "italy": "الترحال في إيطاليا",
+    "moscow": "الساحة الحمراء في موسكو",
+    "split_dubrovnik": "ترامبرينن: من سبليت إلى دوبروفنيك",
+    "taklamakan": "صحراء تاكلامكان، الصين"
+  },
+  "gallery_header": "معرض الترحال",
+  "ingress": "Hitchwiki هو موقع تعاوني لجمع المعلومات حول [[hitchhiking]] وطرق النقل الأخرى ذات التكلفة المنخفضة للغاية. لا تتردد في [[Help:Contents|مشاركة معرفتك]] مع رحّالين آخرين! حتى الآن لدينا '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' مقالة باللغة العربية، كتبها وحررها [[hitchhiker]]ون من جميع أنحاء العالم.",
+  "nav_links": "[[Hitchwiki:Community Portal|المجتمع]] &nbsp;•[[:Category:General info|معلومات عامة]] &nbsp;•&nbsp; [[:maps:| خريطة للترحال]] &nbsp;•&nbsp; [[Top Tips|نصائح مهمة]] &nbsp;•&nbsp; [[First time hitchhiking|أول مرة]] &nbsp;•&nbsp; [[Hitchhiker's safety|الأمان]]  &nbsp;•&nbsp; [[Where to hitchhike|أين يمكن الترحال؟]]  &nbsp;•&nbsp; [[Picking up hitchhikers|التقاط الرحّالين]] &nbsp;•&nbsp; [[Hitchhiking races|سباقات]]  &nbsp;•&nbsp; [[Roles|تطوع معنا]] </span> &nbsp;•&nbsp; [[Hitchwiki:ترجمة|ترجمة]]",
+  "news_edit_label": "أضف/حرر خبر",
+  "news_label": "الأخبار",
+  "nomad_desc": "دليل السفر بميزانية منخفضة/بدون ميزانية",
+  "races_header": "لا تريد أن تفوت السباقات والفعاليات؟",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|سجل]] في نشرتنا الإخبارية باستخدام [[Special:RequestAccount|حسابك في Hitchwiki]].",
+  "related_header": "مشاريع ذات صلة",
+  "signal_text": "احصل على نصائح مباشرة من أكثر من 800 رحّال في دردشة Signal الخاصة بنا",
+  "tagline": "الدليل إلى الترحال حول العالم.",
+  "trash_desc": "الغوص في حاويات القمامة",
+  "trustroots_desc": "تبادل الضيافة",
+  "upload_cta": "هل التقطت لحظة مذهلة على الطريق؟ [[Special:Upload|اضغط هنا لتحميل صورك الخاصة]]!"
+}

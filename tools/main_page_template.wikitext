@@ -1,0 +1,52 @@
+<ul id="frontpage-header">
+<li>
+<h1>[[Hitchwiki:About|%%TAGLINE%%]]</h1>
+<h1>[https://signal.group/#CjQKIGgw5-FMZ1Sq67CL50LKCkZg-6i0KCDuS24S4uBDyb5IEhAmnOqOcim9eSMm-TJFozyg <u> %%SIGNAL_TEXT%% </u>]</h1>
+<div class="ingress">%%INGRESS%%
+</div>
+<span class="first_links">%%NAV_LINKS%%
+</li>
+</ul>
+
+<div style="text-align: center;">
+===%%RACES_HEADER%%===
+
+'''%%REGISTER_TEXT%%'''
+</div>
+<div class="frontpage_col"><div class="col_content">
+<div class="frontpage_events frontpage_box">
+== [[Events|<i class="fa fa-lg fa-thumbs-up"></i> %%EVENTS_LABEL%%]] <small class="frontpage-meta-links plainlinks pull-right text-muted">[{{fullurl:Template:Events|action=edit}} <i class="fa fa-plus"></i> %%EVENTS_EDIT_LABEL%%]</small>==
+{{events}}
+</div></div></div>
+<div class="frontpage_col"><div class="col_content">
+<div class="frontpage_news frontpage_box">
+== [[News|<i class="fa fa-lg fa-bullhorn"></i> %%NEWS_LABEL%%]] <small class="frontpage-meta-links plainlinks pull-right text-muted">[{{fullurl:Template:News|action=edit}} <i class="fa fa-plus"></i> %%NEWS_EDIT_LABEL%%]</small>==
+{{news}}
+</div></div></div>
+
+<div class="frontpage_gallery frontpage_box" style="clear: both; margin-top: 20px;">
+== <i class="fa fa-lg fa-camera"></i> %%GALLERY_HEADER%% ==
+
+<gallery mode="packed" heights="160px">
+File:Hitchhiking in Iran.jpg|%%CAPTION_IRAN%%
+File:Hitchhiking in Italy.jpg|%%CAPTION_ITALY%%
+File:Hitchhiking Moscow Red Square.jpeg|%%CAPTION_MOSCOW%%
+File:Taklamakan Desert, China.jpg|%%CAPTION_TAKLAMAKAN%%
+File:Tramprennen berlin sign.jpg|%%CAPTION_BERLIN_SIGN%%
+File:Tramprennen guitar.jpg|%%CAPTION_GUITAR%%
+File:Tramprennen split dubrovnik.jpg|%%CAPTION_SPLIT_DUBROVNIK%%
+</gallery>
+
+<div style="text-align: center; margin-top: 15px; font-weight: bold; font-size: 1.1em;">
+%%UPLOAD_CTA%%
+</div>
+</div>
+%%EXTRA_SECTIONS%%<div class="frontpage_ptg frontpage_box">
+== %%RELATED_HEADER%% ==
+* [[:nomad:|Nomadwiki]] %%NOMAD_DESC%%
+* [[:trash:|Trashwiki]] %%TRASH_DESC%%
+* [[:trustroots:|Trustroots]] %%TRUSTROOTS_DESC%%
+</div>
+
+__NOTOC__
+ __NOEDITSECTION__

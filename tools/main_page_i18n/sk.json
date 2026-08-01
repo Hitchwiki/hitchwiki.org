@@ -1,0 +1,28 @@
+{
+  "events_edit_label": "pridať/upraviť podujatie",
+  "events_label": "Podujatia",
+  "extra_sections": "\n",
+  "gallery_captions": {
+    "berlin_sign": "Značka Tramprennen Berlín",
+    "guitar": "Tramprennen hudba na ceste",
+    "iran": "Stopovanie v Iráne",
+    "italy": "Stopovanie v Taliansku",
+    "moscow": "Moskva, Červené námestie",
+    "split_dubrovnik": "Tramprennen: Split do Dubrovníka",
+    "taklamakan": "Púšť Taklamakan, Čína"
+  },
+  "gallery_header": "Galéria stopovania",
+  "ingress": "Hitchwiki je spolupracujúca webová stránka na zhromažďovanie informácií o [[hitchhiking|stopovaní]] a iných spôsoboch extrémne lacnej dopravy. Neváhajte [[Help:Contents|zdieľať svoje vedomosti]] s ostatnými stopármi! Zatiaľ máme '''[[Special:Statistics|{{NUMBEROFARTICLES}}]]''' článkov v slovenčine, napísaných a upravených stopármi z celého sveta.",
+  "nav_links": "[[Hitchwiki:Community Portal|Komunita]] &nbsp;•[[:Category:General info|Všeobecné informácie]] &nbsp;•&nbsp; [[:maps:| Mapa pre stopovanie]] &nbsp;•&nbsp; [[Top Tips|Najlepšie tipy]] &nbsp;•&nbsp; [[First time hitchhiking|Prvýkrát]] &nbsp;•&nbsp; [[Hitchhiker's safety|Bezpečnosť]]  &nbsp;•&nbsp; [[Where to hitchhike|Kde stopovať?]]  &nbsp;•&nbsp; [[Picking up hitchhikers|Zastavovanie stopárom]] &nbsp;•&nbsp; [[Hitchhiking races|Preteky]]  &nbsp;•&nbsp; [[Roles|Dobrovoľníctvo u nás]] </span> &nbsp;•&nbsp; [[Autostopwiki:Preklad|Preklad]]",
+  "news_edit_label": "pridať/upraviť novinku",
+  "news_label": "Novinky",
+  "nomad_desc": "sprievodca cestovaním s nízkym/žiadnym rozpočtom",
+  "races_header": "NECHCETE PRÍSŤ O PRETEKY A PODUJATIA?",
+  "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Zaregistrujte sa]] do nášho newslettera so svojím [[Special:RequestAccount|Hitchwiki účtom]].",
+  "related_header": "Súvisiace projekty",
+  "signal_text": "Získajte rady z prvej ruky od viac ako 800 stopárov v našom Signal chate",
+  "tagline": "Sprievodca stopovaním po svete.",
+  "trash_desc": "potápanie v kontajneroch",
+  "trustroots_desc": "výmena pohostinnosti",
+  "upload_cta": "Zachytili ste úžasný moment na ceste? [[Special:Upload|Kliknite sem a nahrajte svoje vlastné fotografie]]!"
+}
