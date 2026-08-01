@@ -1,3 +1,18 @@
+<!-- ===========================================================================
+     GENERATED PAGE - PLEASE DO NOT EDIT IT HERE.
+
+     All 34 language wikis share one front page structure. This page is built
+     from, and periodically re-pushed from, the hitchwiki.org repository:
+
+       structure (all languages) : tools/main_page_template.wikitext
+       wording (this language)   : tools/main_page_i18n/<lang>.json
+       generator                 : tools/build_main_pages.py
+
+     An edit made here will not reach the other language wikis, and will be
+     overwritten the next time the page is regenerated. To change the layout
+     for everyone, or the wording for this language, change it at the source
+     above - ask an admin if you do not have repository access.
+     =========================================================================== -->
 <ul id="frontpage-header">
 <li>
 <h1>[[Hitchwiki:About|%%TAGLINE%%]]</h1>
@@ -28,7 +43,6 @@
 == <i class="fa fa-lg fa-camera"></i> %%GALLERY_HEADER%% ==
 
 <gallery mode="packed" heights="160px">
-File:Hitchhiking in Iran.jpg|%%CAPTION_IRAN%%
 File:Hitchhiking in Italy.jpg|%%CAPTION_ITALY%%
 File:Hitchhiking Moscow Red Square.jpeg|%%CAPTION_MOSCOW%%
 File:Taklamakan Desert, China.jpg|%%CAPTION_TAKLAMAKAN%%

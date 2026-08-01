@@ -29,9 +29,17 @@ Usage:
     python3 tools/build_main_pages.py render <lang>     # print the generated wikitext
     python3 tools/build_main_pages.py push <lang> [--dry-run]
     python3 tools/build_main_pages.py push all [--dry-run]
+    python3 tools/build_main_pages.py check [<lang>]  # has anyone hand-edited a
+                                                       # page away from the template?
+
+The pages themselves are sysop-protected and carry a `MediaWiki:Editnotice-0-…`
+pointing at `Hitchwiki:Main page`, so that an editor who wants a change is sent
+here rather than into the wikitext of one language's copy. `check` (weekly cron)
+catches the case of an admin editing one anyway.
 """
 
 import argparse
+import difflib
 import json
 import os
 import re
@@ -52,7 +60,7 @@ TEMPLATED_LANGUAGES = (
 FIELDS = (
     "tagline", "signal_text", "ingress", "nav_links", "races_header",
     "register_text", "events_label", "events_edit_label", "news_label",
-    "news_edit_label", "gallery_header", "caption_iran", "caption_italy",
+    "news_edit_label", "gallery_header", "caption_italy",
     "caption_moscow", "caption_taklamakan", "caption_berlin_sign",
     "caption_guitar", "caption_split_dubrovnik", "upload_cta",
     "extra_sections", "related_header", "nomad_desc", "trash_desc",
@@ -91,7 +99,6 @@ EXTRACT_RE = re.compile(
     r"== <i class=\"fa fa-lg fa-camera\"></i> (?P<gallery_header>.*?) ==\n"
     r"\n"
     r"<gallery mode=\"packed\" heights=\"160px\">\n"
-    r"File:Hitchhiking in Iran\.jpg\|(?P<caption_iran>.*?)\n"
     r"File:Hitchhiking in Italy\.jpg\|(?P<caption_italy>.*?)\n"
     r"File:Hitchhiking Moscow Red Square\.jpeg\|(?P<caption_moscow>.*?)\n"
     r"File:Taklamakan Desert, China\.jpg\|(?P<caption_taklamakan>.*?)\n"
@@ -151,7 +158,6 @@ def cmd_extract(lang):
         return 1
     data = {field: m.group(field) for field in FIELDS}
     data["gallery_captions"] = {
-        "iran": data.pop("caption_iran"),
         "italy": data.pop("caption_italy"),
         "moscow": data.pop("caption_moscow"),
         "taklamakan": data.pop("caption_taklamakan"),
@@ -185,7 +191,6 @@ def render(lang):
         "NEWS_LABEL": data["news_label"],
         "NEWS_EDIT_LABEL": data["news_edit_label"],
         "GALLERY_HEADER": data["gallery_header"],
-        "CAPTION_IRAN": captions["iran"],
         "CAPTION_ITALY": captions["italy"],
         "CAPTION_MOSCOW": captions["moscow"],
         "CAPTION_TAKLAMAKAN": captions["taklamakan"],
@@ -235,6 +240,45 @@ def cmd_push(lang, dry_run):
     return 0
 
 
+def cmd_check(lang, quiet=False):
+    """Report any main page whose live wikitext no longer matches the template.
+
+    The pages are sysop-protected and carry an edit notice, but an admin can
+    still hand-edit one, and such an edit would neither reach the other 33
+    wikis nor survive the next push. The weekly cron runs this so that drift
+    gets noticed instead of silently reverted.
+    """
+    languages = TEMPLATED_LANGUAGES if lang == "all" else [lang]
+    drifted = []
+    for l in languages:
+        title = get_main_page_title(l)
+        live = get_wikitext(l, title)
+        expected = render(l)
+        if live == expected:
+            continue
+        drifted.append(l)
+        print(f"--- {l} ({title}) has been hand-edited on-wiki ---")
+        sys.stdout.writelines(difflib.unified_diff(
+            expected.splitlines(keepends=True),
+            live.splitlines(keepends=True),
+            fromfile=f"{l} (generated from template)",
+            tofile=f"{l} (live wiki page)",
+        ))
+        print()
+    if drifted:
+        print(
+            f"{len(drifted)} main page(s) drifted: {' '.join(drifted)}\n"
+            "Fold the change into tools/main_page_template.wikitext (structure) "
+            "or tools/main_page_i18n/<lang>.json (wording), then re-push - "
+            "otherwise it is lost on the next push and never reaches the other wikis.",
+            file=sys.stderr,
+        )
+        return 1
+    if not quiet:
+        print(f"{len(languages)} main page(s) in sync with the template")
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -249,6 +293,12 @@ def main():
     p_push.add_argument("lang", help="language code, or 'all' for every templated wiki")
     p_push.add_argument("--dry-run", action="store_true")
 
+    p_check = sub.add_parser("check", help="report pages hand-edited away from the template")
+    p_check.add_argument("lang", nargs="?", default="all",
+                         help="language code, or 'all' (default)")
+    p_check.add_argument("--quiet", action="store_true",
+                         help="print nothing when everything is in sync (for cron)")
+
     args = parser.parse_args()
     if args.command == "extract":
         return cmd_extract(args.lang)
@@ -256,6 +306,8 @@ def main():
         return cmd_render(args.lang)
     if args.command == "push":
         return cmd_push(args.lang, args.dry_run)
+    if args.command == "check":
+        return cmd_check(args.lang, args.quiet)
 
 
 if __name__ == "__main__":

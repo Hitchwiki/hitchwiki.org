@@ -97,10 +97,43 @@ python3 tools/build_main_pages.py render de        # preview generated wikitext
 python3 tools/build_main_pages.py push de           # write it to that wiki
 python3 tools/build_main_pages.py push all          # every language wiki
 python3 tools/build_main_pages.py extract <lang>    # re-pull strings from a live page
+python3 tools/build_main_pages.py check             # has anyone hand-edited one?
 ```
 
 A structural change (new section, restyle a class) goes in the template once and
 `push all` propagates it; a wording change goes in one language's JSON file.
+
+### The pages are not hand-edited on the wiki
+
+A hand edit on a front page is a dead end: it reaches only that one language and
+is overwritten by the next `push`. That happened for real on 2026-08-01 — a
+gallery photo was dropped from `en` on-wiki and the other 33 wikis never heard
+about it. So all 34 are sysop-protected and say where to edit instead:
+
+```bash
+python3 tools/protect_main_pages.py status    # protection per wiki
+python3 tools/protect_main_pages.py notices   # (re)write the edit notices
+python3 tools/protect_main_pages.py protect   # (re)protect the pages
+```
+
+Three channels carry the same message, because they reach different people:
+
+- the `<!-- GENERATED PAGE … -->` comment at the top of the template, which
+  anyone reading the source sees;
+- `MediaWiki:Editnotice-0-<DBkey>` on each wiki, shown to admins on the edit form;
+- an `EditPage::showReadOnlyForm:initial` hook in `wiki/LocalSettings.php` that
+  repeats that same edit notice on the view-source screen — core renders no edit
+  notices there, so without it a non-admin sees nothing.
+
+All three point at **`Hitchwiki:Main page`** on `en`, which documents the routes,
+including the one that needs no repo access at all: the Events and News boxes are
+ordinary wiki edits at `en:Template:EventsShared` / `en:Template:NewsShared`, and
+every wiki's `Template:Events` / `Template:News` just mirrors them via
+`{{hwen:…}}`, so they update the whole family live.
+
+`maintenance/edit.php` writes through `PageUpdater`, which does no permission
+checks — the protection does not block `push`. A weekly cron runs `check` and
+mails a diff if an admin edited one anyway.
 
 `he`, `it`, `ro`, `ru` and `uk` used to have genuinely different, older-style
 front pages (their own box layouts, `it`'s own `{{Eventi}}`/`{{Notizie}}`

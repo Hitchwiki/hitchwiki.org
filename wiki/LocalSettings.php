@@ -270,6 +270,29 @@ if ( $wikiID !== $defaultLang ) {
 	};
 }
 
+# The front pages of all 34 wikis are generated from one shared template
+# (tools/main_page_template.wikitext + tools/main_page_i18n/<lang>.json, pushed by
+# tools/build_main_pages.py) and are sysop-protected, because a hand edit on one of
+# them reaches only that language and is overwritten by the next push.
+#
+# Admins opening the edit form see MediaWiki:Editnotice-0-<page>, which says where to
+# make the change instead. Everyone else gets EditPage's view-source screen, and that
+# screen renders no edit notices at all - it would leave them with nothing but the
+# HTML comment at the top of the wikitext. Show them the same notice.
+$wgHooks['EditPage::showReadOnlyForm:initial'][] = static function ( $editor, $out ) {
+	$title = $editor->getTitle();
+	if ( !$title->isMainPage() ) {
+		return true;
+	}
+	$notice = wfMessage( 'editnotice-0-' . strtr( $title->getDBkey(), '/', '-' ) )
+		->page( $title );
+	if ( $notice->exists() ) {
+		$out->addHTML( $notice->parseAsBlock() );
+	}
+
+	return true;
+};
+
 # Upload Paths
 $wgUploadPath = "$wgScriptPath/images/$wikiID";
 $wgUploadDirectory = "$IP/images/$wikiID";
