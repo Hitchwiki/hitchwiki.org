@@ -103,6 +103,33 @@ if (!isset($hwLanguages[$wikiID])) {
 
 $wgSitename = $hwLanguages[$wikiID] ?? 'Hitchwiki';
 
+## The project namespace is "Hitchwiki:" on every wiki, even where the site is
+## branded Tramperwiki/Autostopwiki/Liftariwiki/Otostopviki. Without this it
+## follows $wgSitename, so a family-wide link such as [[Hitchwiki:About]] or
+## [[Hitchwiki:Community Portal]] silently lands in the *main* namespace on
+## those wikis and can never resolve.
+$wgMetaNamespace = 'Hitchwiki';
+
+## Pages created before that change live under the old project namespace name,
+## and the main pages still link to them ([[Tramperwiki:Übersetzung]]). Keeping
+## every historical name as an alias means those titles keep resolving. The talk
+## forms are the localised names MediaWiki derived from the old $wgSitename, so
+## they are listed rather than computed.
+$hwOldProjectNamespaces = [
+	'cs' => ['Autostopwiki', 'Diskuse k Autostopwiki'],
+	'de' => ['Tramperwiki', 'Tramperwiki Diskussion'],
+	'es' => ['Autostopwiki', 'Autostopwiki discusión'],
+	'fi' => ['Liftariwiki', 'Keskustelu Liftariwikistä'],
+	'pl' => ['Autostopwiki', 'Dyskusja Autostopwiki'],
+	'sk' => ['Autostopwiki', 'Diskusia k Autostopwiki'],
+	'tr' => ['Otostopviki', 'Otostopviki tartışma'],
+];
+if (isset($hwOldProjectNamespaces[$wikiID])) {
+	[$hwOldProject, $hwOldProjectTalk] = $hwOldProjectNamespaces[$wikiID];
+	$wgNamespaceAliases[strtr($hwOldProject, ' ', '_')] = NS_PROJECT;
+	$wgNamespaceAliases[strtr($hwOldProjectTalk, ' ', '_')] = NS_PROJECT_TALK;
+}
+
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs
