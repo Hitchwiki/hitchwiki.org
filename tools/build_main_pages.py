@@ -14,8 +14,9 @@ were brought onto the shared structure by hand-translating the handful of
 strings the old pages didn't already have an equivalent for — see each
 language's `tools/main_page_i18n/<lang>.json` history for what was reused
 from the old page vs. freshly translated. `uk` needed no new translation at
-all: it already had the full standard layout plus two genuinely extra
-community boxes, preserved via the `extra_sections` field.
+all: it already had the full standard layout, plus two extra community boxes
+that were carried over at first and then dropped, so that every wiki's front
+page is now exactly the shared structure with nothing bolted on.
 
 This script makes the English structure in `tools/main_page_template.wikitext`
 the single source of truth, and keeps only the translated strings per language
@@ -63,8 +64,7 @@ FIELDS = (
     "news_edit_label", "gallery_header", "caption_italy",
     "caption_moscow", "caption_taklamakan", "caption_berlin_sign",
     "caption_guitar", "caption_split_dubrovnik", "upload_cta",
-    "extra_sections", "related_header", "nomad_desc", "trash_desc",
-    "trustroots_desc",
+    "related_header", "nomad_desc", "trash_desc", "trustroots_desc",
 )
 
 EXTRACT_RE = re.compile(
@@ -111,7 +111,7 @@ EXTRACT_RE = re.compile(
     r"(?P<upload_cta>.*?)\n"
     r"</div>\n"
     r"</div>\n"
-    r"(?P<extra_sections>.*)"  # greedy: backtracks to the LAST matching related-projects box
+    r"\n"
     r"<div class=\"frontpage_ptg frontpage_box\">\n"
     r"== (?P<related_header>.*?) ==\n"
     r"\* \[\[:nomad:\|Nomadwiki\]\] (?P<nomad_desc>.*?)\n"
@@ -198,7 +198,6 @@ def render(lang):
         "CAPTION_GUITAR": captions["guitar"],
         "CAPTION_SPLIT_DUBROVNIK": captions["split_dubrovnik"],
         "UPLOAD_CTA": data["upload_cta"],
-        "EXTRA_SECTIONS": data.get("extra_sections", "\n"),
         "RELATED_HEADER": data["related_header"],
         "NOMAD_DESC": data["nomad_desc"],
         "TRASH_DESC": data["trash_desc"],

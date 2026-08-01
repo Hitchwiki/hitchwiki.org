@@ -55,7 +55,8 @@ File:Tramprennen split dubrovnik.jpg|%%CAPTION_SPLIT_DUBROVNIK%%
 %%UPLOAD_CTA%%
 </div>
 </div>
-%%EXTRA_SECTIONS%%<div class="frontpage_ptg frontpage_box">
+
+<div class="frontpage_ptg frontpage_box">
 == %%RELATED_HEADER%% ==
 * [[:nomad:|Nomadwiki]] %%NOMAD_DESC%%
 * [[:trash:|Trashwiki]] %%TRASH_DESC%%

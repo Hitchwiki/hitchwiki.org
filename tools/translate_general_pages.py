@@ -459,13 +459,15 @@ def push_lang(lang, slots, args):
 
         _, length = page_state(lang, [title])[title]
         if length is not None and not args.force:
-            lines.append(f"{lang}/{slot}: {title} exists ({length}b), skipping")
-            continue
-        if args.dry_run:
+            # Not an error: a human may have written it, or an earlier run was
+            # interrupted. Fall through so the redirects below are still checked.
+            lines.append(f"{lang}/{slot}: {title} exists ({length}b), leaving it")
+        elif args.dry_run:
             lines.append(f"{lang}/{slot}: would write {title} ({len(text)}b)")
             continue
-        put_wikitext(lang, title, text, summary)
-        lines.append(f"{lang}/{slot}: wrote {title} ({len(text)}b)")
+        else:
+            put_wikitext(lang, title, text, summary)
+            lines.append(f"{lang}/{slot}: wrote {title} ({len(text)}b)")
 
         # Redirects from the English title and its aliases, so links written on
         # any wiki against the English key keep resolving.
@@ -480,6 +482,9 @@ def push_lang(lang, slots, args):
             # redirect left pointing at a page that was never written (zh's
             # "First time hitchhiking") is repointed at the translation.
             if alen is not None or (resolved == alias and not is_missing(lang, alias)):
+                continue
+            if args.dry_run:
+                lines.append(f"{lang}/{slot}:   would redirect {alias} -> {title}")
                 continue
             put_wikitext(lang, alias, f"#REDIRECT [[{title}]]\n",
                          f"Redirect to [[{title}]]")

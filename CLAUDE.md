@@ -143,8 +143,13 @@ whichever of their existing links/phrasing already matched a standard field,
 translating the rest — so run `extract <lang>` again before hand-editing one
 of those five JSON files, in case a manual translation pass improves on what's
 there now. `uk` is the one exception that needed no new translation: it
-already had the full standard layout plus two genuinely extra community boxes,
-which `extra_sections` in its JSON preserves untouched.
+already had the full standard layout, plus two extra community boxes
+("Рекомендовані статті", "Приєднайся до команди") that an `extra_sections`
+field carried over at first and that were then dropped, on the grounds that a
+front page carrying more than the shared structure is the divergence this whole
+arrangement exists to prevent. No language has anything bolted on now, and there
+is no mechanism for it — a section that belongs on one front page belongs on all
+34, so it goes in the template.
 
 ## The general-info articles are translated from English, not written per wiki
 
