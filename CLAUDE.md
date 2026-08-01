@@ -146,6 +146,57 @@ there now. `uk` is the one exception that needed no new translation: it
 already had the full standard layout plus two genuinely extra community boxes,
 which `extra_sections` in its JSON preserves untouched.
 
+## The general-info articles are translated from English, not written per wiki
+
+Every main page's nav bar links to the same introductory set — Top tips, First
+time hitchhiking, Hitchhiker's safety, Where to hitchhike, Picking up
+hitchhikers, Hitchhiking races, Roles — plus the `Category:General info`
+landing page. English owns them; the other 33 wikis get a translation:
+
+```bash
+python3 tools/translate_general_pages.py plan            # what is missing where
+python3 tools/translate_general_pages.py translate all -j 8
+python3 tools/translate_general_pages.py push all
+python3 tools/translate_general_pages.py register        # interlanguage links
+```
+
+`translate` writes one JSON per page under `tools/general_pages_out/<lang>/` and
+is cached, so re-running it costs nothing and `push` is a separate, reviewable
+step. Both skip a page that already exists on the target wiki — an article a
+human wrote or improved is never overwritten. Use `--force` to redo one
+deliberately.
+
+Only prose is sent to the model. Link *targets* are structural and stay in
+English (`[[Etiquette]]` becomes `[[Etiquette|Etikette]]`), as do category
+names, file names, template and parameter names, and URLs — the English title is
+the key that `page_translations` and every cross-wiki link resolve against.
+Each translation is checked against its source for exactly that (link, file,
+template and URL sets identical, heading count identical, not truncated) and a
+page that fails is retried once and then skipped rather than pushed.
+
+The article lands at its translated title (`de:Zum ersten Mal trampen`), with
+redirects from the English title and its aliases (`First time hitchhiking`,
+`First time`, `Virgin hitchhiking`) so links written anywhere in the family keep
+resolving. Where a main page already links to a translated title — `he`, `it`,
+`ro`, `ru` — the page is created under exactly that name instead.
+
+`register` rewrites the `page_translations` rows for each concept from what the
+wikis actually contain, so the interlanguage sidebar works. Run it after `push`.
+
+The Community Portal is deliberately **not** translated: it is a directory of
+English-language external resources, not an informational article.
+
+## The project namespace is `Hitchwiki:` everywhere
+
+`$wgSitename` differs per wiki (Tramperwiki, Autostopwiki, Liftariwiki,
+Otostopviki), and the project namespace used to follow it. That made
+`[[Hitchwiki:About]]` and `[[Hitchwiki:Community Portal]]` — which every main
+page links to — resolve into the **main** namespace on those seven wikis, where
+they could never be found. `$wgMetaNamespace = 'Hitchwiki'` in
+`wiki/LocalSettings.php` fixes it family-wide; `$hwOldProjectNamespaces` next to
+it keeps the old names (and their localised talk forms) as aliases, so
+`[[Tramperwiki:Übersetzung]]` and the existing project pages still resolve.
+
 ## Site JavaScript is family-wide, not per-wiki
 
 Do not put shared JavaScript in `MediaWiki:Common.js`. It lives in
