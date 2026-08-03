@@ -1,4 +1,5 @@
 {
+  "chat_text": "Szerezz első kézből tanácsokat több mint 800 stoppostól a csevegésünkben",
   "events_edit_label": "esemény hozzáadása/szerkesztése",
   "events_label": "Események",
   "gallery_captions": {
@@ -18,7 +19,6 @@
   "races_header": "NEM AKARSZ LEMARADNI A VERSENYEKRŐL ÉS ESEMÉNYEKRŐL?",
   "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Iratkozz fel]] a hírlevelünkre a [[Special:RequestAccount|Hitchwiki fiókoddal]].",
   "related_header": "Kapcsolódó projektek",
-  "signal_text": "Szerezz első kézből tanácsokat több mint 800 stoppostól a Signal csevegésünkben",
   "tagline": "Útmutató a világ körüli stoppoláshoz.",
   "trash_desc": "kukázás",
   "trustroots_desc": "vendéglátó csere",

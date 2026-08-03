@@ -16,7 +16,7 @@
 <ul id="frontpage-header">
 <li>
 <h1>[[Hitchwiki:About|%%TAGLINE%%]]</h1>
-<h1>[https://signal.group/#CjQKIGgw5-FMZ1Sq67CL50LKCkZg-6i0KCDuS24S4uBDyb5IEhAmnOqOcim9eSMm-TJFozyg <u> %%SIGNAL_TEXT%% </u>]</h1>
+<h1>[https://matrix.to/#/#hitchhiking:hitchhiking.org <u> %%CHAT_TEXT%% </u>]</h1>
 <div class="ingress">%%INGRESS%%
 </div>
 <span class="first_links">%%NAV_LINKS%%

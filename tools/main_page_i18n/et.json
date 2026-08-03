@@ -1,4 +1,5 @@
 {
+  "chat_text": "Saa esmaklassilisi nõuandeid üle 800 hääletajalt meie vestluses",
   "events_edit_label": "lisa/muuda sündmust",
   "events_label": "Sündmused",
   "gallery_captions": {
@@ -18,7 +19,6 @@
   "races_header": "EI TAHA JÄÄDA ILMA VÕISTLUSTEST JA SÜNDMUSTEST?",
   "register_text": "[[Special:Preferences#mw-prefsection-personal-newsletter|Registreeru]] meie uudiskirja saajaks oma [[Special:RequestAccount|Hitchwiki kontoga]].",
   "related_header": "Seotud projektid",
-  "signal_text": "Saa esmaklassilisi nõuandeid üle 800 hääletajalt meie Signali vestluses",
   "tagline": "Maailma hääletamise juhend.",
   "trash_desc": "konteinerisukeldumine",
   "trustroots_desc": "külalislahkuse vahetus",

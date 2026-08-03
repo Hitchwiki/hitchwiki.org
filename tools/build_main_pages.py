@@ -59,7 +59,7 @@ TEMPLATED_LANGUAGES = (
 ).split()
 
 FIELDS = (
-    "tagline", "signal_text", "ingress", "nav_links", "races_header",
+    "tagline", "chat_text", "ingress", "nav_links", "races_header",
     "register_text", "events_label", "events_edit_label", "news_label",
     "news_edit_label", "gallery_header", "caption_italy",
     "caption_moscow", "caption_taklamakan", "caption_berlin_sign",
@@ -72,7 +72,7 @@ EXTRACT_RE = re.compile(
     r"<li>\n"
     r"<h1>\[\[Hitchwiki:About\|(?P<tagline>.*?)\]\]</h1>\n"
     r"(?:<!--.*?-->\n)?"
-    r"<h1>\[https://signal\.group/#CjQKIGgw5-FMZ1Sq67CL50LKCkZg-6i0KCDuS24S4uBDyb5IEhAmnOqOcim9eSMm-TJFozyg <u> (?P<signal_text>.*?) </u>\]</h1>\n"
+    r"<h1>\[https://matrix\.to/#/\#hitchhiking:hitchhiking\.org <u> (?P<chat_text>.*?) </u>\]</h1>\n"
     r"<div class=\"ingress\">(?P<ingress>.*?)\n"
     r"</div>\n"
     r"<span class=\"first_links\">(?P<nav_links>.*?)\n"
@@ -181,7 +181,7 @@ def render(lang):
     captions = data["gallery_captions"]
     tokens = {
         "TAGLINE": data["tagline"],
-        "SIGNAL_TEXT": data["signal_text"],
+        "CHAT_TEXT": data["chat_text"],
         "INGRESS": data["ingress"],
         "NAV_LINKS": data["nav_links"],
         "RACES_HEADER": data["races_header"],

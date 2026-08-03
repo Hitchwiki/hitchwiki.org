@@ -1,4 +1,5 @@
 {
+  "chat_text": "在我们的聊天中获取 800 多位搭车者的第一手建议",
   "events_edit_label": "添加/编辑活动",
   "events_label": "活动",
   "gallery_captions": {
@@ -18,7 +19,6 @@
   "races_header": "不想错过比赛和活动吗？",
   "register_text": "使用你的 [[Special:RequestAccount|Hitchwiki 账户]][[Special:Preferences#mw-prefsection-personal-newsletter|注册]]我们的新闻邮件。",
   "related_header": "相关项目",
-  "signal_text": "在我们的 Signal 聊天中获取 800 多位搭车者的第一手建议",
   "tagline": "环游世界搭车指南。",
   "trash_desc": "垃圾箱寻食",
   "trustroots_desc": "住宿交换",
