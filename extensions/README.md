@@ -1,6 +1,12 @@
-Some of the extensions aren't bundled throughout all the hops:
+MediaWiki does not bundle all of these extensions, so they are pulled in here as git
+submodules and baked into the image (`COPY extensions/` in the `Dockerfile`):
 
-- AbuseFilter (1.38+)
-- CheckUser (1.44+)
+- AbuseFilter — bundled up to 1.38, a submodule since
+- CheckUser — bundled up to 1.44, a submodule since
 
-They can be removed after successful upgrade and deployment.
+Both are in active use on the wiki family (see `wfLoadExtension` in
+`wiki/LocalSettings.php`); they are not upgrade leftovers.
+
+Local edits made inside an extension are not tracked by this repo — only the commit
+each submodule is pinned to. Record any such edit in `EXTENSION_CHANGES.md` so it can
+be reapplied on a fresh clone.

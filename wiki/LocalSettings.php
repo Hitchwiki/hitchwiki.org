@@ -646,12 +646,15 @@ $wgGroupPermissions['sysop']['skipcaptcha'] = true;
 $wgGroupPermissions['sysop']['interwiki'] = true;
 
 // ConfirmAccount: only CheckUsers gets account approvals and notifications.
+// The group is 'checkuser', singular — the name the CheckUser extension defines.
+// It was spelled 'checkusers' here, which matches no group, so getAdminsToNotify()
+// resolved to nobody and account requests silently notified no one.
 $wgGroupPermissions['bureaucrat']['confirmaccount'] = true;
 $wgGroupPermissions['bureaucrat']['confirmaccount-notify'] = false;
 $wgGroupPermissions['sysop']['confirmaccount'] = true;
 $wgGroupPermissions['sysop']['confirmaccount-notify'] = false;
-$wgGroupPermissions['checkusers']['confirmaccount'] = true;
-$wgGroupPermissions['checkusers']['confirmaccount-notify'] = true;
+$wgGroupPermissions['checkuser']['confirmaccount'] = true;
+$wgGroupPermissions['checkuser']['confirmaccount-notify'] = true;
 
 ### OAuth configuration start ###
 wfLoadExtension('OAuth');

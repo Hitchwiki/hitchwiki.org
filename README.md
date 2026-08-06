@@ -108,14 +108,13 @@ Code and SQL dumps are also backed up to several machines controlled by @guaka a
 - `wiki/`: MediaWiki installation directory containing static and configuration files for the wiki.
 - `data/`: Data files consumed by extensions. (Country hitchability ratings are read from a separate maps export — see [Country hitchability ratings](#country-hitchability-ratings).)
 - `tools/`: Various scripts for maintenance, dumps, and extension management (e.g., `upgrade-extensions` for checking out versioned submodule branches).
-- `patches/`: Custom patches for MediaWiki upgrade process to override with fixes or changes (to be removed after deployment).
 - `oauth/`: OAuth2 setup files including RSA keys and custom entrypoint script. See [`oauth/README.md`](oauth/README.md) for details.
 - `extensions/`: Git submodules of used extensions; bundled extensions are not included here.
 - `sql/`: Databases to be imported during the upgrade process.
 - `backups/`: Used to save database snapshots during the upgrade process.
-- `docker-compose.yml`: Spins up a versioned Hitchwiki and database container, mounting configuration and patch files. The database is configured with a default root user for scripts.
+- `docker-compose.yml`: The production setup. Builds the image from the `Dockerfile` and mounts only what has to stay writable or refreshable at runtime (uploads, `data/`, map tiles and spots, the ratings export).
   - `Dockerfile` prepares a production-ready container with skins, extensions, static and configuration files bundled.
-  - `docker-compose.prod.yml`: Spins up production-ready containers without mounted overwrites.
+  - `docker-compose.dev.yml`: Development setup. Runs the stock `mediawiki:${MW_VERSION}` image and bind-mounts the extensions instead of baking them in, so edits take effect without a rebuild.
 - `upgrade-mw.sh`: Main upgrade script executed on the host machine; hops versions automatically and executes all steps for all languages.
 - `import-db.sh`: Allows for a quick reset of the database from `./sql` from the host machine.
 
