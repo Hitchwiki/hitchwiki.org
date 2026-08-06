@@ -292,6 +292,40 @@ def slug(title):
 
 COUNTRY_PARAM_RE = re.compile(r"\|\s*country\s*=\s*\[?\[?([^\]\n|]+)", re.I)
 ISIN_RE = re.compile(r"\{\{\s*IsIn\s*\|\s*([^}|]+)", re.I)
+INFOBOX_NAME_RE = re.compile(r"\{\{\s*infobox\s+([^|}\n]+)", re.I)
+
+# Some articles name their country only in the infobox they chose:
+# `{{Infobox German Location}}` with no `country =` parameter at all. Without
+# this, Pforzheim, Göteborg and Baia Mare belong to no country and so fall out
+# of every home-cities tier.
+INFOBOX_COUNTRY = {
+    "brazilian location": "Brazil",
+    "czech location": "Czech Republic",
+    "dutch location": "Netherlands",
+    "german location": "Germany",
+    "israeli location": "Israel",
+    "italian location": "Italy",
+    "polish location": "Poland",
+    "romanian location": "Romania",
+    "scottish location": "Scotland",
+    "swedish location": "Sweden",
+    "turkish location": "Turkey",
+    "uk location": "United Kingdom",
+}
+
+# In Category:Cities but not a city: a student hitching contest and a page of
+# red links. They have no country because they are not places.
+NOT_A_CITY_CATEGORIES = {"Contests", "Earth"}
+
+# A border post is not a city either — but `Category:Border crossings` cannot be
+# the test, because Salzburg, Trieste, Calais and Algeciras are in it too and
+# are very much cities. Only the pages that say so in their own title go.
+NOT_A_CITY_TITLE = re.compile(r"\bborder crossing\b", re.I)
+
+
+def is_a_city(title, categories):
+    return not (NOT_A_CITY_TITLE.search(title)
+                or (categories & NOT_A_CITY_CATEGORIES))
 
 
 def category_members(lang, category):
@@ -313,6 +347,24 @@ def page_lengths(lang, titles):
         for p in r["query"].get("pages", []):
             if "missing" not in p and not p.get("missing"):
                 out[p["title"]] = p.get("length", 0)
+    return out
+
+
+def page_categories(titles):
+    """{title: {category name without the prefix}} for the given pages."""
+    out = {}
+    for i in range(0, len(titles), 50):
+        chunk = titles[i:i + 50]
+        params = {"action": "query", "titles": "|".join(chunk),
+                  "prop": "categories", "cllimit": "max"}
+        while True:
+            r = api("en", params)
+            for p in r["query"].get("pages", []):
+                out.setdefault(p["title"], set()).update(
+                    c["title"].split(":", 1)[1] for c in p.get("categories", []))
+            if "continue" not in r:
+                break
+            params.update(r["continue"])
     return out
 
 
@@ -346,7 +398,17 @@ def build_index():
     print("caching English wikitext …", file=sys.stderr)
     fetch_wikitext(every)
 
-    print("reading each city's country from its English infobox …", file=sys.stderr)
+    print("reading each city's categories …", file=sys.stderr)
+    city_cats = page_categories(cities)
+    not_cities = sorted(t for t in cities
+                        if not is_a_city(t, city_cats.get(t, set())))
+    if not_cities:
+        print(f"  dropping {len(not_cities)} non-cities: "
+              f"{', '.join(not_cities[:6])}…", file=sys.stderr)
+    cities = [t for t in cities if t not in set(not_cities)]
+
+    print("reading each city's country …", file=sys.stderr)
+    country_names = set(countries)
     city_country, unknown = {}, []
     for title in cities:
         try:
@@ -354,12 +416,26 @@ def build_index():
         except FileNotFoundError:
             unknown.append(title)
             continue
+        # In order of how explicit it is: an actual `country =` parameter, the
+        # GeoCrumbs breadcrumb, the nationality baked into the infobox's name,
+        # and finally a category that happens to be a country.
+        found = None
         m = COUNTRY_PARAM_RE.search(text) or ISIN_RE.search(text)
         if m:
-            city_country[title] = m.group(1).strip().rstrip("|").strip()
+            found = m.group(1).strip().rstrip("|").strip()
+        if not found:
+            m = INFOBOX_NAME_RE.search(text)
+            if m:
+                found = INFOBOX_COUNTRY.get(m.group(1).strip().lower())
+        if not found:
+            hits = city_cats.get(title, set()) & country_names
+            if len(hits) == 1:
+                found = next(iter(hits))
+        if found:
+            city_country[title] = found
         else:
             unknown.append(title)
-    print(f"  {len(unknown)} cities with no country in the infobox", file=sys.stderr)
+    print(f"  {len(unknown)} cities with no country found", file=sys.stderr)
 
     print("reading what each wiki already has …", file=sys.stderr)
     # A concept counts as present on a wiki if page_translations names a live
