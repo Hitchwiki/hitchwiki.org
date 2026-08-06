@@ -191,6 +191,102 @@ wikis actually contain, so the interlanguage sidebar works. Run it after `push`.
 The Community Portal is deliberately **not** translated: it is a directory of
 English-language external resources, not an informational article.
 
+## Country and city articles are translated from English too
+
+Same principle as the general-info pages, at a different scale. English has
+~2,750 place articles (233 countries, 2,517 cities); most other wikis had almost
+none, so someone searching in Finnish or Lithuanian found nothing. The gap is
+filled from English, in the order a reader is most likely to want:
+
+| tier | what | where |
+| --- | --- | --- |
+| `countries` | the 62 European countries | the 26 European wikis |
+| `concepts` | the articles explaining hitchhiking itself — safety, etiquette, on-ramps, police, borders, winter, money | all 33 wikis |
+| `home-cities` | cities in the language's own countries | that wiki |
+| `major-cities` | the *N* most linked-to cities plus every national capital (`--top N`, default 150 → 302 cities) | all 33 wikis |
+
+The `concepts` tier comes from the wiki's own `Category:General info`, plus a
+few techniques that live outside it (`Petrol station hitchhiking`,
+`Official Hitchhiking`, `Hitchhiking Bench`), minus the link directories,
+community rosters and news archives — the same reasoning that keeps the
+Community Portal in English. Do **not** try to find these by inbound link
+count: the motorway navboxes put `A7 (Germany)` on 206 pages and `Etiquette` on
+far fewer, so that ranking returns nothing but roads.
+
+```bash
+python3 tools/place_corpus.py build                              # index en + coverage
+python3 tools/translate_place_articles.py plan --tier all --bytes
+python3 tools/translate_place_articles.py batch submit --tier countries
+python3 tools/translate_place_articles.py batch poll --watch
+python3 tools/translate_place_articles.py batch collect
+python3 tools/translate_place_articles.py bootstrap --tier countries   # templates
+python3 tools/translate_place_articles.py push --tier countries
+python3 tools/translate_place_articles.py register --tier countries
+```
+
+Nothing here is hand-maintained per city. `tools/place_corpus.py` derives the
+article lists from `Category:Countries` / `Category:Cities`, each city's country
+from the `country =` parameter of its English infobox, and each wiki's existing
+coverage from `page_translations` plus a direct title check. `HOME_COUNTRIES`
+and `EUROPEAN_COUNTRIES` in that file are the only judgement calls, and they are
+about languages and geography, not about individual articles.
+
+**A page is only ever created, never overwritten.** If a wiki already has the
+article — under the English title or under one `page_translations` knows — it is
+left alone, because a human wrote it. All edits are bot-flagged.
+
+Three things make a translated place article differ from its English source:
+
+- **No infobox.** `SharedInfobox` renders the English counterpart's box on it,
+  so shipping a translated copy would mean two sources of truth for a population
+  figure. The `{{Infobox …}}` call is cut before translation, and `register`
+  writes the `page_translations` row that SharedInfobox matches on — so run it
+  after every `push` or the article renders with no infobox at all.
+- **It ends with `{{hwen:Ai-enhanced}}`**, the "a language model wrote this,
+  please verify" banner. Transcluded from `en` over the same interwiki route
+  `Template:Events` uses, *not* copied to each wiki: there is one
+  `Template:Ai-enhanced` and rewording it reaches all 34 at once. Scary
+  transclusion fetches raw wikitext, so the `{{FULLPAGENAME}}` in the banner's
+  "correct this article" link still resolves to the local page.
+- **It lands at its translated title** (`lt:Albanija`), with a redirect from the
+  English title so links written on any wiki keep resolving.
+
+### Templates have to be bootstrapped first
+
+A city article is full of `{{Coords}}`, `{{IsIn}}`, `{{stub}}`, `{{nomadwiki}}`
+and motorway shields, and outside `en` (and `de`) none of those templates
+existed — a missing template renders as its own literal source in the middle of
+the article. `bootstrap` works out the transitive closure of what a tier's
+articles actually call, and copies the missing ones over from English. The few
+that are mostly a sentence addressed to the reader (`Record-ride`, `Stub`,
+`Nomadwiki`, `Coords`) get their prose translated; the rest — shields, navboxes,
+`Navbox` itself — are copied verbatim, and a translation that comes back with a
+different brace or `{{{1}}}` count is discarded in favour of the English source,
+because that is broken code rather than a bad translation. **Run `bootstrap`
+before `push`.**
+
+### Use the batch API, not the live one
+
+At ~12,750 articles the OpenAI Batch API is the difference between a long
+afternoon and a week: no rate limit to fight and half the price. `batch submit`
+chunks a tier into 2,000-article jobs, `batch poll --watch` follows them, and
+`batch collect` validates each reply and writes it to `tools/place_pages_out/`.
+`translate` does the same thing live and is what to use for the handful that
+fail validation, or for a single page.
+
+Only prose is sent to the model. Link *targets*, category and file names,
+template names and parameters, and URLs stay byte-identical, so a translation
+cannot repoint a link or invent a template and the English title stays the key
+everything resolves against. Each reply is checked against its source for
+exactly that (link, file, template and URL sets identical, heading count
+identical, not truncated) and a page that fails is retried once and then skipped
+rather than pushed.
+
+Everything under `tools/place_index.json`, `place_text_cache/`,
+`place_pages_out/` and `place_batches/` is derived working state and is
+gitignored — the index rebuilds with `place_corpus.py build`, and the rest has
+already been pushed to the wikis. Delete it when a run is finished.
+
 ## The project namespace is `Hitchwiki:` everywhere
 
 `$wgSitename` differs per wiki (Tramperwiki, Autostopwiki, Liftariwiki,

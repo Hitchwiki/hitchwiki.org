@@ -28,3 +28,12 @@ google*.html
 .claude/
 # Per-map spot data for the infobox map pins (rebuilt by tools/build_map_spots.py)
 spots
+
+# Working files of tools/translate_place_articles.py. All of it is derived:
+# place_index.json and place_text_cache come back from `place_corpus.py build`,
+# place_pages_out and place_batches are model output that has already been
+# pushed to the wikis. Deleted once a run is done.
+tools/place_index.json
+tools/place_text_cache
+tools/place_pages_out
+tools/place_batches
