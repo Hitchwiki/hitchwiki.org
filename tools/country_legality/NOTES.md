@@ -3,13 +3,9 @@
 Which countries are done, and — more usefully — which ones resisted and why, so
 the next pass starts from the failures rather than rediscovering them.
 
-## Done (34)
+## Done (37)
 
-Austria, Belgium, Brazil, Bulgaria, Croatia, Czech Republic, Denmark, England,
-Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia,
-Netherlands, Northern Ireland, Norway, Poland, Portugal, Romania, Russia,
-Scotland, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Ukraine,
-United Kingdom, Wales.
+Austria, Belgium, Bosnia and Herzegovina, Brazil, Bulgaria, Croatia, Czech Republic, Denmark, England, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Lithuania, Netherlands, Northern Ireland, Norway, Poland, Portugal, Romania, Russia, Scotland, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Ukraine, United Kingdom, Wales.
 
 `python3 tools/country_legality.py plan all` prints the live state; this list is
 just the roster of block files.
@@ -18,15 +14,14 @@ just the roster of block files.
 
 | country | source | what happened |
 | --- | --- | --- |
-| Lithuania | e-tar.lt 403; e-seimas `TAIS.239817` | wrong act — that id is an EU association agreement |
 | Georgia | matsne.gov.ge | full text fetches fine, but the motorway pedestrian rule was not found by keyword; needs the article located properly |
 | Turkey | mevzuat.gov.tr (html/pdf/doc) | connection times out |
 | Malta | legislation.mt | JS-only; `/eng/pdf` serves HTML |
-| Kosovo, Bosnia, Montenegro, North Macedonia, Albania | gzk.rks-gov.net, paragraf.ba, katalogpropisa.me, slvesnik.com.mk, qbz.gov.al | JS shells or wrong document ids |
+| Kosovo, Montenegro, North Macedonia, Albania | gzk.rks-gov.net, katalogpropisa.me, slvesnik.com.mk, qbz.gov.al | JS shells or wrong document ids |
 | Belarus, Moldova | pravo.by, legis.md | 404 / 403 |
 | Singapore | sso.agc.gov.sg | reachable, but `RTA1961-R20` and `-R5` are the wrong instruments; the expressway rules are elsewhere |
 | New Zealand | legislation.govt.nz | returns 202 with an empty body |
-| Iceland, Luxembourg, Mexico, Morocco, South Africa, India, Argentina, Chile, Japan | various | 403, empty, or JS-only on the URLs tried |
+| Luxembourg, Mexico, Morocco, South Africa, India, Argentina, Chile, Japan | various | 403, empty, or JS-only on the URLs tried |
 
 ### Solved since
 
@@ -39,6 +34,17 @@ just the roster of block files.
   (17.07.2024) and the citation points at the register's `?leiaKehtiv=` URL,
   which always resolves to the version in force. Worth re-checking against the
   register itself if a route into it is ever found.
+
+- **Lithuania** — `e-seimas.lrs.lt/rs/legalact/TAD/<hash>/` serves the full KET;
+  the `/portal/legalAct/` and e-tar.lt routes do not.
+- **Bosnia** — the Parliamentary Assembly serves the act as a PDF from
+  `parlament.ba/law/DownloadDocument?lawDocumentId=…`.
+- **Iceland** — `adverts.stjornartidindi.is/A_nr_<n>_<year>.pdf` is the gazette
+  PDF; althingi.is 403s this host.
+
+**The reliable method**: search for the statute's real PDF or document URL and
+fetch that. Guessing URL patterns failed 14 times out of 14 in one round;
+searched URLs worked immediately in the next.
 
 ## What works
 
