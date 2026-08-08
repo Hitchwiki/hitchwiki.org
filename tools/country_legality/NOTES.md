@@ -3,12 +3,13 @@
 Which countries are done, and — more usefully — which ones resisted and why, so
 the next pass starts from the failures rather than rediscovering them.
 
-## Done (31)
+## Done (34)
 
-Austria, Belgium, Brazil, Croatia, Czech Republic, Denmark, England, Finland,
-France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Netherlands, Northern
-Ireland, Norway, Poland, Portugal, Romania, Russia, Scotland, Serbia, Slovakia,
-Spain, Sweden, Switzerland, Ukraine, United Kingdom, Wales.
+Austria, Belgium, Brazil, Bulgaria, Croatia, Czech Republic, Denmark, England,
+Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia,
+Netherlands, Northern Ireland, Norway, Poland, Portugal, Romania, Russia,
+Scotland, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Ukraine,
+United Kingdom, Wales.
 
 `python3 tools/country_legality.py plan all` prints the live state; this list is
 just the roster of block files.
@@ -17,9 +18,6 @@ just the roster of block files.
 
 | country | source | what happened |
 | --- | --- | --- |
-| Slovenia | pisrs.si, uradni-list.si | JS-only; the `npb` PDF path 404s |
-| Bulgaria | lex.bg, dv.parliament.bg, mvr.bg | 403 to this host |
-| Estonia | riigiteataja.ee (incl. `/en/eli/...`) | JS-only, `.pdf` suffix returns HTML |
 | Lithuania | e-tar.lt 403; e-seimas `TAIS.239817` | wrong act — that id is an EU association agreement |
 | Georgia | matsne.gov.ge | full text fetches fine, but the motorway pedestrian rule was not found by keyword; needs the article located properly |
 | Turkey | mevzuat.gov.tr (html/pdf/doc) | connection times out |
@@ -29,6 +27,18 @@ just the roster of block files.
 | Singapore | sso.agc.gov.sg | reachable, but `RTA1961-R20` and `-R5` are the wrong instruments; the expressway rules are elsewhere |
 | New Zealand | legislation.govt.nz | returns 202 with an empty body |
 | Iceland, Luxembourg, Mexico, Morocco, South Africa, India, Argentina, Chile, Japan | various | 403, empty, or JS-only on the URLs tried |
+
+### Solved since
+
+- **Slovenia** — the Uradni list issue PDF (`uradni-list.si/_pdf/2010/Ur/u2010109.pdf`)
+  carries the whole of ZPrCP. Issue PDFs are the way into that gazette.
+- **Bulgaria** — lex.bg 403s, but the Road Infrastructure Agency republishes the
+  consolidated ЗДвП at `rta.government.bg/upload/15545/zdvp.pdf`.
+- **Estonia** — Riigi Teataja serves only a JS shell and its `.pdf` suffix returns
+  HTML. § 66 was read from a dated verbatim reprint of the consolidated text
+  (17.07.2024) and the citation points at the register's `?leiaKehtiv=` URL,
+  which always resolves to the version in force. Worth re-checking against the
+  register itself if a route into it is ever found.
 
 ## What works
 
