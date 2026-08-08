@@ -1,12 +1,22 @@
 #!/bin/bash
 set -e
 
+OAUTH_DIR="/var/www/html/extensions/OAuth"
+if [[ ! -f "$OAUTH_DIR/composer.json" ]]; then
+	echo "[hitchwiki] ERROR: $OAUTH_DIR/composer.json missing (empty OAuth extension)." >&2
+	echo "  From the hitchwiki.org repo run: git submodule update --init --recursive" >&2
+	echo "  Or restore extensions/OAuth from your MediaWiki checkout." >&2
+	exit 1
+fi
+
 echo "[hitchwiki] Installing OAuth extension composer packages..."
-cd /var/www/html/extensions/OAuth
-composer install --no-dev --no-interaction
+cd "$OAUTH_DIR"
+# OAuth extension ships without composer.lock; Composer 2 blocks deps with open advisories unless opted out.
+composer install --no-dev --no-interaction --no-security-blocking
 
 echo "[hitchwiki] Verifying OAuth composer packages..."
-REQUIRED_PACKAGES=("firebase/php-jwt" "lcobucci/jwt" "league/oauth2-server" "okvpn/clock-lts")
+# Verify the direct runtime dependencies; their transitive clock implementation varies by lockfile.
+REQUIRED_PACKAGES=("firebase/php-jwt" "lcobucci/jwt" "league/oauth2-server")
 MISSING=()
 for pkg in "${REQUIRED_PACKAGES[@]}"; do
   if ! composer show "$pkg" > /dev/null 2>&1; then
