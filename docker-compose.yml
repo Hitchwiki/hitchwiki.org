@@ -6,6 +6,15 @@ services:
       args:
         MW_VERSION: ${MW_VERSION}
     restart: always
+    # Production-local: Caddy in /opt/hitchwiki-private fronts the site and reaches
+    # the container over the private network below; MW_PORT is also published for
+    # direct/host access. Never committed until now, which is why a restore from an
+    # older working copy keeps dropping them — keep these two blocks in sync with prod.
+    ports:
+      - ${MW_PORT}:80
+    networks:
+      - default
+      - hitchwiki_private_db
     volumes:
       # Configuration files and images
       - ./wiki/images:/var/www/html/images
@@ -43,4 +52,9 @@ services:
 
 volumes:
   images:
+
+networks:
+  hitchwiki_private_db:
+    external: true
+    name: hitchwiki-private_private
 
