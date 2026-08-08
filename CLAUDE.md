@@ -338,6 +338,63 @@ The other 33 wikis are not touched. Their country articles were translated from
 English (see above) and still carry the old one-block lead; re-translating them
 against the new structure is a separate job.
 
+## The Legality section says which law, and links it
+
+Having given country articles a `== Legality of Hitchhiking ==` section, most of
+them had nothing to put in it — half the big European countries had no such
+section at all, and the ones that did said "it's illegal on motorways" with
+nothing a reader could check. `tools/country_legality.py` ships, per country, a
+block of at most five sentences that names the actual provision and links it on
+the government's own legal database:
+
+```bash
+python3 tools/country_legality.py plan            # what each section holds now
+python3 tools/country_legality.py render Germany  # the block on its own
+python3 tools/country_legality.py diff Germany    # against the live page
+python3 tools/country_legality.py check           # ≤5 sentences? sourced?
+python3 tools/country_legality.py push all
+```
+
+One block per country under `tools/country_legality/`, each answering the same
+four questions and nothing else: is hitchhiking itself regulated or only where
+you stand; motorway carriageway, shoulder and slip road; service areas, rest
+areas and toll plazas; ordinary roads. Done so far: Germany, France, the United
+Kingdom, Italy, Spain, Poland, the Netherlands, Belgium, Austria, Switzerland,
+Sweden, Norway, Denmark, Finland, the Czech Republic, Portugal, Hungary,
+Ireland, Romania and Greece.
+
+The wording is **not** generated. Each one was written against the primary text
+— `gesetze-im-internet.de`, Legifrance, BOE, Normattiva, ISAP, RIS, Fedlex,
+Finlex, Retsinformation, Lovdata, the Irish Statute Book, e-Sbírka, njt.hu — and
+the block cites the article number so the claim stays checkable when the law
+moves. That is also why the tool has no `translate` verb: a model paraphrasing a
+statute is exactly the failure this section exists to fix.
+
+Two rules keep it from destroying anyone's work:
+
+- **The block goes at the top of the section and existing prose stays under
+  it.** It adds the law; it does not replace practical advice.
+- **Unless the section was only an unsourced version of the same thing**, in
+  which case the block file opens with `%replace` and carries whatever is still
+  worth having after a `%tail` line — a decision recorded in the repo, with the
+  old wording still in the page history. That is what happened to Germany,
+  Denmark, the Czech Republic, the Netherlands, France and Italy. Portugal's
+  said walking the motorway carries no fine, which article 72.º(3) of the
+  ''Código da Estrada'' contradicts at €120–600; Italy's quoted the right
+  article with fines from a repealed version.
+
+The block is fenced in HTML comments, so `push` replaces the previous one rather
+than stacking a second copy and a no-op edit is skipped. `check` refuses a block
+over five sentences or with no link in it, and `push` runs `check` first.
+
+Watch the law moving under the citations: Belgium's 1975 `code de la route`
+gives way to the `Code de la voie publique` on 1 September 2026 (article 21.1
+becomes article 24 §1, same prohibition), Spain's article 125 is restated by RD
+518/2026 from 1 October 2026, and Greece's code was replaced outright by
+ν. 5209/2025 — article 29 of the 1999 code is now article 33.
+
+As with the restructuring above, the other 33 wikis are untouched.
+
 ## The project namespace is `Hitchwiki:` everywhere
 
 `$wgSitename` differs per wiki (Tramperwiki, Autostopwiki, Liftariwiki,
