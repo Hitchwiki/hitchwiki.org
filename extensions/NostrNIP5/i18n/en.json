@@ -1,0 +1,7 @@
+{
+	"@metadata": { "authors": [ "Hitchwiki" ] },
+	"nostrnip5-desc": "Publish Hitchwiki account Nostr identities through NIP-05",
+	"nostrnip5-npub-label": "Nostr public key (npub)",
+	"nostrnip5-npub-help": "This makes your Nostr identity available as yourusername@hitchwiki.org.",
+	"nostrnip5-npub-invalid": "Enter a valid npub public key."
+}

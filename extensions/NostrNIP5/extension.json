@@ -1,0 +1,31 @@
+{
+	"name": "NostrNIP5",
+	"version": "0.1.0",
+	"author": "MediaWiki Nostr Extensions",
+	"url": "https://github.com/Hitchwiki/mediawiki-nostr",
+	"descriptionmsg": "nostrnip5-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"requires": { "MediaWiki": ">= 1.42.0" },
+	"config": {
+		"NostrNIP5Enabled": {
+			"value": true,
+			"description": "Enable the NIP-05 endpoint"
+		}
+	},
+	"AutoloadClasses": {
+		"NostrNIP5\\Hooks": "includes/Hooks.php",
+		"NostrNIP5\\Npub": "includes/Npub.php",
+		"NostrNIP5\\WellKnownHandler": "includes/WellKnownHandler.php",
+		"NostrNIP5\\UserPreferences": "includes/UserPreferences.php",
+		"NostrNIP5\\SpecialNostrNIP5": "includes/SpecialNostrNIP5.php"
+	},
+	"SpecialPages": { "NostrNIP5": "NostrNIP5\\SpecialNostrNIP5" },
+	"Hooks": { "GetPreferences": "prefs" },
+	"HookHandlers": {
+		"prefs": { "class": "NostrNIP5\\UserPreferences" }
+	},
+	"ExtensionMessagesFiles": { "NostrNIP5Alias": "NostrNIP5.alias.php" },
+	"MessagesDirs": { "NostrNIP5": [ "i18n" ] },
+	"manifest_version": 2
+}
