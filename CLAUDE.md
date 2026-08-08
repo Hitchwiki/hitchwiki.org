@@ -287,6 +287,57 @@ Everything under `tools/place_index.json`, `place_text_cache/`,
 gitignored — the index rebuilds with `place_corpus.py build`, and the rest has
 already been pushed to the wikis. Delete it when a run is finished.
 
+## English country articles open the same way
+
+A country article starts with a couple of sentences on what and where the
+country is, then `== Hitchhiking ==`, then `== Legality of Hitchhiking ==`.
+Most of them used to open with one undifferentiated wall of lead text that
+mixed all three — borders and currency, what drivers are like, and whether the
+police will fine you — so a reader after any one of those had to read all of it.
+
+```bash
+python3 tools/restructure_country_articles.py plan            # what is where now
+python3 tools/restructure_country_articles.py classify -j 8   # ask the model
+python3 tools/restructure_country_articles.py render Germany --diff
+python3 tools/restructure_country_articles.py check           # verbatim? balanced?
+python3 tools/restructure_country_articles.py push
+```
+
+**No prose is rewritten, and the model never sees a blank page.** The lead is
+cut into sentence-sized spans, the model only says which bucket each span
+*number* belongs in, and the article is reassembled from the original byte
+spans — every span used exactly once, in its original relative order. So the
+only thing an edit can change is which heading a sentence sits under. `check`
+enforces that from the cache: the word multiset outside headings must be
+identical, and no `[[`, `{{` or `'''` may appear or vanish. It refuses to write
+a page that fails, and it refuses a cached plan whose span numbers no longer
+match the live article, because a plan is only meaningful for the revision it
+was made from.
+
+Four rules keep the result honest, each of them there because the first run got
+it wrong:
+
+- **Nothing is invented.** 42 of the 233 articles are stubs whose lead is three
+  sentences of geography and no hitchhiking at all. They get no `== Hitchhiking
+  ==` and are left untouched — a whitespace-only diff is not worth an edit.
+- **A section is folded into a new heading only if its title is already a
+  synonym for it** (`ABSORBABLE` in the script). Absorbing `== Hitchhiking ==`
+  is a rename in name only and has to happen, or the article would end up with
+  two sections of that name. Left to itself the model also offered to retitle
+  `== People ==`, `== Road network ==` and `== Border crossing ==`, which
+  throws away a heading a reader was using. Those stay where they are and the
+  article simply gains a new section above them.
+- **No sentence is lifted out of the middle of a paragraph.** Splitting a
+  paragraph after its first sentence reads fine; reaching into the middle for
+  one sentence leaves the two halves not joining up. Within a paragraph a
+  bucket must be one contiguous run.
+- **New headings match the article's own depth.** A few of these articles are
+  written entirely in `=` and a few in `===`.
+
+The other 33 wikis are not touched. Their country articles were translated from
+English (see above) and still carry the old one-block lead; re-translating them
+against the new structure is a separate job.
+
 ## The project namespace is `Hitchwiki:` everywhere
 
 `$wgSitename` differs per wiki (Tramperwiki, Autostopwiki, Liftariwiki,

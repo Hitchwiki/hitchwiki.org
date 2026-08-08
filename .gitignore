@@ -37,3 +37,8 @@ tools/place_index.json
 tools/place_text_cache
 tools/place_pages_out
 tools/place_batches
+
+# Working files of tools/restructure_country_articles.py: one cached
+# classification per country article. Derived — `classify` rebuilds it, and the
+# result has already been pushed to the wiki.
+tools/country_restructure
